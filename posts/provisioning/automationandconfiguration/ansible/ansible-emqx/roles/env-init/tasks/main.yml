@@ -1,0 +1,38 @@
+---
+# tasks file for roles/env-init
+
+- name: hostname config
+  shell: hostnamectl set-hostname {{ inventory_hostname }}
+
+- name: hosts config
+  lineinfile:
+    path: /etc/hosts
+    regexp: '{{ hostvars[item].inventory_hostname }}'
+    line: "{{ hostvars[item].ansible_ssh_host }} {{ hostvars[item].inventory_hostname }} {{ hostvars[item].inventory_hostname_short }}"
+    state: present
+  when: hostvars[item].ansible_ssh_host is defined
+  with_items: "{{ groups.all }}"
+
+- name: delete /etc/yum.repos.d
+  file:
+    path: /etc/yum.repos.d
+    state: absent
+
+- name: create /etc/yum.repos.d
+  file:
+    path: /etc/yum.repos.d
+    state: directory
+
+- name: copy 163.repo
+  template:
+    src: 163.repo.j2
+    dest: /etc/yum.repos.d/163.repo
+
+- name: copy epel.repo
+  template:
+    src: epel.repo.j2
+    dest: /etc/yum.repos.d/epel.repo
+
+- name: yum update
+  yum:
+    update_cache: yes

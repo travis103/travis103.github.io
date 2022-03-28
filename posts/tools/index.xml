@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tools on Will&#39;s Blog</title>
+    <link>https://travis103.github.io/posts/tools/</link>
+    <description>Recent content in Tools on Will&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 18 Mar 2022 14:06:15 +0800</lastBuildDate><atom:link href="https://travis103.github.io/posts/tools/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title>Markdown</title>
+      <link>https://travis103.github.io/posts/tools/markdown/</link>
+      <pubDate>Fri, 25 Mar 2022 14:56:40 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/tools/markdown/</guid>
+      <description>markdown.md
+ https://markdown.com.cn/
+ 或者 ./可以省略
+或者 ./可以省略
+Sample Markdown Cheat Sheet This is a sample markdown file to help you write Markdown quickly :)
+If you use the fabulous Sublime Text 2/3 editor along with the Markdown Preview plugin, open your ST2 Palette with CMD+⇧+P then choose Markdown Preview in browser to see the result in your browser.
+Text basics this is italic and this is bold . another italic and another bold</description>
+    </item>
+    
+    <item>
+      <title>Telegram Cli</title>
+      <link>https://travis103.github.io/posts/tools/telegram-cli/</link>
+      <pubDate>Fri, 25 Mar 2022 11:18:47 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/tools/telegram-cli/</guid>
+      <description> on centos  dnf --enablerepo=PowerTools install libevent-devel zlib-devel libconfig-devel readline-devel lua-devel jansson-devel libgcrypt-devel git gcc make openssl-devel git clone --recursive https://github.com/vysheng/tg.git &amp;amp;&amp;amp; cd tg ./configure --disable-openssl --prefix=/usr CFLAGS=&amp;quot;-march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong -fno-plt -w&amp;quot; make  on ubunut  apt-get update &amp;amp;&amp;amp; apt-get install -y libreadline-dev libconfig-dev libssl-dev lua5.2 liblua5.2-dev libevent-dev libjansson-dev libpython-dev make zlib1g-dev git libgcrypt20-dev git clone --recursive https://github.com/vysheng/tg.git &amp;amp;&amp;amp; cd tg ./configure --disable-openssl --prefix=/usr CFLAGS=&amp;quot;-march=x86-64 -mtune=generic -O2 -pipe -fstack-protector-strong -fno-plt -w&amp;quot; make </description>
+    </item>
+    
+    <item>
+      <title>Zeronet</title>
+      <link>https://travis103.github.io/posts/tools/zeronet/</link>
+      <pubDate>Fri, 25 Mar 2022 11:13:46 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/tools/zeronet/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>WSL</title>
+      <link>https://travis103.github.io/posts/tools/wsl/</link>
+      <pubDate>Fri, 25 Mar 2022 11:12:39 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/tools/wsl/</guid>
+      <description>umount /mnt/c mount -t drvfs C: /mnt/c -o metadata</description>
+    </item>
+    
+    <item>
+      <title>Resilio Sync</title>
+      <link>https://travis103.github.io/posts/tools/resilio-sync/</link>
+      <pubDate>Fri, 25 Mar 2022 11:11:04 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/tools/resilio-sync/</guid>
+      <description>resiliosync  docs ref1 ref2
+install docker-compose
+DATA_FOLDER=/path/to/data/folder/on/the/host WEBUI_PORT=&amp;lt;port&amp;gt; mkdir -p $DATA_FOLDER docker run -d --name Sync \ -p 127.0.0.1:$WEBUI_PORT:8888 \ -p 55555 \ -v $DATA_FOLDER:/mnt/sync \ --restart on-failure \ resilio/sync docker run -d --name Sync \ -p $WEBUI_PORT:8888 \ -p 55555 \ -v $DATA_FOLDER:/mnt/sync \ --restart on-failure \ resilio/sync docker run -d --name Sync \ -p 127.0.0.1:$WEBUI_PORT:8888 \ -p 55555 \ -v $DATA_FOLDER:/mnt/sync \ -v &amp;lt;other_dir&amp;gt;:/mnt/mounted_folders/&amp;lt;dir_name&amp;gt; \ -v &amp;lt;other_dir2&amp;gt;:/mnt/mounted_folders/&amp;lt;dir_name2&amp;gt; \ --restart on-failure \ resilio/sync usage &amp;ndash;config &amp;ndash;storage  &amp;ndash;identity &amp;ndash;license  &amp;ndash;nodaemon &amp;ndash;dump-sample-config &amp;ndash;log  &amp;ndash;webui.</description>
+    </item>
+    
+    <item>
+      <title>Trojan</title>
+      <link>https://travis103.github.io/posts/tools/trojan/</link>
+      <pubDate>Fri, 25 Mar 2022 11:10:27 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/tools/trojan/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>V2ray</title>
+      <link>https://travis103.github.io/posts/tools/v2ray/</link>
+      <pubDate>Fri, 25 Mar 2022 11:04:21 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/tools/v2ray/</guid>
+      <description>server client  macos brew cask install v2rayx https://github.com/Cenmrev/V2RayX  </description>
+    </item>
+    
+    <item>
+      <title>Shadowsocks</title>
+      <link>https://travis103.github.io/posts/tools/shadowsocks/</link>
+      <pubDate>Fri, 25 Mar 2022 11:02:36 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/tools/shadowsocks/</guid>
+      <description>v2ray on CoreOS  curl https://gist.githubusercontent.com/ushdjkfnf/7eae9cca317fe5887a893f85724fdbc4/raw/07d8c9a728d40256b06d3adc43074ace76b0e9cc/v2ray-install-on-ubuntu.sh | sudo bash  shadowsocks on Centos 7  yum install -y python-pip pip install shadowsocks echo &amp;#39;net.ipv4.tcp_fastopen = 3&amp;#39; &amp;gt;&amp;gt; /etc/sysctl.conf sysctl -p { &amp;#34;server&amp;#34;:&amp;#34;0.0.0.0&amp;#34;, &amp;#34;server_port&amp;#34;:xxx, &amp;#34;local_port&amp;#34;:xxx, &amp;#34;password&amp;#34;:&amp;#34;xxx&amp;#34;, &amp;#34;timeout&amp;#34;:600, &amp;#34;method&amp;#34;:&amp;#34;aes-256-cfb&amp;#34;, &amp;#34;fast_open&amp;#34;: true } firewall-cmd --zone=public --add-port=13485/tcp --permanent firewall-cmd --reload ssserver -c ss.json -d start chmod +x /etc/rc.d/rc.local cat &amp;gt;&amp;gt; /etc/rc.d/rc.local &amp;lt;&amp;lt; eof if ! ps -ef | grep -v grep | grep ssserver &amp;gt; /dev/null 2&amp;gt;&amp;amp;1;then ssserver -c /root/ss.</description>
+    </item>
+    
+    <item>
+      <title>Outline</title>
+      <link>https://travis103.github.io/posts/tools/outline/</link>
+      <pubDate>Fri, 25 Mar 2022 11:00:57 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/tools/outline/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Google Search</title>
+      <link>https://travis103.github.io/posts/tools/googlesearch/</link>
+      <pubDate>Fri, 25 Mar 2022 10:51:56 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/tools/googlesearch/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Code Push Server</title>
+      <link>https://travis103.github.io/posts/tools/code-push-server/</link>
+      <pubDate>Fri, 25 Mar 2022 10:50:55 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/tools/code-push-server/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Chrome Remote Desktop</title>
+      <link>https://travis103.github.io/posts/tools/chrome-remote-desktop/</link>
+      <pubDate>Fri, 25 Mar 2022 10:49:33 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/tools/chrome-remote-desktop/</guid>
+      <description>参考1
+1 Installing Chrome Remote Desktop wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb sudo apt update sudo dpkg --install chrome-remote-desktop_current_amd64.deb sudo apt install --assume-yes --fix-broken 2 Installing an X windows service sudo DEBIAN_FRONTEND=noninteractive \  apt install --assume-yes xfce4 desktop-base sudo echo &amp;#34;exec /usr/bin/xfce4-session&amp;#34; &amp;gt; /etc/chrome-remote-desktop-session sudo apt install --assume-yes xscreensaver sudo systemctl disable lightdm.service 3 Configuring and Starting Chrome Remote Desktop  1. Visit https://remotedesktop.google.com/headless to get and copy the cmds 2. Running cmds on server DISPLAY= /opt/google/chrome-remote-desktop/start-host --code=&amp;quot;4/igEdhwp6CISeetOISO_APaonKJgveECdTIGatI_ss7mCOZbSapCxsd6WKQ9KOn2dhBuTuG3b3cc979Pgx9JyNf4&amp;quot; --redirect-url=&amp;quot;https://remotedesktop.</description>
+    </item>
+    
+    <item>
+      <title>Atom</title>
+      <link>https://travis103.github.io/posts/tools/atom/</link>
+      <pubDate>Fri, 25 Mar 2022 10:45:43 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/tools/atom/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MicrosoftRemoteDesktop</title>
+      <link>https://travis103.github.io/posts/tools/microsoft-remote-desktop/</link>
+      <pubDate>Fri, 25 Mar 2022 10:43:16 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/tools/microsoft-remote-desktop/</guid>
+      <description>Microsoft Remote Desktop 是 mac 下非常好用的远程 Windows 桌面的软件，但在 App Store 中国区不提供下载，所以这里介绍一下如何下载官方版本。 1、打开页面：https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/remote-desktop-mac 2、找到并点击 “Go to Microsoft Remote Desktop for Mac” 然后跳转到 https://aka.ms/rdmacbeta即可获得下载地址。 最后跳转到的地址是: https://install.appcenter.ms/orgs/rdmacios-k2vy/apps/microsoft-remote-desktop-for-mac/distribution_groups/all-users-of-microsoft-remote-desktop-for-mac</description>
+    </item>
+    
+    <item>
+      <title>Github</title>
+      <link>https://travis103.github.io/posts/tools/github/</link>
+      <pubDate>Fri, 25 Mar 2022 10:38:47 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/tools/github/</guid>
+      <description>Github Pages  1. Create a repository Head over to GitHub and create a new public repository named username.github.io, where username is your username (or organization name) on GitHub. If the first part of the repository doesn’t exactly match your username, it won’t work, so make sure to get it right. 2. Clone the repository Go to the folder where you want to store your project, and clone the new repository: git clone https://github.</description>
+    </item>
+    
+    <item>
+      <title>Git</title>
+      <link>https://travis103.github.io/posts/tools/git/</link>
+      <pubDate>Fri, 18 Mar 2022 14:54:28 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/tools/git/</guid>
+      <description>git.md
+  clone
+ git clone &amp;ndash;recursive     submodule
+ git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke git submodule update &amp;ndash;init &amp;ndash;recursive    # 逆初始化模块，其中{MOD_NAME}为模块目录，执行后可发现模块目录被清空 git submodule deinit -f themes/toha # 删除.gitmodules中记录的模块信息（--cached选项清除.git/modules中的缓存） git rm --cached themes/toha # 提交更改到代码库，可观察到&#39;.gitmodules&#39;内容发生变更 git commit -am &amp;quot;Remove a submodule.&amp;quot;   remote
+ git remote add origin https://github.com/ushdjkfnf/blog.git    config
+ git config -l git config &amp;ndash;global user.email git config &amp;ndash;global user.</description>
+    </item>
+    
+    <item>
+      <title>Firefox</title>
+      <link>https://travis103.github.io/posts/tools/firefox/</link>
+      <pubDate>Fri, 18 Mar 2022 14:08:30 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/tools/firefox/</guid>
+      <description>plugins  react restclient ublock Tree Style Tab Undo Close Tab 翻译网页 Tampermonkey  </description>
+    </item>
+    
+    <item>
+      <title>Chrome</title>
+      <link>https://travis103.github.io/posts/tools/chrome/</link>
+      <pubDate>Fri, 18 Mar 2022 14:08:25 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/tools/chrome/</guid>
+      <description>omni
+  Tampermonkey
+  google chrome
+  cmd + t
+  cmd + shift + t(Open Last Closed Tab)
+  cmd + n
+  cmd + w (Close the Active Right Away)
+  cmd + number (jump through tabs by tab index)
+  cmd + shift + n (Go Incognito Mode)
+  cmd + -&amp;gt;
+  cmd + &amp;lt;-</description>
+    </item>
+    
+    <item>
+      <title>Sublime</title>
+      <link>https://travis103.github.io/posts/tools/sublime/</link>
+      <pubDate>Fri, 18 Mar 2022 14:08:21 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/tools/sublime/</guid>
+      <description>1 Install 2 Config { &amp;quot;font_size&amp;quot;: 12, &amp;quot;save_on_focus_lost&amp;quot;: true, &amp;quot;ignored_packages&amp;quot;: [ &amp;quot;Markdown&amp;quot;, &amp;quot;Vintage&amp;quot;, ], &amp;quot;trim_trailing_white_space_on_save&amp;quot;: true, &amp;quot;word_wrap&amp;quot;: true, } 3 Plugins  package control filemanager markdown extended markdownPreview toml  </description>
+    </item>
+    
+    <item>
+      <title>Mac</title>
+      <link>https://travis103.github.io/posts/tools/mac/</link>
+      <pubDate>Fri, 18 Mar 2022 14:07:39 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/tools/mac/</guid>
+      <description>sh -c &amp;#34;$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&amp;#34; sh -c &amp;#34;$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)&amp;#34; sysctl -a | grep -E --color &amp;#39;machdep.cpu.features|VMX&amp;#39; sysctl -n hw.ncpu /bin/bash -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&amp;#34; /bin/zsh -c &amp;#34;$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)&amp;#34; /bin/zsh -c &amp;#34;$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/HomebrewUninstall.sh)&amp;#34; 140.82.113.4 github.com git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-cask fetch --unshallow smartmontools  https://www.bilibili.com/read/cv14867869/
+ brew install smartmontools smartctl -s on disk0 smartctl -a disk0 常用命令 sudo launchctl list locate  Homebrew  ruby -e &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;#34;   atom</description>
+    </item>
+    
+    
+  </channel>
+</rss>

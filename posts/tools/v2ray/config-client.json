@@ -1,0 +1,49 @@
+{
+	"inbounds": [{
+		"port": "xxx",
+		"listen": "0.0.0.0",
+		"protocol": "socks",
+		"settings": {
+			"auth": "noauth",
+			"udp": false,
+			"ip": "127.0.0.1"
+		}
+	}],
+	"outbounds": [{
+		"protocol": "vmess",
+		"settings": {
+			"vnext": [{
+					"address": "xxx",
+					"port": "xxx",
+					"users": [{
+						"id": "xxx"
+					}]
+				},
+				{
+					"protocol": "blackhole",
+					"tag": "blocked",
+					"settings": {}
+				},
+				{
+					"protocol": "freedom",
+					"tag": "direct",
+					"settings": {}
+				}
+			]
+		}
+	}],
+	"routing": {
+		"domainStrategy": "IPOnDemand",
+		"rules": [{
+				"type": "field",
+				"ip": ["geoip:private"],
+				"outboundTag": "direct"
+			},
+			{
+				"type": "field",
+				"domain": ["geosite:category-ads"],
+				"outboundTag": "blocked"
+			}
+		]
+	}
+}

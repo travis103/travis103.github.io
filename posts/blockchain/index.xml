@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blockchain on Will&#39;s Blog</title>
+    <link>https://travis103.github.io/posts/blockchain/</link>
+    <description>Recent content in Blockchain on Will&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 25 Mar 2022 15:50:07 +0800</lastBuildDate><atom:link href="https://travis103.github.io/posts/blockchain/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title>Dapp</title>
+      <link>https://travis103.github.io/posts/blockchain/dapp/</link>
+      <pubDate>Fri, 25 Mar 2022 16:16:19 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/blockchain/dapp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Dao</title>
+      <link>https://travis103.github.io/posts/blockchain/dao/</link>
+      <pubDate>Fri, 25 Mar 2022 16:16:02 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/blockchain/dao/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web3</title>
+      <link>https://travis103.github.io/posts/blockchain/web3/</link>
+      <pubDate>Fri, 25 Mar 2022 15:51:59 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/blockchain/web3/</guid>
+      <description>web3-study-rss new projects to research  https://linear.finance/ https://www.coinomy.com/  focus on for now  https://github.com/Bitcoin-ABC https://mask.io/ https://github.com/dogecoin https://github.com/DODOEX  coin project examples  https://github.com/bitcoin https://github.com/ethereum https://github.com/compound-finance https://github.com/stellar https://github.com/omgnetwork https://github.com/dashpay https://github.com/litecoin-project https://github.com/smartcontractkit https://github.com/filecoin-project https://github.com/paritytech https://github.com/Uniswap https://github.com/monero-project https://github.com/aave https://github.com/1inch-exchange https://github.com/bandprotocol https://github.com/graphprotocol https://github.com/balancer-labs https://github.com/HorizenOfficial https://github.com/gianni-dalerta https://github.com/cardano-foundation https://github.com/Loopring https://github.com/Synthetixio https://github.com/makerdao https://github.com/zcash https://github.com/bnb https://github.com/HuobiGroup https://github.com/EOSIO https://github.com/renproject https://github.com/yearn  im examples  https://github.com/matrix-org/synapse https://github.com/RocketChat/Rocket.Chat  storage examples  https://github.com/ipfs/go-ipfs https://github.com/crustio  runtime examples  https://github.com/robertmuth/Pytorinox https://github.com/docker-slim/docker-slim  3rd wallet  https://www.</description>
+    </item>
+    
+    <item>
+      <title>NFT</title>
+      <link>https://travis103.github.io/posts/blockchain/nft/</link>
+      <pubDate>Fri, 25 Mar 2022 15:51:33 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/blockchain/nft/</guid>
+      <description></description>
+    </item>
+    
+    
+  </channel>
+</rss>

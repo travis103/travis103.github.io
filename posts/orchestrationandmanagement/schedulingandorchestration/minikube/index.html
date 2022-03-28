@@ -1,0 +1,2046 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Minikube</title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600">
+
+
+<link rel="stylesheet" href="/fontawesome/css/all.min.css"/>
+
+
+
+
+  
+
+  
+  
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/hugo-logo.svg" />
+
+<meta property="og:title" content="Minikube" />
+<meta property="og:description" content="minikube
+pre brew install docker brew install docker-compose
+brew install kubectl brew install hyperkit
+install brew install minikube
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64 sudo install minikube-darwin-amd64 /usr/local/bin/minikube
+minikube config set cpus 1 minikube config set memory 4g
+minikube config set memory 8192
+minikube config set driver hyperkit
+usage minikube start &ndash;vm-driver=&ldquo;kvm2&rdquo; &ndash;container-runtime=containerd &ndash;docker-opt containerd=/var/run/containerd/containerd.sock &ndash;docker-env=&ldquo;http_proxy=x.x.x.x:8080&rdquo; &ndash;docker-env=&ldquo;https_proxy=x.x.x.x:8080&rdquo; start
+minikube start &ndash;kubernetes-version=1.18.8 &ndash;driver=hyperkit &ndash;container-runtime=containerd &ndash;image-mirror-country=&lsquo;cn&rsquo;
+minikube start &ndash;kubernetes-version=1.18.8 &ndash;driver=hyperkit &ndash;container-runtime=containerd &ndash;registry-mirror=https://registry.docker-cn.com
+minikube start &ndash;driver=hyperkit &ndash;container-runtime=containerd &ndash;image-repository=&lsquo;registry." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://travis103.github.io/posts/orchestrationandmanagement/schedulingandorchestration/minikube/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-03-25T14:59:01+08:00" />
+<meta property="article:modified_time" content="2022-03-25T14:59:01+08:00" />
+
+
+
+    
+    
+<meta name="description" content="Minikube" />
+<link
+  rel="stylesheet"
+  href="/css/layouts/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/css/layouts/single.css"/>
+<link rel="stylesheet" href="/css/navigators/sidebar.css">
+
+<link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+
+    
+        
+        
+            
+            
+            
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-122321624-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+        
+
+        
+        
+
+        
+        
+    
+
+
+
+
+</head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+  
+  
+    
+  
+  
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      
+        <img src="/images/main-logo_hu864bbe108f1be1ae04b57f7f2fd9d631_5637_42x0_resize_box_3.png" alt="Logo">
+      Will&#39;s Blog</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+      </ul>
+    </div>
+  </div>
+  
+  
+    <img src="/images/main-logo_hu864bbe108f1be1ae04b57f7f2fd9d631_5637_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
+  
+  
+    <img src="/images/inverted-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+  
+</nav>
+
+
+
+      
+      
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/provisioning/">Provisioning</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/provisioning/os/">OS</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/provisioning/os/mtr/" title="mtr">mtr</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/provisioning/os/tmux/" title="tmux">tmux</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/provisioning/os/date/" title="date">date</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/provisioning/os/geth/" title="geth">geth</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/provisioning/os/gh/" title="gh">gh</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/provisioning/os/jq/" title="jq">jq</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/provisioning/os/pm2/" title="pm2">pm2</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/provisioning/os/rsync/" title="Rsync">Rsync</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/provisioning/os/stat/" title="stat">stat</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/provisioning/os/supervisor/" title="supervisor">supervisor</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/provisioning/os/systemd/" title="systemd">systemd</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/provisioning/automationandconfiguration/">Automation And Configuration</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/provisioning/automationandconfiguration/ansible/" title="Ansible">Ansible</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/provisioning/containerregistry/" title="Container Registry">Container Registry</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/provisioning/securityandcompliance/" title="Security And Compliance">Security And Compliance</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/provisioning/keymanagement/" title="Key Management">Key Management</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/runtime/">Runtime</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/runtime/storage/" title="Storage">Storage</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/runtime/compute/" title="Compute">Compute</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/runtime/network/">Network</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/runtime/network/cybersecurity/" title="Cyber Security">Cyber Security</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/runtime/network/snmp/" title="SNMP">SNMP</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li>
+      <i class="fas fa-minus-circle"></i><a class="active" href="/posts/orchestrationandmanagement/">Orchestration And Management</a>
+      
+      <ul class="active">
+        
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li>
+      <i class="fas fa-minus-circle"></i><a class="active" href="/posts/orchestrationandmanagement/schedulingandorchestration/">Scheduling And Orchestration</a>
+      
+      <ul class="active">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/orchestrationandmanagement/schedulingandorchestration/k8s/" title="K8s">K8s</a></li>
+  
+
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li><a class="active" href="/posts/orchestrationandmanagement/schedulingandorchestration/minikube/" title="Minikube">Minikube</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/orchestrationandmanagement/coordinationandservicediscovery/">Coordination &amp; Service Discovery</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/orchestrationandmanagement/coordinationandservicediscovery/etcd/" title="Etcd">Etcd</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/orchestrationandmanagement/coordinationandservicediscovery/zookeeper/" title="Zookeeper">Zookeeper</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/orchestrationandmanagement/remoteprocedurecall/" title="Remote Procedure Call">Remote Procedure Call</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/orchestrationandmanagement/serviceproxy/">Service Proxy</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/orchestrationandmanagement/serviceproxy/kong/" title="Kong">Kong</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/orchestrationandmanagement/serviceproxy/nginx/" title="Nginx">Nginx</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/orchestrationandmanagement/apigateway/" title="API Gateway">API Gateway</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/orchestrationandmanagement/servicemesh/" title="Service Mesh">Service Mesh</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/appdefinitionanddevelopment/">App Definition And Development</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/appdefinitionanddevelopment/database/">Database</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/database/mysql/" title="Mysql">Mysql</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/database/postgresql/" title="Postgresql">Postgresql</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/database/sqlite/" title="Sqlite">Sqlite</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/database/mongo/" title="Mongo">Mongo</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/database/redis/" title="Redis">Redis</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/database/memcached/" title="Memcached">Memcached</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/database/elasticsearcch/" title="Elasticsearcch">Elasticsearcch</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/database/redisearch/" title="Redisearch">Redisearch</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/appdefinitionanddevelopment/streamingandmessaging/">Streaming &amp; Messaging</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/streamingandmessaging/activemq/" title="ActiveMQ">ActiveMQ</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/streamingandmessaging/beanstalk/" title="Beanstalk">Beanstalk</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/streamingandmessaging/emqx/" title="Emqx">Emqx</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/streamingandmessaging/kafka/" title="Kafka">Kafka</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/streamingandmessaging/mq/" title="MQ">MQ</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/streamingandmessaging/rabbitmq/" title="RabbitMQ">RabbitMQ</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/streamingandmessaging/sqs/" title="SQS">SQS</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/streamingandmessaging/zeromq/" title="ZeroMQ">ZeroMQ</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/appdefinitionanddevelopment/applicationdefinitionandimagebuild/">Application Definition &amp; ImageBuild</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/applicationdefinitionandimagebuild/rust/" title="Rust">Rust</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/applicationdefinitionandimagebuild/golang/" title="Golang">Golang</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/applicationdefinitionandimagebuild/python/" title="Python">Python</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/applicationdefinitionandimagebuild/react/" title="React">React</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/applicationdefinitionandimagebuild/vue/" title="Vue">Vue</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/applicationdefinitionandimagebuild/yaml/" title="Yaml">Yaml</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/appdefinitionanddevelopment/continuousintegrationanddelivery/">Continuous Integration &amp; Delivery</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/continuousintegrationanddelivery/gitlab/" title="Gitlab">Gitlab</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/continuousintegrationanddelivery/jenkins/" title="Jenkins">Jenkins</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/observabilityandanalysis/">Observability And Analysis</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/observabilityandanalysis/monitoring/">Monitoring</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/observabilityandanalysis/monitoring/prometheus/" title="Prometheus">Prometheus</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/observabilityandanalysis/monitoring/grafana/" title="Grafana">Grafana</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/observabilityandanalysis/logging/">Logging</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/observabilityandanalysis/logging/filebeat/" title="Filebeat">Filebeat</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/observabilityandanalysis/logging/kibana/" title="Kibana">Kibana</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/observabilityandanalysis/tracing/">Tracing</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/observabilityandanalysis/tracing/jaeger/" title="Jaeger">Jaeger</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/observabilityandanalysis/tracing/zipkin/" title="Zipkin">Zipkin</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/observabilityandanalysis/chaosengineering/" title="Chaos Engineering">Chaos Engineering</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/observabilityandanalysis/continuousoptimization/" title="Continuous Optimization">Continuous Optimization</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/dataanalysis/" title="Data Analysis">Data Analysis</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/raspberrypi/" title="Raspberrypi">Raspberrypi</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/blockchain/">Blockchain</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/blockchain/dao/" title="Dao">Dao</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/blockchain/dapp/" title="Dapp">Dapp</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/blockchain/nft/" title="NFT">NFT</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/blockchain/web3/" title="Web3">Web3</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/seo/">SEO</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/seo/ahrefs/" title="Ahrefs">Ahrefs</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/seo/alexa/" title="Alexa">Alexa</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/seo/backlinko/" title="Backlinko">Backlinko</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/seo/lighthouse/" title="Lighthouse">Lighthouse</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/seo/semrush/" title="Semrush">Semrush</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/seo/similarweb/" title="Similarweb">Similarweb</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/tools/">Tools</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/atom/" title="Atom">Atom</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/chrome/" title="Chrome">Chrome</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/chrome-remote-desktop/" title="Chrome Remote Desktop">Chrome Remote Desktop</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/code-push-server/" title="Code Push Server">Code Push Server</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/firefox/" title="Firefox">Firefox</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/git/" title="Git">Git</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/github/" title="Github">Github</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/googlesearch/" title="Google Search">Google Search</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/mac/" title="Mac">Mac</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/markdown/" title="Markdown">Markdown</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/microsoft-remote-desktop/" title="Microsoft Remote Desktop">Microsoft Remote Desktop</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/outline/" title="Outline">Outline</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/resilio-sync/" title="Resilio Sync">Resilio Sync</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/shadowsocks/" title="Shadowsocks">Shadowsocks</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/sublime/" title="Sublime">Sublime</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/telegram-cli/" title="Telegram Cli">Telegram Cli</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/trojan/" title="Trojan">Trojan</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/v2ray/" title="V2ray">V2ray</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/wsl/" title="WSL">WSL</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/zeronet/" title="Zeronet">Zeronet</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/life/">Life</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/life/20220328t112119/" title="20220328T112119">20220328T112119</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/life/20220328t141921/" title="20220328T141921">20220328T141921</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content">
+    <div class="container p-0 read-area">
+      
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(https://travis103.github.io/images/default-hero.jpg);'>
+      </div>
+
+      
+      <div class="page-content">
+        <div class="author-profile ml-auto align-self-lg-center">
+          <img class="rounded-circle" src='/images/site/background2_huc5ebb9144ccc57efd670b667837a82c6_433238_120x120_fit_q75_box.jpg' alt="Author Image">
+          <h5 class="author-name">Will</h5>
+          <p>Friday, March 25, 2022</p>
+        </div>
+
+        <div class="title">
+          <h1>Minikube</h1>
+        </div>
+        
+        <div class="taxonomy-terms">
+            <ul>
+            
+          </ul>
+        </div>
+        
+        <div class="post-content" id="post-content">
+          <p>minikube</p>
+<h3 id="pre">pre</h3>
+<p>brew install docker
+brew install docker-compose</p>
+<p>brew install kubectl
+brew install hyperkit</p>
+<h3 id="install">install</h3>
+<p>brew install minikube</p>
+<p>curl -LO <a href="https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64">https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64</a>
+sudo install minikube-darwin-amd64 /usr/local/bin/minikube</p>
+<p>minikube config set cpus 1
+minikube config set memory 4g</p>
+<p>minikube config set memory 8192</p>
+<p>minikube config set driver hyperkit</p>
+<h3 id="usage">usage</h3>
+<p>minikube start &ndash;vm-driver=&ldquo;kvm2&rdquo; &ndash;container-runtime=containerd      &ndash;docker-opt containerd=/var/run/containerd/containerd.sock &ndash;docker-env=&ldquo;http_proxy=x.x.x.x:8080&rdquo; &ndash;docker-env=&ldquo;https_proxy=x.x.x.x:8080&rdquo; start</p>
+<p>minikube start &ndash;kubernetes-version=1.18.8 &ndash;driver=hyperkit &ndash;container-runtime=containerd &ndash;image-mirror-country=&lsquo;cn&rsquo;</p>
+<p>minikube start &ndash;kubernetes-version=1.18.8 &ndash;driver=hyperkit &ndash;container-runtime=containerd &ndash;registry-mirror=https://registry.docker-cn.com</p>
+<p>minikube start  &ndash;driver=hyperkit &ndash;container-runtime=containerd &ndash;image-repository=&lsquo;registry.cn-hangzhou.aliyuncs.com/google_containers&rsquo;  &ndash;kubernetes-version=1.18.8
+<code>--container-runtime</code>: docker containerd cri-o</p>
+<p>minikube start &ndash;cpus 3 &ndash;memory 8192 &ndash;disk-size 20g &ndash;vm-driver=hyperkit</p>
+<p>minikube start &ndash;cpus 2 &ndash;memory 4g &ndash;disk-size 20g &ndash;driver=hyperkit &ndash;mount &ndash;mount-string=&quot;/Users/will/go/src/github.com/Mikaelemmmm/go-zero-looklook:/test&quot; &ndash;container-runtime=docker &ndash;image-mirror-country=&lsquo;cn&rsquo;  &ndash;kubernetes-version=1.23.3</p>
+<p>minikube start &ndash;force &ndash;cpus 2 &ndash;memory 4g &ndash;disk-size 20g &ndash;driver=hyperkit &ndash;mount &ndash;mount-string=&quot;/Users/will/go/src/github.com/Mikaelemmmm/go-zero-looklook:/test&quot; &ndash;container-runtime=docker &ndash;image-mirror-country=&lsquo;cn&rsquo;  &ndash;kubernetes-version=1.23.3</p>
+<p>minikube mount .:/test</p>
+<p>minikube start &ndash;vm-driver=hyperv &ndash;mount &ndash;mount-string=&ldquo;C:\Users\AUser\AFolder:/minikube-host&rdquo;</p>
+<p>&ndash;registry-mirror=https://registry.docker-cn.com</p>
+<p>&ndash;profile [new-profile-name]</p>
+<p>&ndash;registry-mirror=https://index.docker.io/v1/
+&ndash;registry-mirror=https://dockerhub.azk8s.cn</p>
+<p>&ndash;image-repository=&lsquo;registry.cn-hangzhou.aliyuncs.com/google_containers&rsquo;
+&ndash;image-mirror-country=&lsquo;cn&rsquo;</p>
+<p>使用 &ndash;logtostderr &ndash;v=3 参数以打印相关日志，便于发现启动过程中的问题。
+使用 &ndash;image-mirror-country=cn 参数以顺利的下载 k8s 相关镜像。
+使用 &ndash;registry-mirror <a href="https://dockerhub.azk8s.cn">https://dockerhub.azk8s.cn</a> 参数以指定 docker image 镜像 - 便于国内下载。</p>
+<p>如果你在本地运行dnsmasq，在集群中可能会出现DNS解析失败。你可以卸载它或者在dnsmasq.conf中添加listen-address=192.168.64.1。</p>
+<p>alias kubectl=&ldquo;minikube kubectl &ndash;&rdquo;</p>
+<p>minikube kubectl get nodes
+minikube ssh</p>
+<p>kubectl create deployment hello-minikube &ndash;image=k8s.gcr.io/echoserver:1.4
+kubectl expose deployment hello-minikube &ndash;type=NodePort &ndash;port=8080</p>
+<p>kubectl get services hello-minikube
+kubectl port-forward service/hello-minikube 7080:8080</p>
+<p>minikube service hello-minikube</p>
+<p>kubectl create deployment balanced &ndash;image=k8s.gcr.io/echoserver:1.4
+kubectl expose deployment balanced &ndash;type=LoadBalancer &ndash;port=8080</p>
+<p>minikube tunnel
+kubectl get services balanced</p>
+<p>eval $(minikube docker-env)
+docker info</p>
+<p>minikube addons enable ingress
+minikube ip
+curl http://ip</p>
+<p>minikube addons enable ingress-dns</p>
+<p>minikube addons enable metallb
+minikube addons configure metallb</p>
+<p>brew install docker-credential-helper</p>
+<p>minikube pause
+minikube unpause
+minikube stop</p>
+<p>minikube addons list</p>
+<p>minikube start -p aged &ndash;kubernetes-version=v1.16.1</p>
+<p>minikube dashboard</p>
+<p><a href="https://blog.csdn.net/M2l0ZgSsVc7r69eFdTj/article/details/120818574">https://blog.csdn.net/M2l0ZgSsVc7r69eFdTj/article/details/120818574</a></p>
+<p><a href="https://minikube.sigs.k8s.io/docs/start/">https://minikube.sigs.k8s.io/docs/start/</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/69274854">https://zhuanlan.zhihu.com/p/69274854</a>
+<a href="https://zhuanlan.zhihu.com/p/139089438">https://zhuanlan.zhihu.com/p/139089438</a></p>
+<p>minikube mount /myvolume:/test
+这将把本地文件夹/myvolume挂载到Hyperkit VM的/test路径下。这个进程仍然是活跃的，所以你不应该关闭这个终端。</p>
+<p>docker run &ndash;rm -it -v /test:/inside busybox /bin/sh</p>
+
+        </div>
+
+        
+        <div class="row pl-3 pr-3">
+        
+        <div class="col-md-6 share-buttons">
+        
+            <strong>Share on:</strong>
+            
+            
+            
+            
+                <a class="btn btn-sm tumblr-btn" href="https://www.tumblr.com/share/link?url=https%3a%2f%2ftravis103.github.io%2fposts%2forchestrationandmanagement%2fschedulingandorchestration%2fminikube%2f&name=Minikube" target="_blank">
+                  <i class="fab fa-tumblr"></i>
+                </a>
+            
+            
+            
+            
+             
+            
+            
+                <a class="btn btn-sm email-btn" href="mailto:?subject=Minikube&body=https%3a%2f%2ftravis103.github.io%2fposts%2forchestrationandmanagement%2fschedulingandorchestration%2fminikube%2f" target="_blank">
+                  <i class="fas fa-envelope-open-text"></i>
+                </a>
+            
+          
+          </div>
+
+        
+        
+          
+            
+          
+          <div class="col-md-6 btn-improve-page">
+             
+               <a href="https://github.com/travis103/travis103.github.io.git/edit/source/content/posts/OrchestrationAndManagement/SchedulingAndOrchestration/Minikube/index.md" title="Improve this page" target="_blank" rel="noopener">
+            
+                <i class="fas fa-code-branch"></i>
+                Improve this page
+              </a>
+          </div>
+        
+        </div>
+
+
+
+      
+      <hr />
+        
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+    
+    
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+<div class="row next-prev-navigator">
+  
+    <div class="col-md-6 previous-article">
+      <a href="/posts/orchestrationandmanagement/schedulingandorchestration/k8s/" title="K8s" class="btn btn-outline-info">
+        <div><i class="fas fa-chevron-circle-left"></i> Prev</div>
+        <div class="next-prev-text">K8s</div>
+      </a>
+    </div>
+  
+  
+      
+      
+        
+      
+      <div class="col-md-6 next-article">
+        <a href="/posts/orchestrationandmanagement/coordinationandservicediscovery/etcd/" title="Etcd" class="btn btn-outline-info">
+          <div>Next <i class="fas fa-chevron-circle-right"></i></div>
+          <div class="next-prev-text">Etcd</div>
+        </a>
+      </div>
+    
+</div>
+
+      <hr />
+
+      
+      
+        
+      
+      
+      
+
+      </div>
+    </div>
+  </div>
+  
+  <a id="scroll-to-top" class="btn"><i class="fas fa-chevron-circle-up"></i></a>
+  
+</section>
+
+
+      
+      
+  <section class="toc-section" id="toc-section">
+    
+    <div class="toc-holder">
+      <h5 class="text-center pl-3">Table of Contents</h5>
+      <hr>
+      <div class="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#pre">pre</a></li>
+        <li><a href="#install">install</a></li>
+        <li><a href="#usage">usage</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+    </div>
+    
+  </section>
+
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+    
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer id="footer" class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+              
+                <li><a href=mailto:lee421175@gamil.com target="_blank" rel="noopener">
+                  <span><i class="fas fa-envelope"></i></span> <span>lee421175@gamil.com</span>
+                </a></li>
+              
+            
+          </ul>
+        </div>
+        
+        
+        
+      </div>
+    </div>
+    
+    <hr />
+    <div class="container">
+      <p id="disclaimer"><strong>Liability Notice:</strong> This theme is under MIT license. So, you can use it for non-commercial, commercial, or private uses. You can modify or distribute the theme without requiring any permission from the theme author. However, the theme author does not provide any warranty or takes any liability for any issue with the theme.</p>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          <a id="theme" href="https://github.com/hossainemruz/toha" target="_blank" rel="noopener">
+            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
+            Toha
+          </a>
+        </div>
+        <div class="col-md-4 text-center">© 2022 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+    
+    
+<script src="/js/highlight.min.js"></script>
+<script src="/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+
+
+
+
+
+    
+</body>
+</html>

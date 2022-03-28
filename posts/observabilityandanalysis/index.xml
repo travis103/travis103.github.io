@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ObservabilityAndAnalysis on Will&#39;s Blog</title>
+    <link>https://travis103.github.io/posts/observabilityandanalysis/</link>
+    <description>Recent content in ObservabilityAndAnalysis on Will&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 16 Mar 2022 20:36:55 +0800</lastBuildDate><atom:link href="https://travis103.github.io/posts/observabilityandanalysis/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title>Zipkin</title>
+      <link>https://travis103.github.io/posts/observabilityandanalysis/tracing/zipkin/</link>
+      <pubDate>Thu, 24 Mar 2022 11:06:19 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/observabilityandanalysis/tracing/zipkin/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Jaeger</title>
+      <link>https://travis103.github.io/posts/observabilityandanalysis/tracing/jaeger/</link>
+      <pubDate>Thu, 24 Mar 2022 11:06:11 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/observabilityandanalysis/tracing/jaeger/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kibana</title>
+      <link>https://travis103.github.io/posts/observabilityandanalysis/logging/kibana/</link>
+      <pubDate>Thu, 24 Mar 2022 11:04:05 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/observabilityandanalysis/logging/kibana/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Filebeat</title>
+      <link>https://travis103.github.io/posts/observabilityandanalysis/logging/filebeat/</link>
+      <pubDate>Thu, 24 Mar 2022 11:03:50 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/observabilityandanalysis/logging/filebeat/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Grafana</title>
+      <link>https://travis103.github.io/posts/observabilityandanalysis/monitoring/grafana/</link>
+      <pubDate>Thu, 24 Mar 2022 11:01:22 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/observabilityandanalysis/monitoring/grafana/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Prometheus</title>
+      <link>https://travis103.github.io/posts/observabilityandanalysis/monitoring/prometheus/</link>
+      <pubDate>Thu, 24 Mar 2022 11:01:15 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/observabilityandanalysis/monitoring/prometheus/</guid>
+      <description></description>
+    </item>
+    
+    
+  </channel>
+</rss>

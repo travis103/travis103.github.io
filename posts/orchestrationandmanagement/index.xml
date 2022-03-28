@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OrchestrationAndManagement on Will&#39;s Blog</title>
+    <link>https://travis103.github.io/posts/orchestrationandmanagement/</link>
+    <description>Recent content in OrchestrationAndManagement on Will&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 16 Mar 2022 20:29:39 +0800</lastBuildDate><atom:link href="https://travis103.github.io/posts/orchestrationandmanagement/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title>Minikube</title>
+      <link>https://travis103.github.io/posts/orchestrationandmanagement/schedulingandorchestration/minikube/</link>
+      <pubDate>Fri, 25 Mar 2022 14:59:01 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/orchestrationandmanagement/schedulingandorchestration/minikube/</guid>
+      <description>minikube
+pre brew install docker brew install docker-compose
+brew install kubectl brew install hyperkit
+install brew install minikube
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64 sudo install minikube-darwin-amd64 /usr/local/bin/minikube
+minikube config set cpus 1 minikube config set memory 4g
+minikube config set memory 8192
+minikube config set driver hyperkit
+usage minikube start &amp;ndash;vm-driver=&amp;ldquo;kvm2&amp;rdquo; &amp;ndash;container-runtime=containerd &amp;ndash;docker-opt containerd=/var/run/containerd/containerd.sock &amp;ndash;docker-env=&amp;ldquo;http_proxy=x.x.x.x:8080&amp;rdquo; &amp;ndash;docker-env=&amp;ldquo;https_proxy=x.x.x.x:8080&amp;rdquo; start
+minikube start &amp;ndash;kubernetes-version=1.18.8 &amp;ndash;driver=hyperkit &amp;ndash;container-runtime=containerd &amp;ndash;image-mirror-country=&amp;lsquo;cn&amp;rsquo;
+minikube start &amp;ndash;kubernetes-version=1.18.8 &amp;ndash;driver=hyperkit &amp;ndash;container-runtime=containerd &amp;ndash;registry-mirror=https://registry.docker-cn.com
+minikube start &amp;ndash;driver=hyperkit &amp;ndash;container-runtime=containerd &amp;ndash;image-repository=&amp;lsquo;registry.</description>
+    </item>
+    
+    <item>
+      <title>K8s</title>
+      <link>https://travis103.github.io/posts/orchestrationandmanagement/schedulingandorchestration/k8s/</link>
+      <pubDate>Fri, 25 Mar 2022 14:45:25 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/orchestrationandmanagement/schedulingandorchestration/k8s/</guid>
+      <description>https://www.jianshu.com/p/c7748893ab00
+oci 标准 runtime-spec image-spec 这两个标准通过OCI runtime filesytem bundle的标准格式连接在一起,OCI镜像可以通过工具转换成bundle,然后 OCI 容器引擎能够识别这个bundle来运行容器
+容器镜像标准(image-spec) 文件系统: 以layer保存的文件系统,每个layer保存了和上层之间变化的部分,layer应该保存哪些文件,怎么表示增加、修改和删除的文件等 config文件: 保存了文件系统的层级信息(每个层级的hash值,以及历史信息)以及容器运行时需要的一些信息(比如环境变量、工作目录、命令参数、mount 列表) manifest文件: 镜像的config文件索引,有哪些layer,额外的annotation信息,manifest文件中保存了很多和当前平台有关的信息 index文件: 可选的文件,指向不同平台的manifest文件,这个文件能保证一个镜像可以跨平台使用,每个平台拥有不同的manifest文件,使用index作为索引
+容器运行时标准(runtime spec)
+容器的状态包括如下属性
+ociVersion: OCI版本 id: 容器的ID,在宿主机唯一 status: 容器运行时状态,生命周期 creating: 使用 create 命令创建容器,这个过程称为创建中,创建包括文件系统、namespaces、cgroups、用户权限在内的各项内容 created: 容器创建出来,但是还没有运行,表示镜像和配置没有错误,容器能够运行在当前平台 running: 容器的运行状态,里面的进程处于up状态,正在执行用户设定的任务 stopped: 容器运行完成,或者运行出错或者stop命令之后，容器处于暂停状态,这个状态,容器还有很多信息保存在平台中,并没有完全被删除 pid: 容器进程在宿主机的进程ID bundle: 容器文件目录,存放容器rootfs及相应配置的目录 annotations: 与容器相关的注释
+containerd containerd是一个简单的守护进程,它可以使用runC管理容器，使用gRPC暴露容器的其他功能. 相比较Docker引擎使用gRPC, containerd暴露出针对容器的增删改查的接口,然而Docker引擎只是使用 full-blown HTTP API接口对Images，Volumes，network，builds等暴露出这些方法
+shim containerd-shim进程由containerd进程拉起,即containerd进程是containerd-shim的父进程, 容器进程由containerd-shim进程拉起, 这样的优点比如升级,重启docker或者containerd 不会影响已经running的容器进程, 而假如这个父进程就是containerd,那每次containerd挂掉或升级,整个宿主机上所有的容器都得退出了. 而引入了 containerd-shim 就规避了这个问题(当 containerd 退出或重启时, shim 会 re-parent 到 systemd 这样的 1 号进程上)</description>
+    </item>
+    
+    <item>
+      <title>Zookeeper</title>
+      <link>https://travis103.github.io/posts/orchestrationandmanagement/coordinationandservicediscovery/zookeeper/</link>
+      <pubDate>Fri, 25 Mar 2022 14:41:35 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/orchestrationandmanagement/coordinationandservicediscovery/zookeeper/</guid>
+      <description>ref1 docker run -d &amp;ndash;name zookeeper01 -p 2181:2181 harbor.local.hqq.com/hqq/zookeeper:latest</description>
+    </item>
+    
+    <item>
+      <title>Etcd</title>
+      <link>https://travis103.github.io/posts/orchestrationandmanagement/coordinationandservicediscovery/etcd/</link>
+      <pubDate>Fri, 25 Mar 2022 14:41:26 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/orchestrationandmanagement/coordinationandservicediscovery/etcd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kong</title>
+      <link>https://travis103.github.io/posts/orchestrationandmanagement/serviceproxy/kong/</link>
+      <pubDate>Thu, 24 Mar 2022 11:09:22 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/orchestrationandmanagement/serviceproxy/kong/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nginx</title>
+      <link>https://travis103.github.io/posts/orchestrationandmanagement/serviceproxy/nginx/</link>
+      <pubDate>Thu, 24 Mar 2022 11:09:16 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/orchestrationandmanagement/serviceproxy/nginx/</guid>
+      <description></description>
+    </item>
+    
+    
+  </channel>
+</rss>

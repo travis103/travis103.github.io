@@ -1,0 +1,2034 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>K8s</title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600">
+
+
+<link rel="stylesheet" href="/fontawesome/css/all.min.css"/>
+
+
+
+
+  
+
+  
+  
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/hugo-logo.svg" />
+
+<meta property="og:title" content="K8s" />
+<meta property="og:description" content="https://www.jianshu.com/p/c7748893ab00
+oci 标准 runtime-spec image-spec 这两个标准通过OCI runtime filesytem bundle的标准格式连接在一起,OCI镜像可以通过工具转换成bundle,然后 OCI 容器引擎能够识别这个bundle来运行容器
+容器镜像标准(image-spec) 文件系统: 以layer保存的文件系统,每个layer保存了和上层之间变化的部分,layer应该保存哪些文件,怎么表示增加、修改和删除的文件等 config文件: 保存了文件系统的层级信息(每个层级的hash值,以及历史信息)以及容器运行时需要的一些信息(比如环境变量、工作目录、命令参数、mount 列表) manifest文件: 镜像的config文件索引,有哪些layer,额外的annotation信息,manifest文件中保存了很多和当前平台有关的信息 index文件: 可选的文件,指向不同平台的manifest文件,这个文件能保证一个镜像可以跨平台使用,每个平台拥有不同的manifest文件,使用index作为索引
+容器运行时标准(runtime spec)
+容器的状态包括如下属性
+ociVersion: OCI版本 id: 容器的ID,在宿主机唯一 status: 容器运行时状态,生命周期 creating: 使用 create 命令创建容器,这个过程称为创建中,创建包括文件系统、namespaces、cgroups、用户权限在内的各项内容 created: 容器创建出来,但是还没有运行,表示镜像和配置没有错误,容器能够运行在当前平台 running: 容器的运行状态,里面的进程处于up状态,正在执行用户设定的任务 stopped: 容器运行完成,或者运行出错或者stop命令之后，容器处于暂停状态,这个状态,容器还有很多信息保存在平台中,并没有完全被删除 pid: 容器进程在宿主机的进程ID bundle: 容器文件目录,存放容器rootfs及相应配置的目录 annotations: 与容器相关的注释
+containerd containerd是一个简单的守护进程,它可以使用runC管理容器，使用gRPC暴露容器的其他功能. 相比较Docker引擎使用gRPC, containerd暴露出针对容器的增删改查的接口,然而Docker引擎只是使用 full-blown HTTP API接口对Images，Volumes，network，builds等暴露出这些方法
+shim containerd-shim进程由containerd进程拉起,即containerd进程是containerd-shim的父进程, 容器进程由containerd-shim进程拉起, 这样的优点比如升级,重启docker或者containerd 不会影响已经running的容器进程, 而假如这个父进程就是containerd,那每次containerd挂掉或升级,整个宿主机上所有的容器都得退出了. 而引入了 containerd-shim 就规避了这个问题(当 containerd 退出或重启时, shim 会 re-parent 到 systemd 这样的 1 号进程上)" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://travis103.github.io/posts/orchestrationandmanagement/schedulingandorchestration/k8s/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-03-25T14:45:25+08:00" />
+<meta property="article:modified_time" content="2022-03-25T14:45:25+08:00" />
+
+
+
+    
+    
+<meta name="description" content="K8s" />
+<link
+  rel="stylesheet"
+  href="/css/layouts/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/css/layouts/single.css"/>
+<link rel="stylesheet" href="/css/navigators/sidebar.css">
+
+<link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+
+    
+        
+        
+            
+            
+            
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-122321624-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+        
+
+        
+        
+
+        
+        
+    
+
+
+
+
+</head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+  
+  
+    
+  
+  
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      
+        <img src="/images/main-logo_hu864bbe108f1be1ae04b57f7f2fd9d631_5637_42x0_resize_box_3.png" alt="Logo">
+      Will&#39;s Blog</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+      </ul>
+    </div>
+  </div>
+  
+  
+    <img src="/images/main-logo_hu864bbe108f1be1ae04b57f7f2fd9d631_5637_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
+  
+  
+    <img src="/images/inverted-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+  
+</nav>
+
+
+
+      
+      
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/provisioning/">Provisioning</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/provisioning/os/">OS</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/provisioning/os/mtr/" title="mtr">mtr</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/provisioning/os/tmux/" title="tmux">tmux</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/provisioning/os/date/" title="date">date</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/provisioning/os/geth/" title="geth">geth</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/provisioning/os/gh/" title="gh">gh</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/provisioning/os/jq/" title="jq">jq</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/provisioning/os/pm2/" title="pm2">pm2</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/provisioning/os/rsync/" title="Rsync">Rsync</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/provisioning/os/stat/" title="stat">stat</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/provisioning/os/supervisor/" title="supervisor">supervisor</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/provisioning/os/systemd/" title="systemd">systemd</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/provisioning/automationandconfiguration/">Automation And Configuration</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/provisioning/automationandconfiguration/ansible/" title="Ansible">Ansible</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/provisioning/containerregistry/" title="Container Registry">Container Registry</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/provisioning/securityandcompliance/" title="Security And Compliance">Security And Compliance</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/provisioning/keymanagement/" title="Key Management">Key Management</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/runtime/">Runtime</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/runtime/storage/" title="Storage">Storage</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/runtime/compute/" title="Compute">Compute</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/runtime/network/">Network</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/runtime/network/cybersecurity/" title="Cyber Security">Cyber Security</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/runtime/network/snmp/" title="SNMP">SNMP</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li>
+      <i class="fas fa-minus-circle"></i><a class="active" href="/posts/orchestrationandmanagement/">Orchestration And Management</a>
+      
+      <ul class="active">
+        
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li>
+      <i class="fas fa-minus-circle"></i><a class="active" href="/posts/orchestrationandmanagement/schedulingandorchestration/">Scheduling And Orchestration</a>
+      
+      <ul class="active">
+        
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li><a class="active" href="/posts/orchestrationandmanagement/schedulingandorchestration/k8s/" title="K8s">K8s</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/orchestrationandmanagement/schedulingandorchestration/minikube/" title="Minikube">Minikube</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/orchestrationandmanagement/coordinationandservicediscovery/">Coordination &amp; Service Discovery</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/orchestrationandmanagement/coordinationandservicediscovery/etcd/" title="Etcd">Etcd</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/orchestrationandmanagement/coordinationandservicediscovery/zookeeper/" title="Zookeeper">Zookeeper</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/orchestrationandmanagement/remoteprocedurecall/" title="Remote Procedure Call">Remote Procedure Call</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/orchestrationandmanagement/serviceproxy/">Service Proxy</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/orchestrationandmanagement/serviceproxy/kong/" title="Kong">Kong</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/orchestrationandmanagement/serviceproxy/nginx/" title="Nginx">Nginx</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/orchestrationandmanagement/apigateway/" title="API Gateway">API Gateway</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/orchestrationandmanagement/servicemesh/" title="Service Mesh">Service Mesh</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/appdefinitionanddevelopment/">App Definition And Development</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/appdefinitionanddevelopment/database/">Database</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/database/mysql/" title="Mysql">Mysql</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/database/postgresql/" title="Postgresql">Postgresql</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/database/sqlite/" title="Sqlite">Sqlite</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/database/mongo/" title="Mongo">Mongo</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/database/redis/" title="Redis">Redis</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/database/memcached/" title="Memcached">Memcached</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/database/elasticsearcch/" title="Elasticsearcch">Elasticsearcch</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/database/redisearch/" title="Redisearch">Redisearch</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/appdefinitionanddevelopment/streamingandmessaging/">Streaming &amp; Messaging</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/streamingandmessaging/activemq/" title="ActiveMQ">ActiveMQ</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/streamingandmessaging/beanstalk/" title="Beanstalk">Beanstalk</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/streamingandmessaging/emqx/" title="Emqx">Emqx</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/streamingandmessaging/kafka/" title="Kafka">Kafka</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/streamingandmessaging/mq/" title="MQ">MQ</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/streamingandmessaging/rabbitmq/" title="RabbitMQ">RabbitMQ</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/streamingandmessaging/sqs/" title="SQS">SQS</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/streamingandmessaging/zeromq/" title="ZeroMQ">ZeroMQ</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/appdefinitionanddevelopment/applicationdefinitionandimagebuild/">Application Definition &amp; ImageBuild</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/applicationdefinitionandimagebuild/rust/" title="Rust">Rust</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/applicationdefinitionandimagebuild/golang/" title="Golang">Golang</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/applicationdefinitionandimagebuild/python/" title="Python">Python</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/applicationdefinitionandimagebuild/react/" title="React">React</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/applicationdefinitionandimagebuild/vue/" title="Vue">Vue</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/applicationdefinitionandimagebuild/yaml/" title="Yaml">Yaml</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/appdefinitionanddevelopment/continuousintegrationanddelivery/">Continuous Integration &amp; Delivery</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/continuousintegrationanddelivery/gitlab/" title="Gitlab">Gitlab</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/appdefinitionanddevelopment/continuousintegrationanddelivery/jenkins/" title="Jenkins">Jenkins</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/observabilityandanalysis/">Observability And Analysis</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/observabilityandanalysis/monitoring/">Monitoring</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/observabilityandanalysis/monitoring/prometheus/" title="Prometheus">Prometheus</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/observabilityandanalysis/monitoring/grafana/" title="Grafana">Grafana</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/observabilityandanalysis/logging/">Logging</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/observabilityandanalysis/logging/filebeat/" title="Filebeat">Filebeat</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/observabilityandanalysis/logging/kibana/" title="Kibana">Kibana</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/observabilityandanalysis/tracing/">Tracing</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/observabilityandanalysis/tracing/jaeger/" title="Jaeger">Jaeger</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/observabilityandanalysis/tracing/zipkin/" title="Zipkin">Zipkin</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/observabilityandanalysis/chaosengineering/" title="Chaos Engineering">Chaos Engineering</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/observabilityandanalysis/continuousoptimization/" title="Continuous Optimization">Continuous Optimization</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/dataanalysis/" title="Data Analysis">Data Analysis</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/raspberrypi/" title="Raspberrypi">Raspberrypi</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/blockchain/">Blockchain</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/blockchain/dao/" title="Dao">Dao</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/blockchain/dapp/" title="Dapp">Dapp</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/blockchain/nft/" title="NFT">NFT</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/blockchain/web3/" title="Web3">Web3</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/seo/">SEO</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/seo/ahrefs/" title="Ahrefs">Ahrefs</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/seo/alexa/" title="Alexa">Alexa</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/seo/backlinko/" title="Backlinko">Backlinko</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/seo/lighthouse/" title="Lighthouse">Lighthouse</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/seo/semrush/" title="Semrush">Semrush</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/seo/similarweb/" title="Similarweb">Similarweb</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/tools/">Tools</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/atom/" title="Atom">Atom</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/chrome/" title="Chrome">Chrome</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/chrome-remote-desktop/" title="Chrome Remote Desktop">Chrome Remote Desktop</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/code-push-server/" title="Code Push Server">Code Push Server</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/firefox/" title="Firefox">Firefox</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/git/" title="Git">Git</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/github/" title="Github">Github</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/googlesearch/" title="Google Search">Google Search</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/mac/" title="Mac">Mac</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/markdown/" title="Markdown">Markdown</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/microsoft-remote-desktop/" title="Microsoft Remote Desktop">Microsoft Remote Desktop</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/outline/" title="Outline">Outline</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/resilio-sync/" title="Resilio Sync">Resilio Sync</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/shadowsocks/" title="Shadowsocks">Shadowsocks</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/sublime/" title="Sublime">Sublime</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/telegram-cli/" title="Telegram Cli">Telegram Cli</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/trojan/" title="Trojan">Trojan</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/v2ray/" title="V2ray">V2ray</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/wsl/" title="WSL">WSL</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/tools/zeronet/" title="Zeronet">Zeronet</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/life/">Life</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/life/20220328t112119/" title="20220328T112119">20220328T112119</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/life/20220328t141921/" title="20220328T141921">20220328T141921</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content">
+    <div class="container p-0 read-area">
+      
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(https://travis103.github.io/images/default-hero.jpg);'>
+      </div>
+
+      
+      <div class="page-content">
+        <div class="author-profile ml-auto align-self-lg-center">
+          <img class="rounded-circle" src='/images/site/background2_huc5ebb9144ccc57efd670b667837a82c6_433238_120x120_fit_q75_box.jpg' alt="Author Image">
+          <h5 class="author-name">Will</h5>
+          <p>Friday, March 25, 2022</p>
+        </div>
+
+        <div class="title">
+          <h1>K8s</h1>
+        </div>
+        
+        <div class="taxonomy-terms">
+            <ul>
+            
+          </ul>
+        </div>
+        
+        <div class="post-content" id="post-content">
+          <p><a href="https://www.jianshu.com/p/c7748893ab00">https://www.jianshu.com/p/c7748893ab00</a></p>
+<p>oci 标准
+runtime-spec image-spec
+这两个标准通过OCI runtime filesytem bundle的标准格式连接在一起,OCI镜像可以通过工具转换成bundle,然后 OCI 容器引擎能够识别这个bundle来运行容器</p>
+<p>容器镜像标准(image-spec)
+文件系统: 以layer保存的文件系统,每个layer保存了和上层之间变化的部分,layer应该保存哪些文件,怎么表示增加、修改和删除的文件等
+config文件: 保存了文件系统的层级信息(每个层级的hash值,以及历史信息)以及容器运行时需要的一些信息(比如环境变量、工作目录、命令参数、mount 列表)
+manifest文件: 镜像的config文件索引,有哪些layer,额外的annotation信息,manifest文件中保存了很多和当前平台有关的信息
+index文件: 可选的文件,指向不同平台的manifest文件,这个文件能保证一个镜像可以跨平台使用,每个平台拥有不同的manifest文件,使用index作为索引</p>
+<p>容器运行时标准(runtime spec)</p>
+<p>容器的状态包括如下属性</p>
+<p>ociVersion: OCI版本
+id: 容器的ID,在宿主机唯一
+status: 容器运行时状态,生命周期
+creating: 使用 create 命令创建容器,这个过程称为创建中,创建包括文件系统、namespaces、cgroups、用户权限在内的各项内容
+created: 容器创建出来,但是还没有运行,表示镜像和配置没有错误,容器能够运行在当前平台
+running: 容器的运行状态,里面的进程处于up状态,正在执行用户设定的任务
+stopped: 容器运行完成,或者运行出错或者stop命令之后，容器处于暂停状态,这个状态,容器还有很多信息保存在平台中,并没有完全被删除
+pid: 容器进程在宿主机的进程ID
+bundle: 容器文件目录,存放容器rootfs及相应配置的目录
+annotations: 与容器相关的注释</p>
+<p>containerd
+containerd是一个简单的守护进程,它可以使用runC管理容器，使用gRPC暴露容器的其他功能. 相比较Docker引擎使用gRPC, containerd暴露出针对容器的增删改查的接口,然而Docker引擎只是使用 full-blown HTTP API接口对Images，Volumes，network，builds等暴露出这些方法</p>
+<p>shim
+containerd-shim进程由containerd进程拉起,即containerd进程是containerd-shim的父进程, 容器进程由containerd-shim进程拉起, 这样的优点比如升级,重启docker或者containerd 不会影响已经running的容器进程, 而假如这个父进程就是containerd,那每次containerd挂掉或升级,整个宿主机上所有的容器都得退出了. 而引入了 containerd-shim 就规避了这个问题(当 containerd 退出或重启时, shim 会 re-parent 到 systemd 这样的 1 号进程上)</p>
+<p>runc
+runC只做一件事情就是运行容器,提供创建和运行容器的CLI(command-line interface)工具, runC直接与容器所依赖的cgroup/namespace linux kernel等进行交互，
+负责为容器配置cgroup/namespace等启动容器所需的环境，创建启动容器的相关进程</p>
+<p>将容器运行时相关的程序从docker daemon剥离出来，形成了containerd, Containerd向docker提供运行容器的API，二者通过gRPC进行交互, containerd最后会通过runC来实际运行容器</p>
+<p><img src="./images/docker.jpg" alt=""></p>
+<p>cri</p>
+<p>CRI是kubernetes推出的一个标准</p>
+<p>kubelet拉起一个容器的过程,如下</p>
+<p><img src="./images/kubelet.jpg" alt=""></p>
+<p>Kubelet通过CRI接口(gRPC)调用docker-shim,请求创建一个容器这一步中,kubelet可以视作一个简单的CRI Client,而docker-shim就是接收请求的Server,
+注意的是docker-shim是内嵌在Kubelet中的
+docker-shim收到请求后,转化成Docker Daemon能听懂的请求,发到Docker Daemon上请求创建一个容器
+Docker Daemon请求containerd创建一个容器
+containerd收到请求后创建一个containerd-shim进程,通过containerd-shim操作容器,容器进程需要一个父进程来做诸如收集状态, 维持stdin等fd打开等工作
+containerd-shim在调用runC来启动容器
+runC 启动完容器后本身会直接退出,containerd-shim则会成为容器进程的父进程,负责收集容器进程的状态,上报给containerd</p>
+<p><img src="./images/grpc-server.jpg" alt=""></p>
+<p>ImageService:负责镜像的生命管理周期</p>
+<p>查询镜像列表
+拉取镜像到本地
+查询镜像状态
+删除本地镜像
+查询镜像占用空间</p>
+<p>RuntimeService:负责管理Pod和容器的生命周期</p>
+<p>PodSandbox 的管理接口
+PodSandbox是对kubernete Pod的抽象,用来给容器提供一个隔离的环境(比如挂载到相同的cgroup下面)并提供网络等共享的命名空间.PodSandbox通常对应到一个Pause容器或者一台虚拟机
+Container 的管理接口
+在指定的 PodSandbox 中创建、启动、停止和删除容器。
+Streaming API接口
+包括Exec、Attach和PortForward 等三个和容器进行数据交互的接口,这三个接口返回的是运行时Streaming Server的URL,而不是直接跟容器交互
+状态接口
+包括查询API版本和查询运行时状态</p>
+<p>container engine
+cri-o：同时兼容OCI和CRI的容器运行时
+cri-containerd：基于Containerd的Kubernetes CRI 实现
+rkt：由CoreOS主推的用来跟docker抗衡的容器运行时
+docker：kuberentes最初就开始支持的容器运行时，目前还没完全从kubelet中解耦，docker公司同时推广了OCI标准
+Kata Containers：符合OCI规范同时兼容CRI
+gVisor：由谷歌推出的容器运行时沙箱(Experimental)</p>
+<p>Orchestration API -&gt; Container API -&gt; Kernel API</p>
+<p>Orchestration API: kubernetes API标准就是这层的标准,无可非议
+Container API: 标准就是CRI
+Kernel API: 标准就是OCI</p>
+<p><img src="./images/kubelet2.jpg" alt=""></p>
+<p><img src="./images/cni.jpg" alt=""></p>
+<p>podman</p>
+
+        </div>
+
+        
+        <div class="row pl-3 pr-3">
+        
+        <div class="col-md-6 share-buttons">
+        
+            <strong>Share on:</strong>
+            
+            
+            
+            
+                <a class="btn btn-sm tumblr-btn" href="https://www.tumblr.com/share/link?url=https%3a%2f%2ftravis103.github.io%2fposts%2forchestrationandmanagement%2fschedulingandorchestration%2fk8s%2f&name=K8s" target="_blank">
+                  <i class="fab fa-tumblr"></i>
+                </a>
+            
+            
+            
+            
+             
+            
+            
+                <a class="btn btn-sm email-btn" href="mailto:?subject=K8s&body=https%3a%2f%2ftravis103.github.io%2fposts%2forchestrationandmanagement%2fschedulingandorchestration%2fk8s%2f" target="_blank">
+                  <i class="fas fa-envelope-open-text"></i>
+                </a>
+            
+          
+          </div>
+
+        
+        
+          
+            
+          
+          <div class="col-md-6 btn-improve-page">
+             
+               <a href="https://github.com/travis103/travis103.github.io.git/edit/source/content/posts/OrchestrationAndManagement/SchedulingAndOrchestration/K8s/index.md" title="Improve this page" target="_blank" rel="noopener">
+            
+                <i class="fas fa-code-branch"></i>
+                Improve this page
+              </a>
+          </div>
+        
+        </div>
+
+
+
+      
+      <hr />
+        
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+    
+    
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+<div class="row next-prev-navigator">
+  
+    <div class="col-md-6 previous-article">
+      <a href="/posts/runtime/network/snmp/" title="SNMP" class="btn btn-outline-info">
+        <div><i class="fas fa-chevron-circle-left"></i> Prev</div>
+        <div class="next-prev-text">SNMP</div>
+      </a>
+    </div>
+  
+  
+      
+      
+        
+      
+      <div class="col-md-6 next-article">
+        <a href="/posts/orchestrationandmanagement/schedulingandorchestration/minikube/" title="Minikube" class="btn btn-outline-info">
+          <div>Next <i class="fas fa-chevron-circle-right"></i></div>
+          <div class="next-prev-text">Minikube</div>
+        </a>
+      </div>
+    
+</div>
+
+      <hr />
+
+      
+      
+        
+      
+      
+      
+
+      </div>
+    </div>
+  </div>
+  
+  <a id="scroll-to-top" class="btn"><i class="fas fa-chevron-circle-up"></i></a>
+  
+</section>
+
+
+      
+      
+  <section class="toc-section" id="toc-section">
+    
+    <div class="toc-holder">
+      <h5 class="text-center pl-3">Table of Contents</h5>
+      <hr>
+      <div class="toc">
+        <nav id="TableOfContents"></nav>
+      </div>
+    </div>
+    
+  </section>
+
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+    
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer id="footer" class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+              
+                <li><a href=mailto:lee421175@gamil.com target="_blank" rel="noopener">
+                  <span><i class="fas fa-envelope"></i></span> <span>lee421175@gamil.com</span>
+                </a></li>
+              
+            
+          </ul>
+        </div>
+        
+        
+        
+      </div>
+    </div>
+    
+    <hr />
+    <div class="container">
+      <p id="disclaimer"><strong>Liability Notice:</strong> This theme is under MIT license. So, you can use it for non-commercial, commercial, or private uses. You can modify or distribute the theme without requiring any permission from the theme author. However, the theme author does not provide any warranty or takes any liability for any issue with the theme.</p>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          <a id="theme" href="https://github.com/hossainemruz/toha" target="_blank" rel="noopener">
+            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
+            Toha
+          </a>
+        </div>
+        <div class="col-md-4 text-center">© 2022 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+    
+    
+<script src="/js/highlight.min.js"></script>
+<script src="/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+
+
+
+
+
+    
+</body>
+</html>

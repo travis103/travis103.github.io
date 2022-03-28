@@ -1,0 +1,16 @@
+[lb]
+dev-speaker-emqx1.jlpay.com ansible_ssh_host=172.20.22.31 LB_ROLE=master
+dev-speaker-emqx2.jlpay.com ansible_ssh_host=172.20.22.32 LB_ROLE=backup
+dev-speaker-emqx3.jlpay.com ansible_ssh_host=172.20.22.33 LB_ROLE=backup
+
+[emqx]
+dev-speaker-emqx1.jlpay.com ansible_ssh_host=172.20.22.31
+dev-speaker-emqx2.jlpay.com ansible_ssh_host=172.20.22.32
+dev-speaker-emqx3.jlpay.com ansible_ssh_host=172.20.22.33
+
+
+[all:vars]
+ansible_ssh_port=22
+ansible_user=root
+ansible_ssh_pass='111111'
+ansible_sudo_pass='111111'

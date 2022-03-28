@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Provisioning on Will&#39;s Blog</title>
+    <link>https://travis103.github.io/posts/provisioning/</link>
+    <description>Recent content in Provisioning on Will&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 16 Mar 2022 19:59:18 +0800</lastBuildDate><atom:link href="https://travis103.github.io/posts/provisioning/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title>Rsync</title>
+      <link>https://travis103.github.io/posts/provisioning/os/rsync/</link>
+      <pubDate>Fri, 25 Mar 2022 14:43:50 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/provisioning/os/rsync/</guid>
+      <description>rsync -avz src dest/ &amp;ndash;exclude=&amp;quot;&amp;quot;</description>
+    </item>
+    
+    <item>
+      <title>Ansible</title>
+      <link>https://travis103.github.io/posts/provisioning/automationandconfiguration/ansible/</link>
+      <pubDate>Thu, 24 Mar 2022 10:27:13 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/provisioning/automationandconfiguration/ansible/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>geth</title>
+      <link>https://travis103.github.io/posts/provisioning/os/geth/</link>
+      <pubDate>Fri, 18 Mar 2022 09:52:05 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/provisioning/os/geth/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gh</title>
+      <link>https://travis103.github.io/posts/provisioning/os/gh/</link>
+      <pubDate>Fri, 18 Mar 2022 09:46:52 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/provisioning/os/gh/</guid>
+      <description>1 General brew install gh gh auth status gh auth login --with-token &amp;lt; token.txt 2 Config gh config set editor vim gh config set editor &amp;#34;code --wait&amp;#34; gh config set git_protocol ssh --host github.com gh config set prompt disabled </description>
+    </item>
+    
+    <item>
+      <title>stat</title>
+      <link>https://travis103.github.io/posts/provisioning/os/stat/</link>
+      <pubDate>Fri, 18 Mar 2022 09:46:09 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/provisioning/os/stat/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>date</title>
+      <link>https://travis103.github.io/posts/provisioning/os/date/</link>
+      <pubDate>Fri, 18 Mar 2022 09:46:05 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/provisioning/os/date/</guid>
+      <description>date +%s date -d @1562641547 </description>
+    </item>
+    
+    <item>
+      <title>jq</title>
+      <link>https://travis103.github.io/posts/provisioning/os/jq/</link>
+      <pubDate>Fri, 18 Mar 2022 09:45:59 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/provisioning/os/jq/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>systemd</title>
+      <link>https://travis103.github.io/posts/provisioning/os/systemd/</link>
+      <pubDate>Thu, 17 Mar 2022 15:20:59 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/provisioning/os/systemd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>supervisor</title>
+      <link>https://travis103.github.io/posts/provisioning/os/supervisor/</link>
+      <pubDate>Thu, 17 Mar 2022 15:20:51 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/provisioning/os/supervisor/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pm2</title>
+      <link>https://travis103.github.io/posts/provisioning/os/pm2/</link>
+      <pubDate>Thu, 17 Mar 2022 15:20:45 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/provisioning/os/pm2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mtr</title>
+      <link>https://travis103.github.io/posts/provisioning/os/mtr/</link>
+      <pubDate>Wed, 16 Mar 2022 20:04:14 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/provisioning/os/mtr/</guid>
+      <description>hugo new posts/Provisioning/Linux/mtr/mtr.md</description>
+    </item>
+    
+    <item>
+      <title>tmux</title>
+      <link>https://travis103.github.io/posts/provisioning/os/tmux/</link>
+      <pubDate>Wed, 16 Mar 2022 20:04:14 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/provisioning/os/tmux/</guid>
+      <description></description>
+    </item>
+    
+    
+  </channel>
+</rss>

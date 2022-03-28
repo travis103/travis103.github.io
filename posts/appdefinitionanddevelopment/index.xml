@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AppDefinitionAndDevelopment on Will&#39;s Blog</title>
+    <link>https://travis103.github.io/posts/appdefinitionanddevelopment/</link>
+    <description>Recent content in AppDefinitionAndDevelopment on Will&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 16 Mar 2022 20:35:45 +0800</lastBuildDate><atom:link href="https://travis103.github.io/posts/appdefinitionanddevelopment/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title>Emqx</title>
+      <link>https://travis103.github.io/posts/appdefinitionanddevelopment/streamingandmessaging/emqx/</link>
+      <pubDate>Fri, 25 Mar 2022 16:13:15 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/appdefinitionanddevelopment/streamingandmessaging/emqx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ActiveMQ</title>
+      <link>https://travis103.github.io/posts/appdefinitionanddevelopment/streamingandmessaging/activemq/</link>
+      <pubDate>Fri, 25 Mar 2022 16:12:58 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/appdefinitionanddevelopment/streamingandmessaging/activemq/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SQS</title>
+      <link>https://travis103.github.io/posts/appdefinitionanddevelopment/streamingandmessaging/sqs/</link>
+      <pubDate>Fri, 25 Mar 2022 16:12:34 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/appdefinitionanddevelopment/streamingandmessaging/sqs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ZeroMQ</title>
+      <link>https://travis103.github.io/posts/appdefinitionanddevelopment/streamingandmessaging/zeromq/</link>
+      <pubDate>Fri, 25 Mar 2022 16:12:09 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/appdefinitionanddevelopment/streamingandmessaging/zeromq/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RabbitMQ</title>
+      <link>https://travis103.github.io/posts/appdefinitionanddevelopment/streamingandmessaging/rabbitmq/</link>
+      <pubDate>Fri, 25 Mar 2022 16:11:46 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/appdefinitionanddevelopment/streamingandmessaging/rabbitmq/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Yaml</title>
+      <link>https://travis103.github.io/posts/appdefinitionanddevelopment/applicationdefinitionandimagebuild/yaml/</link>
+      <pubDate>Fri, 25 Mar 2022 15:44:29 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/appdefinitionanddevelopment/applicationdefinitionandimagebuild/yaml/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vue</title>
+      <link>https://travis103.github.io/posts/appdefinitionanddevelopment/applicationdefinitionandimagebuild/vue/</link>
+      <pubDate>Fri, 25 Mar 2022 15:10:08 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/appdefinitionanddevelopment/applicationdefinitionandimagebuild/vue/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Redisearch</title>
+      <link>https://travis103.github.io/posts/appdefinitionanddevelopment/database/redisearch/</link>
+      <pubDate>Fri, 25 Mar 2022 15:06:13 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/appdefinitionanddevelopment/database/redisearch/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Elasticsearcch</title>
+      <link>https://travis103.github.io/posts/appdefinitionanddevelopment/database/elasticsearcch/</link>
+      <pubDate>Fri, 25 Mar 2022 15:06:04 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/appdefinitionanddevelopment/database/elasticsearcch/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>React</title>
+      <link>https://travis103.github.io/posts/appdefinitionanddevelopment/applicationdefinitionandimagebuild/react/</link>
+      <pubDate>Fri, 25 Mar 2022 15:01:43 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/appdefinitionanddevelopment/applicationdefinitionandimagebuild/react/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Beanstalk</title>
+      <link>https://travis103.github.io/posts/appdefinitionanddevelopment/streamingandmessaging/beanstalk/</link>
+      <pubDate>Fri, 25 Mar 2022 14:52:28 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/appdefinitionanddevelopment/streamingandmessaging/beanstalk/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kafka</title>
+      <link>https://travis103.github.io/posts/appdefinitionanddevelopment/streamingandmessaging/kafka/</link>
+      <pubDate>Fri, 25 Mar 2022 14:52:21 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/appdefinitionanddevelopment/streamingandmessaging/kafka/</guid>
+      <description>version: &#39;3&#39; services: zookeeper: container_name: &#39;zookeeper&#39; image: &#39;harbor.local.hqq.com/hqq/zookeeper:latest&#39; ports: - &#39;2181:2181&#39; environment: - ALLOW_ANONYMOUS_LOGIN=yes kafka: container_name: &#39;kafka&#39; image: &#39;harbor.local.hqq.com/hqq/kafka:latest&#39; ports: - &#39;9092:9092&#39; environment: - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181 - ALLOW_PLAINTEXT_LISTENER=yes depends_on: - zookeeper </description>
+    </item>
+    
+    <item>
+      <title>MQ</title>
+      <link>https://travis103.github.io/posts/appdefinitionanddevelopment/streamingandmessaging/mq/</link>
+      <pubDate>Fri, 25 Mar 2022 14:49:40 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/appdefinitionanddevelopment/streamingandmessaging/mq/</guid>
+      <description>https://www.cnblogs.com/xiexj/p/7644999.html
+Beanstalk 是一个高性能、轻量级的、分布式的、内存型的消息队列系统。最初设计的目的是想通过后台异步执行耗时的任务来降低高容量Web应用系统的页面访问延迟。其实Beanstalkd是典型的类Memcached设计，协议和使用方式都是同样的风格。其基本设计思想很简单：高性能离不开异步，异步离不开队列，而内部都是生产者-消费者模式的。
+背景介绍：
+　现在市面上有很多消息队列系统了。常用的有ActiveMQ, RabbitMQ,ZeroMA,Kafka,RocketMQ。Redis之父最近又开源了一个Disque。我之前在乐视用的是apache的qpid。但是之所以各个系统都在流行，还要看其侧重点。
+　其中ActiveMQ可以称之为传统型，它们完全支持JMS和AMQP规范。
+　JMS即Java消息服务(Java Message Service)应用程序接口。它是Java平台上有关面向消息中间件（Message Oriented Middleware,缩写为MOM）的技术规范，它便于消息系统中的Java应用程序进行消息交换，并且通过提供标准的产生、发送、接收消息的接口简化企业应用的开发。(*我这里说了，JMS是应用程序接口，就是API，API就意味着是和编程语言绑定的)
+　JMS的体系架构由JMS提供者、JMS客户、JMS生产者、JMS消费者、JMS消息、JMS队列、JMS主题组成。
+　JMS对象模型包含：连接工厂、JMS连接、JMS会话、JMS目的、JMS生产者和消费者和JMS消息。其中大家最关心的是JMS消息的两种模型：点对点(point to point, queue)和发布/订阅(publish/subscribe, topic)。这两者之间的区别就是点对点模式是生产者发送一条消息到queue，一个queue可以有很多消费者，但是一个消息只能被一个消费者接收，当没有消费者可用时，这个消息会被保存直到有一个可用的消费者，所以queue实现了一个可靠的负载均衡。而发布订阅模式是发布者发送到topic的消息，只有订阅了topic的订阅者才会收到消息。topic实现了发布和订阅，当你发布一个消息，所有订阅这个topic的服务都能得到这个消息，所以从1到N个订阅者都能得到这个消息的拷贝。
+　　AMQP(高级消息队列协议)，和JMS的区别在于：JMS只是java平台的方案，AMQP是一个跨语言的协议。由于跨语言的特点，降低了企业和系统集成的开销。所以现在的消息队列系统支持AMQP的多，支持JMS的少。
+　AMQP的特征是面向消息，队列化，消息模型（和JMS一样：点对点和发布订阅），可靠性和安全性。它提供了三种消息传递保证方式：最多一次，至少一次和精确一次。　　我们经常在使用消息队列的时候提到的broker是对实现了AMQP协议的服务端的称呼。其基本结构如下图。
+Beanstalk 介绍：
+　那下面开始说beanstalk了。首先说beanstalk其实并不是JMS规范的，也并不严格遵守AMQP协议。有人说Beanstalk之于RabbitMQ，就好比Nginx之于Apache。它更简单，轻量级，高性能，易使用。但是相比kafka，数据处理能力还是有差距，所以我们现在其实在逐渐替代它。但它有些很易用的特殊功能，后面会讲到。
+　Beanstalk 主要包括4个部分。
+　1&amp;gt; job:一个需要异步处理的任务，需要放在一个tube中。
+　2&amp;gt; tube:一个有名的任务队列，用来存储统一类型的job，是producer和consumer操作的对象。
+　3&amp;gt; producer:job的生产者，通过put命令来将一个job放到一个tube中。
+　4&amp;gt; consumer:job的消费者，通过reserve、release、bury、delete命令来获取job或改变job的状态。
+　刚才说Beanstalk有一些特殊的好用功能。那就是它支持任务优先级(priority)、延时(delay)、超时重发(time-to-run)和预留(buried)，能够很好的支持分布式的后台任务和定时任务处理。这些特性是和beanstalk工作过程密切相关。
+　Beanstalk的一个job的生命周期有READY、RESERVED、DELAYED、BURIED四种。
+　当producer直接put一个job时，job就是READY状态，等待consumer来处理。如果选择延迟put，job就先到DELAYED状态，到指定时间再READY。consumer获取了READY的job，此状态就为RESERVED。这样其他consumer不能再操作此job。当consumer完成该job后，可以选择delete、release或者bury。
+　delete之后，job不能再获取。release的job可以重新迁移或延迟迁移回READY。bury的job可以被休眠，需要的时候再READY或者delete掉。
+Beanstalk使用场景：
+　用作延时队列：比如可以用于如果用户30分钟内不操作，任务关闭。
+　用作循环队列：用release命令可以循环执行任务，比如可以做负载均衡任务分发。
+　用作兜底机制：比如一个请求有失败的概率，可以用Beanstalk不断重试，设定超时时间，时间内尝试到成功为止。
+　用作定时任务：比如可以用于专门的后台任务。
+　用作异步操作：这是所有消息队列都最常用的，先将任务仍进去，顺序执行。</description>
+    </item>
+    
+    <item>
+      <title>Jenkins</title>
+      <link>https://travis103.github.io/posts/appdefinitionanddevelopment/continuousintegrationanddelivery/jenkins/</link>
+      <pubDate>Fri, 25 Mar 2022 14:35:08 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/appdefinitionanddevelopment/continuousintegrationanddelivery/jenkins/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Gitlab</title>
+      <link>https://travis103.github.io/posts/appdefinitionanddevelopment/continuousintegrationanddelivery/gitlab/</link>
+      <pubDate>Fri, 25 Mar 2022 14:34:56 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/appdefinitionanddevelopment/continuousintegrationanddelivery/gitlab/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sqlite</title>
+      <link>https://travis103.github.io/posts/appdefinitionanddevelopment/database/sqlite/</link>
+      <pubDate>Thu, 24 Mar 2022 10:38:46 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/appdefinitionanddevelopment/database/sqlite/</guid>
+      <description>Install Config Usage </description>
+    </item>
+    
+    <item>
+      <title>Memcached</title>
+      <link>https://travis103.github.io/posts/appdefinitionanddevelopment/database/memcached/</link>
+      <pubDate>Thu, 24 Mar 2022 10:34:53 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/appdefinitionanddevelopment/database/memcached/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Redis</title>
+      <link>https://travis103.github.io/posts/appdefinitionanddevelopment/database/redis/</link>
+      <pubDate>Thu, 24 Mar 2022 10:34:47 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/appdefinitionanddevelopment/database/redis/</guid>
+      <description>https://redis.io/commands
+ NoSQL(Not Only SQL） NoSQL指的是非关系型数据库，是对不同于传统关系型数据库的数据库管理系统简称，NoSQL是web2.0时代海量数据催生的产物。
+特点： 不支持SQL语法 NoSQL的世界中没有通用的语言，每种nosql数据库都有自己的语法，以及擅长的业务场景。 读写性能高 NoSQL数据库都具有非常高的读写性能，尤其在海量数据下，它的表现非常优秀。 灵活的数据模型 NoSQL的存储方式十分灵活，存储方式可以是JSON文档、键值对（key-value）或者其他方式。
+redis 基本操作
+ 什么是Redis Redis是由意大利人Salvatore Sanfilippo（网名：antirez）开发的一款内存高速缓存数据库。Redis全称为：Remote Dictionary Server，该软件使用C语言编写，Redis是一个key-value存储系统，它支持丰富的数据类型，如：string、list、set、zset(sorted set)、hash。 redis是一种nosql数据库,他的数据是保存在内存中，同时redis可以定时把内存数据同步到磁盘，即可以将数据持久化，还提供了多个语言的API，操作比较方便 Redis特点: Redis以内存作为数据存储介质，所以读写数据的效率极高，远远超过数据库。 Redis应用场景: 因为Redis交换数据快，所以在服务器中常用来存储一些需要频繁调取的数据，这样可以大大节省系统直接读取磁盘来获得数据的I/O开销，更重要的是可以极大提升速度。 将这种热点数据存到Redis（内存）中，要用的时候，直接从内存取，极大的提高了速度和节约了服务器的开销。  关系型数据库和非关系数据库的区别 关系型数据库 表和表之间存在的关系 非关系型数据库 不存在表的这种概念,redis是键值对数据库，通过key查找value 所以key是唯一的。
+redis五种数据类型、及操作 string 字符串 list 列表 hash 哈希 set 集合 sorted sets 有序集合
+key 有5中数据类型：string、list、set、zset(sorted set)、hash。 value :都是字符串类型的(可加引号也可不加)
+set key value get key ttl key expire key seconds set key value ex seconds setex key seconds value append key value</description>
+    </item>
+    
+    <item>
+      <title>Mongo</title>
+      <link>https://travis103.github.io/posts/appdefinitionanddevelopment/database/mongo/</link>
+      <pubDate>Thu, 24 Mar 2022 10:34:39 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/appdefinitionanddevelopment/database/mongo/</guid>
+      <description>mongo bson BSON是一种类json的一种二进制形式的存储格式，简称Binary JSON。MongoDB使用了BSON这种结构来存储数据和网络数据交换。 BSON对应Document这个概念，因为BSON是schema-free的，所以在MongoDB中所对应的Document也有这个特征，这里的一个Document也可以理解成关系数据库中的一条Record，只是Document的变化更丰富一些，Document可以嵌套。 MongoDB以BSON做为其存储结构的一个重要原因是它的可遍历性。 BSON编码扩展了JSON表示，使其包含额外的类型，如int、long、date、浮点数和decimal128。 BSON数据的主要类型有：A，D，E，M和Raw。其中，A是数组，D是切片，M是映射，D和M是Go原生类型。   A类型表示有序的BSON数组。 bson.A{&amp;ldquo;bar&amp;rdquo;, &amp;ldquo;world&amp;rdquo;, 3.14159, bson.D{{&amp;ldquo;qux&amp;rdquo;, 12345}}}
+  D类型表示包含有序元素的BSON文档。这种类型应该在顺序重要的情况下使用。如果元素的顺序无关紧要，则应使用M代替。 bson.D{{&amp;ldquo;foo&amp;rdquo;, &amp;ldquo;bar&amp;rdquo;}, {&amp;ldquo;hello&amp;rdquo;, &amp;ldquo;world&amp;rdquo;}, {&amp;ldquo;pi&amp;rdquo;, 3.14159}}
+  M类型表示无序的映射。 bson.M{&amp;ldquo;foo&amp;rdquo;: &amp;ldquo;bar&amp;rdquo;, &amp;ldquo;hello&amp;rdquo;: &amp;ldquo;world&amp;rdquo;, &amp;ldquo;pi&amp;rdquo;: 3.14159}
+  E类型表示D里面的一个BSON元素。
+  Raw类型代表未处理的原始BSON文档和元素，Raw系列类型用于验证和检索字节切片中的元素。当要查找BSON字节而不将其解编为另一种类型时，此类型最有用。
+  mongo 10.1.50.84/pacific -u root -p Root_123 &amp;ndash;authenticationDatabase admin
+rs.status() rs.slaveOk()
+rs=replica set
+db.getCollection(&amp;lsquo;demo&amp;rsquo;).find({&amp;ldquo;keyIdentifiers&amp;rdquo;:{&amp;quot;$regex&amp;quot;:&amp;quot;@#@&amp;quot;}}).forEach(function(item){ var keyIdentifiers = item.keyIdentifiers; var arr = keyIdentifiers[0].split(&amp;quot;@#@&amp;quot;); if(arr.length&amp;gt;1){ var item1 = arr[0] var item2 = arr[1] var tem = &amp;quot;&amp;quot; if(item1.</description>
+    </item>
+    
+    <item>
+      <title>Postgresql</title>
+      <link>https://travis103.github.io/posts/appdefinitionanddevelopment/database/postgresql/</link>
+      <pubDate>Thu, 24 Mar 2022 10:34:31 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/appdefinitionanddevelopment/database/postgresql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mysql</title>
+      <link>https://travis103.github.io/posts/appdefinitionanddevelopment/database/mysql/</link>
+      <pubDate>Thu, 24 Mar 2022 10:34:23 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/appdefinitionanddevelopment/database/mysql/</guid>
+      <description>from_unixtime(add_time/1000) as time
+连接查询 内连接查询 内连接（join）：从左表取出一条记录，去和右表中所有记录进行匹配，相同的会保留下来。 基本语法：左表 join 右表 on 左表.字段 = 右表.字段
+例： select a.id,a.name,a,sex,b.country,b.city,b.street from student a join addr b on a.addrid=b.addrid;
+外连接查询 左连接（left join）：以左表为主表 基本语法：from 左表 left join 右表 on 左表.字段 = 右表.字段 例： select a.id,a.name,a.addrid,b.country,b.city from student a left join addr b on a.addrid=b.addrid;
+右连接（right join）：以右表为主表 基本语法：from 左表 right join 右表 on 左表.字段 = 右表.字段； 例： select a.id,a.name,a.addrid,b.country,b.city from student a right join addr b on a.</description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>https://travis103.github.io/posts/appdefinitionanddevelopment/applicationdefinitionandimagebuild/python/</link>
+      <pubDate>Fri, 18 Mar 2022 15:29:22 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/appdefinitionanddevelopment/applicationdefinitionandimagebuild/python/</guid>
+      <description>Tutorial  https://youtu.be/rfscVS0vtbw  </description>
+    </item>
+    
+    <item>
+      <title>Golang</title>
+      <link>https://travis103.github.io/posts/appdefinitionanddevelopment/applicationdefinitionandimagebuild/golang/</link>
+      <pubDate>Fri, 18 Mar 2022 15:29:16 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/appdefinitionanddevelopment/applicationdefinitionandimagebuild/golang/</guid>
+      <description>Tutorial - https://go.dev/doc/tutorial/ - https://youtu.be/YS4e4q9oBaU Install wget https://dl.google.com/go/go1.15.2.linux-amd64.tar.gz tar xf go1.12.2.linux-amd64.tar.gz mv go /usr/local Config go env -w GOPROXY=https://goproxy.io,https://goproxy.cn,direct Build CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build Comments  // /* */  Basic Types  strings numbers booleans arrays slices maps  m := make(map[string]int) m[&amp;#34;k1&amp;#34;] = 7 m[&amp;#34;k2&amp;#34;] = 13 fmt.Println(m) // =&amp;gt; map[k1:7 k2:13]  v1 := m[&amp;#34;k1&amp;#34;] fmt.Println(v1) // =&amp;gt; 7 fmt.</description>
+    </item>
+    
+    <item>
+      <title>Rust</title>
+      <link>https://travis103.github.io/posts/appdefinitionanddevelopment/applicationdefinitionandimagebuild/rust/</link>
+      <pubDate>Fri, 18 Mar 2022 14:45:13 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/posts/appdefinitionanddevelopment/applicationdefinitionandimagebuild/rust/</guid>
+      <description>Tutorial  https://doc.rust-lang.org/book/ https://youtu.be/MsocPEZBd-M  Install curl --proto &amp;#39;=https&amp;#39; --tlsv1.2 -sSf https://sh.rustup.rs | sh Uninstall rustup self uninstall Cargo cargo new --bin rust_quickstart  </description>
+    </item>
+    
+    
+  </channel>
+</rss>

@@ -1,0 +1,63 @@
+---
+# tasks file for roles/lb
+
+- name: register variable LB_IF_TMP
+  shell: "ip a|grep '{{ ansible_ssh_host }}/'|awk '{print $NF}'"
+  register: LB_IF_TMP
+
+- name: set LB_IF
+  set_fact: LB_IF="{{ LB_IF_TMP.stdout }}"
+
+- name: install haproxy
+  package: name=haproxy state=latest
+
+- name: create haproxy config file dir
+  file: name=/etc/haproxy state=directory
+
+- name: config haproxy 2
+  template: src=haproxy.cfg.j2 dest=/etc/haproxy/haproxy.cfg
+  tags: restart_lb
+
+- name: create dirctory /etc/ssl/emqttd
+  file:
+    name: /etc/ssl/emqttd
+    state: directory
+
+- name: emq.pem file copy
+  copy:
+    src: emq.pem
+    dest: /etc/ssl/emqttd/emq.pem
+
+- name: install keepalived
+  package: name=keepalived state=latest
+
+- name: create keepalived config file dir
+  file: name=/etc/keepalived state=directory
+
+- name: config keepalived master
+  template: src=keepalived-master.conf.j2 dest=/etc/keepalived/keepalived.conf
+  when: LB_ROLE == "master"
+
+- name: config keepalived backup
+  template: src=keepalived-backup.conf.j2 dest=/etc/keepalived/keepalived.conf
+  when: LB_ROLE == "backup"
+
+- name: daemon-reload for haproxy.service
+  shell: systemctl daemon-reload
+  tags: restart_lb
+
+- name: enable haproxy
+  shell: systemctl enable haproxy
+  ignore_errors: true
+
+- name: restart haproxy
+  shell: systemctl restart haproxy
+  tags: restart_lb
+
+- name: enable keepalived
+  shell: systemctl enable keepalived
+  ignore_errors: true
+
+- name: restart keepalived
+  shell: systemctl restart keepalived
+  tags: restart_lb
