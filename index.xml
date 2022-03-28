@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Will&#39;s Blog</title>
+    <title>Travis&#39; Blog</title>
     <link>https://travis103.github.io/</link>
-    <description>Recent content on Will&#39;s Blog</description>
+    <description>Recent content on Travis&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 28 Mar 2022 14:19:24 +0800</lastBuildDate><atom:link href="https://travis103.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+    <lastBuildDate>Mon, 28 Mar 2022 19:25:45 +0800</lastBuildDate><atom:link href="https://travis103.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
       <title>Introduction</title>
       <link>https://travis103.github.io/notes/go/basic/introduction/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -84,21 +84,12 @@ var u uint = 7 // uint (unsigned) var p float32 = 22.7 // 32-bit float     Array
     
     
     <item>
-      <title>20220328T141921</title>
-      <link>https://travis103.github.io/posts/life/20220328t141921/</link>
-      <pubDate>Mon, 28 Mar 2022 14:19:24 +0800</pubDate>
+      <title>20220328</title>
+      <link>https://travis103.github.io/posts/life/20220328/</link>
+      <pubDate>Mon, 28 Mar 2022 19:25:45 +0800</pubDate>
       
-      <guid>https://travis103.github.io/posts/life/20220328t141921/</guid>
-      <description> 地方债务 老龄化 经济萧条 战争 生活方式 人生百态  </description>
-    </item>
-    
-    <item>
-      <title>20220328T112119</title>
-      <link>https://travis103.github.io/posts/life/20220328t112119/</link>
-      <pubDate>Mon, 28 Mar 2022 11:21:21 +0800</pubDate>
-      
-      <guid>https://travis103.github.io/posts/life/20220328t112119/</guid>
-      <description>music  https://youtu.be/Hi-kQn3ze4o  movie  倒影  film  异星灾变  word 学无先后，达者为师 学书无先后，术业有专攻 初恋 你让我站也不是 你让我坐也不是 你说着感兴趣的 你笑时，我的眼神 在你的远处闪烁 就像不需要风的时候 树无奈地因为风儿走进了骚动 也好像在奢望着明月时 月儿滑入了没有生气的梦境 做一个万端信息的接收器 你的呼吸乃至思维使我波动 你告诉我的话号我不想拨打 我担心一开口就变了意思 宛如没有什么存在一样 你把长凳坐出你特有的体香 不曾接到你的一点暗示 我的视点，始终游离于你的 鬓发和你的双肩 街这边街那边是咫尺又是天涯 长凳空出来了，但人的思念塞满了 你那欢悦的笑语和快乐的肢体 是要告诉我，我要分享你的幸福么 在梦里我不敢握你的手 就像卑微的人不敢面对偶像的高贵和神圣 你是翻飞在九霄的精灵 激动着我把你洒落的羽毛举向阳光 </description>
+      <guid>https://travis103.github.io/posts/life/20220328/</guid>
+      <description>music  https://youtu.be/Hi-kQn3ze4o  movie  倒影  film  异星灾变  word 学无先后，达者为师 学书无先后，术业有专攻 初恋 你让我站也不是 你让我坐也不是 你说着感兴趣的 你笑时，我的眼神 在你的远处闪烁 就像不需要风的时候 树无奈地因为风儿走进了骚动 也好像在奢望着明月时 月儿滑入了没有生气的梦境 做一个万端信息的接收器 你的呼吸乃至思维使我波动 你告诉我的话号我不想拨打 我担心一开口就变了意思 宛如没有什么存在一样 你把长凳坐出你特有的体香 不曾接到你的一点暗示 我的视点，始终游离于你的 鬓发和你的双肩 街这边街那边是咫尺又是天涯 长凳空出来了，但人的思念塞满了 你那欢悦的笑语和快乐的肢体 是要告诉我，我要分享你的幸福么 在梦里我不敢握你的手 就像卑微的人不敢面对偶像的高贵和神圣 你是翻飞在九霄的精灵 激动着我把你洒落的羽毛举向阳光 thinking  地方债务 老龄化 经济萧条 战争 生活方式 人生百态  picture </description>
     </item>
     
     <item>
