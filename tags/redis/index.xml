@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>redis on Travis&#39; Blog</title>
+    <link>https://travis103.github.io/tags/redis/</link>
+    <description>Recent content in redis on Travis&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 24 Mar 2022 10:34:47 +0800</lastBuildDate><atom:link href="https://travis103.github.io/tags/redis/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title>Redis</title>
+      <link>https://travis103.github.io/redis/</link>
+      <pubDate>Thu, 24 Mar 2022 10:34:47 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/redis/</guid>
+      <description>https://redis.io/commands
+ NoSQL(Not Only SQL） NoSQL指的是非关系型数据库，是对不同于传统关系型数据库的数据库管理系统简称，NoSQL是web2.0时代海量数据催生的产物。
+特点： 不支持SQL语法 NoSQL的世界中没有通用的语言，每种nosql数据库都有自己的语法，以及擅长的业务场景。 读写性能高 NoSQL数据库都具有非常高的读写性能，尤其在海量数据下，它的表现非常优秀。 灵活的数据模型 NoSQL的存储方式十分灵活，存储方式可以是JSON文档、键值对（key-value）或者其他方式。
+redis 基本操作
+ 什么是Redis Redis是由意大利人Salvatore Sanfilippo（网名：antirez）开发的一款内存高速缓存数据库。Redis全称为：Remote Dictionary Server，该软件使用C语言编写，Redis是一个key-value存储系统，它支持丰富的数据类型，如：string、list、set、zset(sorted set)、hash。 redis是一种nosql数据库,他的数据是保存在内存中，同时redis可以定时把内存数据同步到磁盘，即可以将数据持久化，还提供了多个语言的API，操作比较方便 Redis特点: Redis以内存作为数据存储介质，所以读写数据的效率极高，远远超过数据库。 Redis应用场景: 因为Redis交换数据快，所以在服务器中常用来存储一些需要频繁调取的数据，这样可以大大节省系统直接读取磁盘来获得数据的I/O开销，更重要的是可以极大提升速度。 将这种热点数据存到Redis（内存）中，要用的时候，直接从内存取，极大的提高了速度和节约了服务器的开销。  关系型数据库和非关系数据库的区别 关系型数据库 表和表之间存在的关系 非关系型数据库 不存在表的这种概念,redis是键值对数据库，通过key查找value 所以key是唯一的。
+redis五种数据类型、及操作 string 字符串 list 列表 hash 哈希 set 集合 sorted sets 有序集合
+key 有5中数据类型：string、list、set、zset(sorted set)、hash。 value :都是字符串类型的(可加引号也可不加)
+set key value get key ttl key expire key seconds set key value ex seconds setex key seconds value append key value</description>
+    </item>
+    
+    
+  </channel>
+</rss>

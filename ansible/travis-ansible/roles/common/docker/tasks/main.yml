@@ -1,0 +1,33 @@
+---
+# tasks file for roles/common/docker
+
+- name: Install required packages.
+  shell: yum install yum-utils device-mapper-persistent-data lvm2 -y
+
+- name: Add Docker repository
+  shell: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+- name: Install Docker CE.
+  shell: yum update -y && yum install containerd.io-1.2.10 docker-ce-{{ DOCKER_VERSION }} docker-ce-cli-{{ DOCKER_VERSION }} -y
+
+- name: /etc/docker
+  file:
+      path: /etc/docker
+      state: directory
+
+- name: /etc/docker/daemon.json
+  template:
+      src: daemon.json
+      dest: /etc/docker/daemon.json
+
+- name: /etc/systemd/system/docker.service.d
+  file:
+      path: /etc/systemd/system/docker.service.d
+      state: directory
+
+- name: enable and start docker
+  systemd:
+    name: docker
+    enabled: yes
+    state: restarted
+    daemon_reload: yes

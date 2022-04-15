@@ -1,0 +1,32 @@
+---
+# tasks file for roles/common/iptables
+- name: ip block by source
+  iptables:
+    chain: INPUT
+    source: 8.8.8.8
+    protocol: tcp
+    destination_port: 80
+    jump: DROP
+
+
+- name: ip block by port
+  iptables:
+    chain: INPUT
+    protocol: tcp
+    destination_port: 3306
+    jump: DROP
+
+- name: ip allow
+  iptables:
+    chain: INPUT
+    protocol: tcp
+    destination_port: 22
+    jump: ACCEPT
+
+- name: iptables-save
+  shell: iptables-save > /etc/sysconfig/iptables
+
+- name: hostname set
+  hostname:
+    name: exam01
+    use: generic

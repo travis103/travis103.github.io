@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mysql on Travis&#39; Blog</title>
+    <link>https://travis103.github.io/tags/mysql/</link>
+    <description>Recent content in mysql on Travis&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 24 Mar 2022 10:34:23 +0800</lastBuildDate><atom:link href="https://travis103.github.io/tags/mysql/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title>Mysql</title>
+      <link>https://travis103.github.io/mysql/</link>
+      <pubDate>Thu, 24 Mar 2022 10:34:23 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/mysql/</guid>
+      <description>from_unixtime(add_time/1000) as time
+连接查询 内连接查询 内连接（join）：从左表取出一条记录，去和右表中所有记录进行匹配，相同的会保留下来。 基本语法：左表 join 右表 on 左表.字段 = 右表.字段
+例： select a.id,a.name,a,sex,b.country,b.city,b.street from student a join addr b on a.addrid=b.addrid;
+外连接查询 左连接（left join）：以左表为主表 基本语法：from 左表 left join 右表 on 左表.字段 = 右表.字段 例： select a.id,a.name,a.addrid,b.country,b.city from student a left join addr b on a.addrid=b.addrid;
+右连接（right join）：以右表为主表 基本语法：from 左表 right join 右表 on 左表.字段 = 右表.字段； 例： select a.id,a.name,a.addrid,b.country,b.city from student a right join addr b on a.</description>
+    </item>
+    
+    
+  </channel>
+</rss>

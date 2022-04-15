@@ -1,0 +1,95 @@
+[
+    {
+        "id": "i-e670025e",
+        "name": "Dev-Brian",
+        "type": "t2.micro",
+		"status": "stop",
+		"start": "08:30:00",
+		"stop": "23:30:00"
+    },
+    {
+        "id": "i-32df840a",
+        "name": "Dev-Git-Large",
+        "type": "t2.medium",
+		"status": "running",
+		"start": "08:30:00",
+		"stop": "23:30:00"
+    },{
+        "id": "i-3f99b907",
+        "name": "Dev-RoP",
+        "type": "t2.small",
+		"status": "running",
+		"start": "08:30:00",
+		"stop": "23:30:00"
+    },{
+        "id": "i-0023ba38",
+        "name": "Dev-SoA",
+        "type": "t2.small",
+		"status": "running",
+		"start": "08:30:00",
+		"stop": "23:30:00"
+    },{
+        "id": "i-7320b94b",
+        "name": "Dev-Joboffline",
+        "type": "t2.small",
+		"status": "running",
+		"start": "08:30:00",
+		"stop": "23:30:00"
+    },{
+        "id": "i-c93f41f1",
+        "name": "Dev-PMS",
+        "type": "t2.micro",
+		"status": "running",
+		"start": "08:30:00",
+		"stop": "23:30:00"
+    },{
+        "id": "i-0f20b937",
+        "name": "Dev-3rdParty",
+        "type": "t2.micro",
+		"status": "running",
+		"start": "08:30:00",
+		"stop": "23:30:00"
+    },{
+        "id": "i-a08b5698",
+        "name": "Dev-DevOps",
+        "type": "t2.micro",
+		"status": "running",
+		"start": "08:30:00",
+		"stop": "23:30:00"
+    },{
+        "id": "i-7e23ba46",
+        "name": "Dev-SVN",
+        "type": "t2.micro",
+		"status": "running",
+		"start": "08:30:00",
+		"stop": "23:30:00"
+    },{
+        "id": "i-8baf68b3",
+        "name": "Dev-Nexus",
+        "type": "t2.small",
+		"status": "running",
+		"start": "08:30:00",
+		"stop": "23:30:00"
+    },{
+        "id": "i-023bf33a",
+        "name": "Dev-Zookeeper",
+        "type": "t2.small",
+		"status": "running",
+		"start": "08:30:00",
+		"stop": "23:30:00"
+    },{
+        "id": "i-a224601a",
+        "name": "Dev-Diamond",
+        "type": "t2.small",
+		"status": "running",
+		"start": "08:30:00",
+		"stop": "23:30:00"
+    },{
+        "id": "i-d1c11ee9",
+        "name": "Dev-jira",
+        "type": "t2.small",
+		"status": "running",
+		"start": "08:30:00",
+		"stop": "23:30:00"
+    }
+]

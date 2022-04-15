@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>json on Travis&#39; Blog</title>
+    <link>https://travis103.github.io/tags/json/</link>
+    <description>Recent content in json on Travis&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 18 Mar 2022 09:45:59 +0800</lastBuildDate><atom:link href="https://travis103.github.io/tags/json/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title>jq</title>
+      <link>https://travis103.github.io/jq/</link>
+      <pubDate>Fri, 18 Mar 2022 09:45:59 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/jq/</guid>
+      <description>Docs Install Configure Usage </description>
+    </item>
+    
+    
+  </channel>
+</rss>

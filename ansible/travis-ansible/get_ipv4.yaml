@@ -1,0 +1,9 @@
+---
+  - hosts:
+    - ceph
+    tasks:
+      - name: private ip
+        debug: var=hostvars[inventory_hostname]['ansible_default_ipv4']['address']
+
+      - name: public ip
+        debug: var=hostvars[inventory_hostname]['ansible_ssh_host']

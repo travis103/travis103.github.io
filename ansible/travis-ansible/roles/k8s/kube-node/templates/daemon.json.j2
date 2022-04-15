@@ -1,0 +1,12 @@
+{
+	"registry-mirrors": ["{{ REG_MIRROR_1 }}", "{{ REG_MIRROR_2 }}"],
+	"insecure-registries": ["172.20.21.225"],
+	"max-concurrent-downloads": 10,
+	"log-driver": "{{ LOG_DRIVER }}",
+	"log-level": "{{ LOG_LEVEL }}",
+	"log-opts": {
+		"max-size": "{{ LOG_MAX_SIZE }}",
+		"max-file": "{{ LOG_MAX_FILE }}"
+	},
+	"graph": "{{ STORAGE_DIR }}"
+}

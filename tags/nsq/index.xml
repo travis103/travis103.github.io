@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>nsq on Travis&#39; Blog</title>
+    <link>https://travis103.github.io/tags/nsq/</link>
+    <description>Recent content in nsq on Travis&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Apr 2022 16:44:25 +0800</lastBuildDate><atom:link href="https://travis103.github.io/tags/nsq/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title>Nsq</title>
+      <link>https://travis103.github.io/nsq/</link>
+      <pubDate>Fri, 15 Apr 2022 16:44:25 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/nsq/</guid>
+      <description>official site  https://nsq.io/  install git clone https://github.com/nsqio/nsq cd nsq make ./test.sh usage nsqlookupd nsqd --lookupd-tcp-address=127.0.0.1:4160 nsqadmin --lookupd-http-address=127.0.0.1:4161 curl -d &amp;#39;hello world 1&amp;#39; &amp;#39;http://127.0.0.1:4151/pub?topic=test&amp;#39; nsq_to_file --topic=test --output-dir=/tmp --lookupd-http-address=127.0.0.1:4161 go  https://mp.weixin.qq.com/s/czxAuY-CW9v1nBOocYZN5g
+ js python </description>
+    </item>
+    
+    
+  </channel>
+</rss>

@@ -1,0 +1,4 @@
+- hosts: rdp
+  gather_facts: yes
+  roles:
+    - repos-update

@@ -1,0 +1,42 @@
+---
+# tasks file for roles/common/nginx
+
+- name: nginx repo copy
+  template:
+    src: nginx.repo
+    dest: /etc/yum.repos.d/nginx.repo
+
+- name: nginx install
+  yum:
+    name: ['nginx-module-geoip', 'nginx']
+    state: present
+    update_cache: yes
+
+- name: copy nginx.conf
+  template:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+
+- name: copy nginx-limits.conf
+  template:
+    src: nginx-limits.conf
+    dest: /etc/security/limits.d/nginx-limits.conf
+
+- name: copy other conf files
+  copy:
+    src: "{{ item }}"
+    dest: /etc/nginx/{{ item }}
+  with_items:
+    - php-enable.conf
+    - fastcgi.conf
+
+# - name: copy proxy_params
+#   template:
+#     src: proxy_params
+#     dest: /etc/nginx/proxy_params
+
+- name: service restart
+  systemd:
+    name: nginx
+    state: reloaded
+    enabled: yes

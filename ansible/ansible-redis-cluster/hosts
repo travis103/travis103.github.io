@@ -1,0 +1,11 @@
+[redis-900]
+redis-9001 ansible_ssh_host=172.20.22.31 ansible_ssh_port=22 ansible_user=root ansible_ssh_pass='111111'
+redis-9002 ansible_ssh_host=172.20.22.32 ansible_ssh_port=22 ansible_user=root ansible_ssh_pass='111111'
+redis-9003 ansible_ssh_host=172.20.22.33 ansible_ssh_port=22 ansible_user=root ansible_ssh_pass='111111'
+redis-9004 ansible_ssh_host=172.20.22.31 ansible_ssh_port=22 ansible_user=root ansible_ssh_pass='111111'
+redis-9005 ansible_ssh_host=172.20.22.32 ansible_ssh_port=22 ansible_user=root ansible_ssh_pass='111111'
+redis-9006 ansible_ssh_host=172.20.22.33 ansible_ssh_port=22 ansible_user=root ansible_ssh_pass='111111'
+
+[all:vars]
+
+base_dir=/opt/redis-cluster-900

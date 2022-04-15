@@ -1,0 +1,22 @@
+version: '3'
+services:
+    v2ray:
+        container_name: 'v2ray'
+        image: 'internet2020/v2ray:latest'
+        ports:
+            - '10096:10086'
+            - '10097:10087'
+        restart: always
+        volumes:
+            - ./config-server.json:/etc/v2ray/config.json
+            - ./access.log:/var/log/v2ray/access.log
+            - ./error.log:/var/log/v2ray/error.log
+        networks:
+            v2ray:
+                ipv4_address: 172.16.0.3
+networks:
+    v2ray:
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 172.16.0.0/24

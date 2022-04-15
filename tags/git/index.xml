@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git on Travis&#39; Blog</title>
+    <link>https://travis103.github.io/tags/git/</link>
+    <description>Recent content in git on Travis&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Apr 2022 14:19:16 +0800</lastBuildDate><atom:link href="https://travis103.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title>Git</title>
+      <link>https://travis103.github.io/git/git/</link>
+      <pubDate>Fri, 15 Apr 2022 14:19:16 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/git/git/</guid>
+      <description>clone
+ git clone &amp;ndash;recursive     submodule
+ git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke git submodule update &amp;ndash;init &amp;ndash;recursive    # 逆初始化模块，其中{MOD_NAME}为模块目录，执行后可发现模块目录被清空 git submodule deinit -f themes/toha # 删除.gitmodules中记录的模块信息（--cached选项清除.git/modules中的缓存） git rm --cached themes/toha # 提交更改到代码库，可观察到&#39;.gitmodules&#39;内容发生变更 git commit -am &amp;quot;Remove a submodule.&amp;quot;   remote
+ git remote add origin https://github.com/ushdjkfnf/blog.git    config
+ git config -l git config &amp;ndash;global user.email git config &amp;ndash;global user.</description>
+    </item>
+    
+    
+  </channel>
+</rss>

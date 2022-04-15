@@ -1,0 +1,11 @@
+---
+  - hosts:
+      - chat-prod-server5.wtalking.chat
+    gather_facts: yes
+    become: yes
+    become_user: root
+    become_method: sudo
+    roles:
+      - { role: roles/common/nginx }
+      - { role: roles/common/php }
+      - { role: roles/wtalking/chat-cpt-api }

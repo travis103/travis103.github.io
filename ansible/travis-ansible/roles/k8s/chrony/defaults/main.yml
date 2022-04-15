@@ -1,0 +1,6 @@
+---
+# defaults file for roles/chrony
+
+ntp_server: "ntp1.aliyun.com"
+local_network: "0.0.0.0/0"
+

@@ -1,0 +1,63 @@
+[rdp]
+10.1.101.253 ansible_ssh_port=2202 ansible_user=cristian ansible_ssh_pass='uFO39409595.'
+
+[deploy]
+172.20.21.225 ansible_ssh_port=22 ansible_user=root ansible_ssh_pass='111111'
+
+[etcd]
+172.20.2.246 NODE_NAME=etcd1 ansible_ssh_port=22 ansible_user=root ansible_ssh_pass='111111'
+172.20.2.247 NODE_NAME=etcd2 ansible_ssh_port=22 ansible_user=root ansible_ssh_pass='111111'
+172.20.2.248 NODE_NAME=etcd3 ansible_ssh_port=22 ansible_user=root ansible_ssh_pass='111111'
+
+[lb]
+172.20.2.244 LB_ROLE=master ansible_ssh_port=22 ansible_user=root ansible_ssh_pass='111111'
+172.20.2.245 LB_ROLE=backup ansible_ssh_port=22 ansible_user=root ansible_ssh_pass='111111'
+
+[kube-master]
+172.20.2.246 ansible_ssh_port=22 ansible_user=root ansible_ssh_pass='111111'
+172.20.2.247 ansible_ssh_port=22 ansible_user=root ansible_ssh_pass='111111'
+
+[kube-node]
+172.20.2.248 ansible_ssh_port=22 ansible_user=root ansible_ssh_pass='111111'
+172.20.2.249 ansible_ssh_port=22 ansible_user=root ansible_ssh_pass='111111'
+
+[harbor]
+#192.168.1.8 HARBOR_DOMAIN="harbor.yourdomain.com" NEW_INSTALL=no
+
+[new-master]
+#172.20.2.248
+
+[new-node]
+#172.20.2.247
+
+[all:vars]
+DEPLOY_MODE=multi-master
+
+K8S_VER="v1.11"
+
+MASTER_IP="172.20.2.250"
+KUBE_APISERVER="https://{{ MASTER_IP }}:8443"
+
+CLUSTER_NETWORK="calico"
+
+SERVICE_CIDR="10.1.0.0/16"
+
+CLUSTER_CIDR="172.16.0.0/16"
+
+NODE_PORT_RANGE="20000-40000"
+
+CLUSTER_KUBERNETES_SVC_IP="10.1.0.1"
+
+CLUSTER_DNS_SVC_IP="10.1.0.2"
+
+CLUSTER_DNS_DOMAIN="cluster.local."
+
+BASIC_AUTH_USER="admin"
+BASIC_AUTH_PASS="test1234"
+
+base_dir="/etc/ansible"
+ca_dir="/etc/kubernetes/ssl"
+bin_dir="/opt/kube/bin"
+
+
+NTP_ENABLED="yes"

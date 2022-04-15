@@ -1,0 +1,10 @@
+---
+# tasks file for roles/k8s/kubeadm
+
+- name: /etc/yum.repos.d/kubernetes.repo
+  template:
+      src: kubernetes.repo
+      dest: /etc/yum.repos.d/kubernetes.repo
+
+- name: kubeadm install
+  shell: yum install -y kubeadm --disableexcludes=kubernetes

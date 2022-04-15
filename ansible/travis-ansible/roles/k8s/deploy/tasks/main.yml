@@ -1,0 +1,58 @@
+---
+# tasks file for roles/deploy
+
+- name: prepare some dirs
+  file: name={{ item }} state=directory
+  with_items:
+  - "{{ bin_dir }}"
+  - "{{ ca_dir }}"
+
+- name: 下载证书工具 CFSSL 及 kubectl
+  copy: src={{ base_dir }}/bin/{{ item }} dest={{ bin_dir }}/{{ item }} mode=0755
+  with_items:
+  - cfssl
+  - cfssl-certinfo
+  - cfssljson
+  - kubectl
+
+- name: 读取ca证书stat信息
+  stat: path="{{ ca_dir }}/ca.pem"
+  register: p
+
+- name: 准备CA配置文件
+  template: src=ca-config.json.j2 dest={{ ca_dir }}/ca-config.json
+  when: p.stat.isreg is not defined
+
+- name: 准备CA签名请求
+  template: src=ca-csr.json.j2 dest={{ ca_dir }}/ca-csr.json
+  when: p.stat.isreg is not defined
+
+- name: 生成 CA 证书和私钥
+  when: p.stat.isreg is not defined
+  shell: "cd {{ ca_dir }} && {{ bin_dir }}/cfssl gencert -initca ca-csr.json | {{ bin_dir }}/cfssljson -bare ca"
+
+- name: 准备kubectl使用的admin 证书签名请求
+  template: src=admin-csr.json.j2 dest={{ ca_dir }}/admin-csr.json
+
+- name: 创建 admin证书与私钥
+  shell: "cd {{ ca_dir }} && {{ bin_dir }}/cfssl gencert \
+        -ca={{ ca_dir }}/ca.pem \
+        -ca-key={{ ca_dir }}/ca-key.pem \
+        -config={{ ca_dir }}/ca-config.json \
+        -profile=kubernetes admin-csr.json | {{ bin_dir }}/cfssljson -bare admin"
+
+- name: 设置集群参数
+  shell: "{{ bin_dir }}/kubectl config set-cluster kubernetes \
+        --certificate-authority={{ ca_dir }}/ca.pem \
+        --embed-certs=true \
+        --server={{ KUBE_APISERVER }}"
+- name: 设置客户端认证参数
+  shell: "{{ bin_dir }}/kubectl config set-credentials admin \
+        --client-certificate={{ ca_dir }}/admin.pem \
+        --embed-certs=true \
+        --client-key={{ ca_dir }}/admin-key.pem"
+- name: 设置上下文参数
+  shell: "{{ bin_dir }}/kubectl config set-context kubernetes \
+        --cluster=kubernetes --user=admin"
+- name: 选择默认上下文
+  shell: "{{ bin_dir }}/kubectl config use-context kubernetes"

@@ -1,0 +1,7 @@
+---
+# defaults file for roles/kube-master
+TMP_ENDPOINTS: "{% for h in groups['etcd'] %}https://{{ h }}:2379,{% endfor %}"
+ETCD_ENDPOINTS: "{{ TMP_ENDPOINTS.rstrip(',') }}"
+
+
+ENCRYPTION_KEY: 'xicKM6bXWC8LMuXr'

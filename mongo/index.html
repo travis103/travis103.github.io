@@ -1,0 +1,2026 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mongo</title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600">
+
+
+<link rel="stylesheet" href="/fontawesome/css/all.min.css"/>
+
+
+
+
+  
+
+  
+  
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/hugo-logo.svg" />
+
+<meta property="og:title" content="Mongo" />
+<meta property="og:description" content="BSON BSON是一种类json的一种二进制形式的存储格式，简称Binary JSON。MongoDB使用了BSON这种结构来存储数据和网络数据交换。 BSON对应Document这个概念，因为BSON是schema-free的，所以在MongoDB中所对应的Document也有这个特征，这里的一个Document也可以理解成关系数据库中的一条Record，只是Document的变化更丰富一些，Document可以嵌套。 MongoDB以BSON做为其存储结构的一个重要原因是它的可遍历性。 BSON编码扩展了JSON表示，使其包含额外的类型，如int、long、date、浮点数和decimal128。 BSON数据的主要类型有：A，D，E，M和Raw。其中，A是数组，D是切片，M是映射，D和M是Go原生类型。   A类型表示有序的BSON数组。 bson.A{&ldquo;bar&rdquo;, &ldquo;world&rdquo;, 3.14159, bson.D{{&ldquo;qux&rdquo;, 12345}}}
+  D类型表示包含有序元素的BSON文档。这种类型应该在顺序重要的情况下使用。如果元素的顺序无关紧要，则应使用M代替。 bson.D{{&ldquo;foo&rdquo;, &ldquo;bar&rdquo;}, {&ldquo;hello&rdquo;, &ldquo;world&rdquo;}, {&ldquo;pi&rdquo;, 3.14159}}
+  M类型表示无序的映射。 bson.M{&ldquo;foo&rdquo;: &ldquo;bar&rdquo;, &ldquo;hello&rdquo;: &ldquo;world&rdquo;, &ldquo;pi&rdquo;: 3.14159}
+  E类型表示D里面的一个BSON元素。
+  Raw类型代表未处理的原始BSON文档和元素，Raw系列类型用于验证和检索字节切片中的元素。当要查找BSON字节而不将其解编为另一种类型时，此类型最有用。
+  mongo 10.1.50.84/pacific -u root -p Root_123 --authenticationDatabase admin rs.status() rs.slaveOk() rs=replica set db.getCollection(&#39;demo&#39;).find({&#34;keyIdentifiers&#34;:{&#34;$regex&#34;:&#34;@#@&#34;}}).forEach(function(item){ var keyIdentifiers = item.keyIdentifiers; var arr = keyIdentifiers[0].split(&#34;@#@&#34;); if(arr.length&gt;1){ var item1 = arr[0] var item2 = arr[1] var tem = &#34;&#34; if(item1." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://travis103.github.io/mongo/" /><meta property="article:section" content="" />
+<meta property="article:published_time" content="2022-03-24T10:34:39+08:00" />
+<meta property="article:modified_time" content="2022-03-24T10:34:39+08:00" />
+
+
+
+    
+    
+<meta name="description" content="Mongo" />
+<link
+  rel="stylesheet"
+  href="/css/layouts/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/css/layouts/single.css"/>
+<link rel="stylesheet" href="/css/navigators/sidebar.css">
+
+<link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+
+    
+        
+        
+            
+            
+            
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-122321624-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+        
+
+        
+        
+
+        
+        
+    
+
+
+
+
+</head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+  
+  
+    
+  
+  
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      
+        <img src="/images/site/404_huf404c6818e5475c7870a4722b4efea20_110323_42x0_resize_box_3.png" alt="Logo">
+      Travis&#39; Blog</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+      </ul>
+    </div>
+  </div>
+  
+  
+    <img src="/images/site/404_huf404c6818e5475c7870a4722b4efea20_110323_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
+  
+  
+    <img src="/images/site/404_huf404c6818e5475c7870a4722b4efea20_110323_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+  
+</nav>
+
+
+
+      
+      
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/activemq/" title="ActiveMQ">ActiveMQ</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/ahrefs/" title="Ahrefs">Ahrefs</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/alexa/" title="Alexa">Alexa</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/ansible/" title="Ansible">Ansible</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/apollo/apollo/" title="Apollo">Apollo</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/atom/" title="Atom">Atom</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/backlinko/" title="Backlinko">Backlinko</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/beanstalk/" title="Beanstalk">Beanstalk</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/blockchain/" title="Blockchain">Blockchain</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/chrome/" title="Chrome">Chrome</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/chrome-remote-desktop/" title="Chrome Remote Desktop">Chrome Remote Desktop</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/code-push-server/code-push-server/" title="Code Push Server">Code Push Server</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/curl/" title="Curl">Curl</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/dao/" title="Dao">Dao</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/dapp/" title="Dapp">Dapp</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/date/" title="date">date</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/elasticsearcch/" title="Elasticsearcch">Elasticsearcch</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/emqx/" title="Emqx">Emqx</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/etcd/" title="Etcd">Etcd</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/filebeat/" title="Filebeat">Filebeat</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/firefox/firefox/" title="Firefox">Firefox</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/geth/" title="geth">geth</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/gh/" title="gh">gh</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/git/git/" title="Git">Git</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/github/" title="Github">Github</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/gitlab/" title="Gitlab">Gitlab</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/gitter/" title="Gitter">Gitter</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/golang/" title="Golang">Golang</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/google-search/" title="Google Search">Google Search</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/grafana/" title="Grafana">Grafana</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/haproxy/" title="Haproxy">Haproxy</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/jaeger/" title="Jaeger">Jaeger</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/javascript/" title="JavaScript">JavaScript</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/jenkins/" title="Jenkins">Jenkins</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/jinja/jinja/" title="Jinja">Jinja</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/jq/" title="jq">jq</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/k8s/" title="K8s">K8s</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/kafka/" title="Kafka">Kafka</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/keepalived/" title="Keepalived">Keepalived</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/kibana/" title="Kibana">Kibana</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/kitex/" title="Kitex">Kitex</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/kong/" title="Kong">Kong</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/kooder/" title="Kooder">Kooder</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/lighthouse/" title="Lighthouse">Lighthouse</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/listary/" title="Listary">Listary</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/mac/" title="Mac">Mac</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/markdown/" title="Markdown">Markdown</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/memcached/" title="Memcached">Memcached</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/microsoft-remote-desktop/" title="Microsoft Remote Desktop">Microsoft Remote Desktop</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/minikube/" title="Minikube">Minikube</a></li>
+  
+
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li><a class="active" href="/mongo/" title="Mongo">Mongo</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/mq/" title="MQ">MQ</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/mtr/" title="mtr">mtr</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/mysql/" title="Mysql">Mysql</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/netcloud/netcloud/" title="Netcloud">Netcloud</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/nft/" title="NFT">NFT</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/nginx/" title="Nginx">Nginx</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/nitroshare/" title="Nitroshare">Nitroshare</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/nsq/" title="Nsq">Nsq</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/outline/" title="Outline">Outline</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/pm2/" title="pm2">pm2</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/postgresql/" title="Postgresql">Postgresql</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/prometheus/" title="Prometheus">Prometheus</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/python/" title="Python">Python</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/rabbitmq/" title="RabbitMQ">RabbitMQ</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/react/" title="React">React</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/redis/" title="Redis">Redis</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/redisearch/" title="Redisearch">Redisearch</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/resilio-sync/" title="Resilio Sync">Resilio Sync</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/rsync/" title="Rsync">Rsync</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/rust/" title="Rust">Rust</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/semrush/" title="Semrush">Semrush</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/seo/" title="SEO">SEO</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/shadowsocks/" title="Shadowsocks">Shadowsocks</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/similarweb/" title="Similarweb">Similarweb</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/slack/" title="Slack">Slack</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/snmp/" title="SNMP">SNMP</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/sns/" title="SNS">SNS</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/sqlite/" title="Sqlite">Sqlite</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/sqs/" title="SQS">SQS</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/squid/squid/" title="Squid">Squid</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/stat/" title="stat">stat</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/sublime/" title="Sublime">Sublime</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/supervisor/" title="supervisor">supervisor</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/systemd/" title="systemd">systemd</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/telegram-cli/" title="Telegram Cli">Telegram Cli</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/tmux/" title="tmux">tmux</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/trojan/" title="Trojan">Trojan</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/upslash/upslash/" title="Upslash">Upslash</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/v2ray/" title="V2ray">V2ray</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/varnish/" title="Varnish">Varnish</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/vue/" title="Vue">Vue</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/web3/" title="Web3">Web3</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/wsl/" title="WSL">WSL</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/yaml/" title="Yaml">Yaml</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/zeromq/" title="ZeroMQ">ZeroMQ</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/zeronet/" title="Zeronet">Zeronet</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/zipkin/" title="Zipkin">Zipkin</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/zookeeper/" title="Zookeeper">Zookeeper</a></li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content">
+    <div class="container p-0 read-area">
+      
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(https://travis103.github.io/images/default-hero.jpg);'>
+      </div>
+
+      
+      <div class="page-content">
+        <div class="author-profile ml-auto align-self-lg-center">
+          <img class="rounded-circle" src='/images/site/background2_huc5ebb9144ccc57efd670b667837a82c6_433238_120x120_fit_q75_box.jpg' alt="Author Image">
+          <h5 class="author-name">Travis</h5>
+          <p>Thursday, March 24, 2022</p>
+        </div>
+
+        <div class="title">
+          <h1>Mongo</h1>
+        </div>
+        
+        <div class="taxonomy-terms">
+            <ul>
+            
+            
+            <li class="rounded"><a href="/tags/mongo" class="btn, btn-sm">mongo</a></li>
+            
+          </ul>
+        </div>
+        
+        <div class="post-content" id="post-content">
+          <h3 id="bson">BSON</h3>
+<pre tabindex="0"><code>BSON是一种类json的一种二进制形式的存储格式，简称Binary JSON。MongoDB使用了BSON这种结构来存储数据和网络数据交换。
+BSON对应Document这个概念，因为BSON是schema-free的，所以在MongoDB中所对应的Document也有这个特征，这里的一个Document也可以理解成关系数据库中的一条Record，只是Document的变化更丰富一些，Document可以嵌套。
+MongoDB以BSON做为其存储结构的一个重要原因是它的可遍历性。
+BSON编码扩展了JSON表示，使其包含额外的类型，如int、long、date、浮点数和decimal128。
+</code></pre><pre tabindex="0"><code>BSON数据的主要类型有：A，D，E，M和Raw。其中，A是数组，D是切片，M是映射，D和M是Go原生类型。
+</code></pre><ul>
+<li>
+<p>A类型表示有序的BSON数组。
+bson.A{&ldquo;bar&rdquo;, &ldquo;world&rdquo;, 3.14159, bson.D{{&ldquo;qux&rdquo;, 12345}}}</p>
+</li>
+<li>
+<p>D类型表示包含有序元素的BSON文档。这种类型应该在顺序重要的情况下使用。如果元素的顺序无关紧要，则应使用M代替。
+bson.D{{&ldquo;foo&rdquo;, &ldquo;bar&rdquo;}, {&ldquo;hello&rdquo;, &ldquo;world&rdquo;}, {&ldquo;pi&rdquo;, 3.14159}}</p>
+</li>
+<li>
+<p>M类型表示无序的映射。
+bson.M{&ldquo;foo&rdquo;: &ldquo;bar&rdquo;, &ldquo;hello&rdquo;: &ldquo;world&rdquo;, &ldquo;pi&rdquo;: 3.14159}</p>
+</li>
+<li>
+<p>E类型表示D里面的一个BSON元素。</p>
+</li>
+<li>
+<p>Raw类型代表未处理的原始BSON文档和元素，Raw系列类型用于验证和检索字节切片中的元素。当要查找BSON字节而不将其解编为另一种类型时，此类型最有用。</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">mongo</span> <span style="color:#ae81ff">10.1</span>.<span style="color:#ae81ff">50.84</span><span style="color:#f92672">/</span><span style="color:#a6e22e">pacific</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">u</span> <span style="color:#a6e22e">root</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">p</span> <span style="color:#a6e22e">Root_123</span> <span style="color:#f92672">--</span><span style="color:#a6e22e">authenticationDatabase</span> <span style="color:#a6e22e">admin</span>
+
+<span style="color:#a6e22e">rs</span>.<span style="color:#a6e22e">status</span>()
+<span style="color:#a6e22e">rs</span>.<span style="color:#a6e22e">slaveOk</span>()
+
+<span style="color:#a6e22e">rs</span><span style="color:#f92672">=</span><span style="color:#a6e22e">replica</span> <span style="color:#a6e22e">set</span>
+
+
+<span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">getCollection</span>(<span style="color:#e6db74">&#39;demo&#39;</span>).<span style="color:#a6e22e">find</span>({<span style="color:#e6db74">&#34;keyIdentifiers&#34;</span><span style="color:#f92672">:</span>{<span style="color:#e6db74">&#34;$regex&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;@#@&#34;</span>}}).<span style="color:#a6e22e">forEach</span>(<span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">item</span>){
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">keyIdentifiers</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">keyIdentifiers</span>;
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">arr</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">keyIdentifiers</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#34;@#@&#34;</span>);
+<span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">length</span><span style="color:#f92672">&gt;</span><span style="color:#ae81ff">1</span>){
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">item1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arr</span>[<span style="color:#ae81ff">0</span>]
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">item2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arr</span>[<span style="color:#ae81ff">1</span>]
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">tem</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+<span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">item1</span>.<span style="color:#a6e22e">indexOf</span>(<span style="color:#e6db74">&#34;name&#34;</span>)<span style="color:#f92672">&gt;-</span><span style="color:#ae81ff">1</span>){
+<span style="color:#a6e22e">tem</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">item1</span>;
+<span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">keyIdentifiers</span> <span style="color:#f92672">=</span> [<span style="color:#a6e22e">tem</span>]
+<span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">getCollection</span>(<span style="color:#e6db74">&#39;demo&#39;</span>).<span style="color:#a6e22e">save</span>(<span style="color:#a6e22e">item</span>)
+}
+<span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">item2</span>.<span style="color:#a6e22e">indexOf</span>(<span style="color:#e6db74">&#34;name&#34;</span>)<span style="color:#f92672">&gt;-</span><span style="color:#ae81ff">1</span>){
+<span style="color:#a6e22e">tem</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">item2</span>;
+<span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">keyIdentifiers</span> <span style="color:#f92672">=</span> [<span style="color:#a6e22e">tem</span>]
+<span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">getCollection</span>(<span style="color:#e6db74">&#39;demo&#39;</span>).<span style="color:#a6e22e">save</span>(<span style="color:#a6e22e">item</span>)
+}  
+}
+
+</code></pre></div><pre tabindex="0"><code>
+db.LOG_ACCESS.find({HTTP_USER_AGENT:{$not:/(android|ios|mozilla|apache)/i}},{HTTP_USER_AGENT:1})
+
+First: Get the count of data you want to delete:
+
+-------------------------- COUNT --------------------------
+var query= {&quot;FEILD&quot;:&quot;XYZ&quot;, 'DATE': {$lt:new ISODate(&quot;2019-11-10&quot;)}};
+db.COL.aggregate([
+    {$match:query},
+    {$count: &quot;all&quot;}
+  ])
+
+Second: Start deleting chunk by chunk:
+
+-------------------------- DELETE --------------------------
+var query= {&quot;FEILD&quot;:&quot;XYZ&quot;, 'date': {$lt:new ISODate(&quot;2019-11-10&quot;)}};
+var cursor = db.COL.aggregate([
+    {$match:query},
+    { $limit : 5 }
+  ])
+cursor.forEach(function (doc){
+    db.COL.remove({&quot;_id&quot;: doc._id});
+});
+
+
+var query={&quot;FEILD&quot;:&quot;XYZ&quot;, 'date': {$lt:new ISODate(&quot;2019-11-10&quot;)}};
+var ids = db.COL.find(query, {_id: 1}).limit(5);
+db.tags.deleteMany({&quot;_id&quot;: { &quot;$in&quot;: ids.map(r =&gt; r._id)}});
+
+</code></pre><h3 id="cloud-mongodb">cloud mongodb</h3>
+<pre tabindex="0"><code>https://cloud.mongodb.com
+lee421175@aliyun.com
+sSGP43p6xn5bPTP
+
+root
+uz8q8F2Ut5Vqpvw
+
+mongodb+srv://root:uz8q8F2Ut5Vqpvw@cluster0.af2cj.mongodb.net/myFirstDatabase?retryWrites=true&amp;w=majority
+
+</code></pre><h3 id="robo-3t">Robo 3T</h3>
+<h3 id="rockmongo">Rockmongo</h3>
+<blockquote>
+<p><a href="https://github.com/iwind/rockmongo">rockmongo</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://docs.mongodb.com/manual/tutorial">tutorial</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://www.itzgeek.com/how-tos/linux/centos-how-tos/how-to-install-latest-mongodb-2-6-4-on-centos-7-rhel-7.html">ref2</a></p>
+</blockquote>
+<blockquote>
+<p><a href="%5Bhttps://segmentfault.com/a/1190000015603831%5D(https://segmentfault.com/a/1190000015603831)">ref3</a></p>
+</blockquote>
+<h3 id="repo-config">repo config</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">
+[<span style="color:#a6e22e">mongoDB</span>]
+<span style="color:#a6e22e">name</span>=<span style="color:#a6e22e">MongoDB</span> <span style="color:#a6e22e">Repository</span>
+<span style="color:#a6e22e">baseurl</span>=<span style="color:#a6e22e">http</span><span style="color:#960050;background-color:#1e0010">://</span><span style="color:#a6e22e">repo</span>.<span style="color:#a6e22e">mongodb</span>.<span style="color:#a6e22e">org</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#a6e22e">yum</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#a6e22e">redhat</span><span style="color:#960050;background-color:#1e0010">/$</span><span style="color:#a6e22e">releasever</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#a6e22e">mongodb-org</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#ae81ff">4.0</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#a6e22e">x86_64</span><span style="color:#960050;background-color:#1e0010">/</span>
+<span style="color:#a6e22e">gpgcheck</span>=<span style="color:#ae81ff">0</span>
+<span style="color:#a6e22e">enabled</span>=<span style="color:#ae81ff">1</span>
+
+</code></pre></div><h3 id="mongo-install">mongo install</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">yum update
+yum install mongodb-org
+
+sudo yum install -y mongodb-org-4.0.10 mongodb-org-server-4.0.10 mongodb-org-shell-4.0.10 mongodb-org-mongos-4.0.10 mongodb-org-tools-4.0.10
+
+/etc/yum.conf
+exclude<span style="color:#f92672">=</span>mongodb-org,mongodb-org-server,mongodb-org-shell,mongodb-org-mongos,mongodb-org-tools
+
+</code></pre></div><h3 id="system-config">system config</h3>
+<pre tabindex="0"><code class="language-conf" data-lang="conf">/etc/security/limits.d/99-mongodb-nproc.conf
+
+mongod soft nofile 64000
+mongod hard nofile 64000
+mongod soft nproc 64000
+mongod hard nproc 64000
+
+</code></pre><h3 id="mongo-config">mongo config</h3>
+<ol>
+<li>Disable THP ( Transparent Huge Page： A Linux memory management mechanism)</li>
+</ol>
+<blockquote>
+<p><code>tuned</code> and <code>ktune</code> are dynamic kernel tuning tools available on Red Hat and CentOS that can disable transparent huge pages.</p>
+</blockquote>
+<ul>
+<li>create a new profile</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo mkdir /etc/tuned/no-thp
+</code></pre></div><ul>
+<li>edit tuned.conf</li>
+</ul>
+<pre tabindex="0"><code class="language-conf" data-lang="conf">/etc/tuned/no-thp/tuned.conf
+
+[main]
+include=virtual-guest
+
+[vm]
+transparent_hugepages=never
+</code></pre><ul>
+<li>enable the new profile</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo tuned-adm profile no-thp
+</code></pre></div><ul>
+<li>test</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat /sys/kernel/mm/transparent_hugepage/enabled
+cat /sys/kernel/mm/transparent_hugepage/defrag
+</code></pre></div><p><code>expect: always madvise [never]</code></p>
+<br/>
+<h3 id="user-manage">user manage</h3>
+<p><a href="https://segmentfault.com/a/1190000015603831">ref1</a></p>
+<ul>
+<li>enable authorization</li>
+</ul>
+<pre tabindex="0"><code class="language-conf" data-lang="conf">/etc/mongod.conf
+security:
+  authorization: enabled
+
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">systemctl restart mongod
+systemctl status mongod
+
+admin password config
+
+mongo
+show dbs
+use admin
+db.createUser<span style="color:#f92672">({</span> user: <span style="color:#e6db74">&#34;hqq&#34;</span>, pwd: <span style="color:#e6db74">&#34;123456&#34;</span>, roles: <span style="color:#f92672">[{</span> role: <span style="color:#e6db74">&#34;userAdminAnyDatabase&#34;</span>, db: <span style="color:#e6db74">&#34;admin&#34;</span> <span style="color:#f92672">}]</span> <span style="color:#f92672">})</span>
+db.auth<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;hqq&#34;</span>, <span style="color:#e6db74">&#34;123456&#34;</span><span style="color:#f92672">)</span>
+
+
+db.createUser<span style="color:#f92672">({</span> user: <span style="color:#e6db74">&#34;hqq&#34;</span>, pwd: <span style="color:#e6db74">&#34;123456&#34;</span>, roles: <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;dbAdminAnyDatabase&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">})</span>
+
+db.createUser<span style="color:#f92672">({</span> user: <span style="color:#e6db74">&#34;app1&#34;</span>, pwd: <span style="color:#e6db74">&#34;123456&#34;</span>, roles: <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;readWriteAnyDatabase&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">})</span>
+
+</code></pre></div><ul>
+<li>create root</li>
+</ul>
+<pre tabindex="0"><code>db.createUser(
+    {
+        user:&quot;root&quot;,
+        pwd:&quot;EXe4yxpPUB57Tkmt316vy4Um9gEIDVcSx1WkStDLc3o&quot;,
+        roles:[&quot;root&quot;]
+    }
+)
+
+
+</code></pre><ul>
+<li>create admin</li>
+</ul>
+<pre tabindex="0"><code>db.createUser(  
+  { user: &quot;admin&quot;,  
+    customData：{description:&quot;superuser&quot;},
+    pwd: &quot;admin&quot;,  
+    roles: [ { role: &quot;userAdminAnyDatabase&quot;, db: &quot;admin&quot; } ]  
+  }  
+)  
+
+
+db.createUser(
+  { user: &quot;statment&quot;,
+    customData: {description:&quot;statment user&quot;},
+    pwd: &quot;123456&quot;,
+    roles: [ { role: &quot;readWrite&quot;, db: &quot;a&quot; },
+             { role: &quot;readWrite&quot;, db: &quot;b&quot; }
+    ]
+  }
+)
+
+
+</code></pre><ul>
+<li>create application user</li>
+</ul>
+<p>db.createUser({ user: &ldquo;im&rdquo;, pwd: &ldquo;123456&rdquo;, roles: [{ role: &ldquo;dbOwner&rdquo;, db:&ldquo;IM&rdquo; }] })</p>
+<p>db.createUser({ user: &ldquo;doudizhurw&rdquo;, pwd: &ldquo;123456&rdquo;, roles: [{ role: &ldquo;readWrite&rdquo;,db: &ldquo;doudizhu&rdquo; }] })</p>
+<pre tabindex="0"><code>
+数据库用户角色： read、 readWrite ；
+数据库管理角色： dbAdmin、dbOwner、userAdmin;
+集群管理角色： clusterAdmin、clusterManager、4. clusterMonitor、hostManage；
+备份恢复角色： backup、restore；
+所有数据库角色： readAnyDatabase、 readWriteAnyDatabase、 userAdminAnyDatabase、 dbAdminAnyDatabase
+超级用户角色： root
+内部角色： __system
+
+Read： 允许用户读取指定数据库
+readWrite： 允许用户读写指定数据库
+
+dbAdmin： 允许用户在指定数据库中执行管理函数，如索引创建、删除，查看统计或访问system.profile
+userAdmin： 允许用户向system.users集合写入，可以在指定数据库里创建、删除和管理用户
+
+clusterAdmin： 只在admin数据库中可用，赋予用户所有分片和复制集相关函数的管理权限。
+readAnyDatabase： 只在admin数据库中可用，赋予用户所有数据库的读权限
+readWriteAnyDatabase： 只在admin数据库中可用，赋予用户所有数据库的读写权限
+userAdminAnyDatabase： 只在admin数据库中可用，赋予用户所有数据库的userAdmin权限
+dbAdminAnyDatabase： 只在admin数据库中可用，赋予用户所有数据库的dbAdmin权限。
+root： 只在admin数据库中可用。超级账号，超级权限
+
+</code></pre><ul>
+<li>drop user</li>
+</ul>
+<pre tabindex="0"><code>use admin
+db.dropUser('user001')
+
+</code></pre><h3 id="free-monitoring">free monitoring</h3>
+<p>db.enableFreeMonitoring()
+db.disableFreeMonitoring()</p>
+<p>db.getFreeMonitoringStatus()</p>
+<p>db.serverStatus()</p>
+<p><a href="https://cloud.mongodb.com/freemonitoring/cluster/CG3F7MFOEEU5O6UIRBFQFEP7FLMAUNL2">https://cloud.mongodb.com/freemonitoring/cluster/CG3F7MFOEEU5O6UIRBFQFEP7FLMAUNL2</a></p>
+<p><a href="https://cloud.mongodb.com/freemonitoring/cluster/VJQAW2A2BYKNS2SUCOX3RLG43VYF2LLW">https://cloud.mongodb.com/freemonitoring/cluster/VJQAW2A2BYKNS2SUCOX3RLG43VYF2LLW</a></p>
+<h3 id="software-usage">software usage</h3>
+<p><a href="https://juejin.im/entry/5b97e4446fb9a05d1b2e3b79">ref1</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mongo
+
+mongodb://simpleUser:simplePass@your.db.ip.address:27017/foo
+
+mongodb://youruser2:yourpassword@yourhost/yourdatabase
+
+
+db.getName<span style="color:#f92672">()</span>
+
+use test
+db.createCollection<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;user&#39;</span><span style="color:#f92672">)</span>
+
+use test
+db.dropDatabase<span style="color:#f92672">()</span>
+
+</code></pre></div><h3 id="performance-test">performance test</h3>
+<h3 id="migration">migration</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">db.runCommand<span style="color:#f92672">(</span>
+    <span style="color:#f92672">{</span>
+        updateUser:<span style="color:#e6db74">&#34;im&#34;</span>,
+        pwd:<span style="color:#e6db74">&#34;123456&#34;</span>,
+        roles:<span style="color:#f92672">[</span>
+        <span style="color:#f92672">{</span>role:<span style="color:#e6db74">&#34;dbOwner&#34;</span>,db:<span style="color:#e6db74">&#34;IM&#34;</span><span style="color:#f92672">}</span>,
+        <span style="color:#f92672">]</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">)</span>
+
+mongorestore --host 10.63.58.49 -u root -p <span style="color:#ae81ff">123456</span> -d abc QGame/ --authenticationDatabase admin
+
+mongo 172.30.1.9:28001/IM  -u Hadmin -p --authenticationDatabase admin
+
+
+mongodump -o . -uroot -pEXe4yxpPUB57Tkmt316vy4Um9gEIDVcSx1WkStDLc3o
+
+
+mongorestore . -u root -p <span style="color:#e6db74">&#39;y1s9UG0k/PdtCGZaTq6eqQ&#39;</span>
+
+</code></pre></div><h3 id="query">query</h3>
+<pre tabindex="0"><code>
+db.collection.find({&quot;field&quot;: {$type: 10}}).forEach(item=&gt;{
+  item.field=&quot;0&quot;
+  db.collection.save(item)
+  printjson(item)
+}
+)
+
+
+db.collection.update(
+    {},
+    { $set: { &quot;Users.$[u].age&quot;: &quot;missing&quot; } },
+    { arrayFilters: [ { &quot;u.age&quot;: null } ], multi: true}
+)
+
+
+db.collection.bulkWrite( [
+   { updateMany :
+      {
+         &quot;filter&quot;: {},
+         &quot;update&quot;: { $set: { &quot;Users.$[u].age&quot;: &quot;missing&quot; } },
+         &quot;arrayFilters&quot;: [ { &quot;u.age&quot;: null } ],
+      }
+   },
+   { updateMany :
+      {
+         &quot;filter&quot;: {},
+         &quot;update&quot;: { $set: { &quot;Users.$[u].name&quot;: &quot;missing&quot; } },
+         &quot;arrayFilters&quot;: [ { &quot;u.name&quot;: null } ],
+      }
+   },
+   { updateMany :
+      {
+         &quot;filter&quot;: {},
+         &quot;update&quot;: { $set: { &quot;Users.$[u].place_of_birth&quot;: &quot;missing&quot; } },
+         &quot;arrayFilters&quot;: [ { &quot;u.place_of_birth&quot;: null } ],
+      }
+   }
+] )
+
+
+</code></pre>
+        </div>
+
+        
+        <div class="row pl-3 pr-3">
+        
+        <div class="col-md-6 share-buttons">
+        
+            <strong>Share on:</strong>
+            
+            
+            
+            
+            
+            
+            
+             
+            
+            
+                <a class="btn btn-sm email-btn" href="mailto:?subject=Mongo&body=https%3a%2f%2ftravis103.github.io%2fmongo%2f" target="_blank">
+                  
+                  <i class="fas fa-envelope"></i>
+                </a>
+            
+          
+          </div>
+
+        
+        
+          
+            
+          
+          <div class="col-md-6 btn-improve-page">
+             
+               <a href="https://github.com/travis103/travis103.github.io.git/edit/source/content/mongo/index.md" title="Improve this page" target="_blank" rel="noopener">
+            
+                <i class="fas fa-code-branch"></i>
+                Improve this page
+              </a>
+          </div>
+        
+        </div>
+
+
+
+      
+      <hr />
+        
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+    
+    
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+<div class="row next-prev-navigator">
+  
+    <div class="col-md-6 previous-article">
+      <a href="/minikube/" title="Minikube" class="btn btn-outline-info">
+        <div><i class="fas fa-chevron-circle-left"></i> Prev</div>
+        <div class="next-prev-text">Minikube</div>
+      </a>
+    </div>
+  
+  
+      
+      
+        
+      
+      <div class="col-md-6 next-article">
+        <a href="/mq/" title="MQ" class="btn btn-outline-info">
+          <div>Next <i class="fas fa-chevron-circle-right"></i></div>
+          <div class="next-prev-text">MQ</div>
+        </a>
+      </div>
+    
+</div>
+
+      <hr />
+
+      
+      
+        
+      
+      
+      
+
+      </div>
+    </div>
+  </div>
+  
+  <a id="scroll-to-top" class="btn"><i class="fas fa-chevron-circle-up"></i></a>
+  
+</section>
+
+
+      
+      
+  <section class="toc-section" id="toc-section">
+    
+    <div class="toc-holder">
+      <h5 class="text-center pl-3">Table of Contents</h5>
+      <hr>
+      <div class="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#bson">BSON</a></li>
+        <li><a href="#cloud-mongodb">cloud mongodb</a></li>
+        <li><a href="#robo-3t">Robo 3T</a></li>
+        <li><a href="#rockmongo">Rockmongo</a></li>
+        <li><a href="#repo-config">repo config</a></li>
+        <li><a href="#mongo-install">mongo install</a></li>
+        <li><a href="#system-config">system config</a></li>
+        <li><a href="#mongo-config">mongo config</a></li>
+        <li><a href="#user-manage">user manage</a></li>
+        <li><a href="#free-monitoring">free monitoring</a></li>
+        <li><a href="#software-usage">software usage</a></li>
+        <li><a href="#performance-test">performance test</a></li>
+        <li><a href="#migration">migration</a></li>
+        <li><a href="#query">query</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+    </div>
+    
+  </section>
+
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+    
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer id="footer" class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+              
+                <li><a href=mailto:lee421175@gamil.com target="_blank" rel="noopener">
+                  <span><i class="fas fa-envelope"></i></span> <span>lee421175@gamil.com</span>
+                </a></li>
+              
+            
+              
+                <li><a href=https://github.com/travis103 target="_blank" rel="noopener">
+                  <span><i class="fab fa-github"></i></span> <span>travis103</span>
+                </a></li>
+              
+            
+          </ul>
+        </div>
+        
+        
+        
+      </div>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          
+        </div>
+        <div class="col-md-4 text-center">© 2022 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+    
+    
+<script src="/js/highlight.min.js"></script>
+<script src="/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+
+
+
+
+
+    
+</body>
+</html>

@@ -1,0 +1,7 @@
+- hosts: emqx
+  gather_facts: yes
+  become: yes
+  become_user: root
+  become_method: sudo
+  roles:
+  - system-tuning

@@ -1,0 +1,23 @@
+
+1、 删除 slave 节点
+
+/root/redis-cli --cluster del-node 172.20.22.31:9001 59d7f5dc85ee33c50ecd553afc1476bb112afa12
+
+2、 删除 rdb、 aof
+
+rm -f /opt/redis-cluster/900-redis-cluster/9004/*rdb
+rm -f /opt/redis-cluster/900-redis-cluster/9004/*aof
+
+3、 删除集群配置文件
+
+rm -f /opt/redis-cluster/900-redis-cluster/9004/redis-cluster.conf
+
+4、 启动 redis
+
+cd /opt/redis-cluster/900-redis-cluster/9004/
+/opt/redis-cluster/bin/redis-server /opt/redis-cluster/900-redis-cluster/9004/redis.conf
+
+5、 添加 slave 节点
+
+31操作：
+/root/redis-cli --cluster add-node 172.20.22.31:9004 172.20.22.31:9001 --cluster-slave --cluster-master-id 8bd10702ff7ad443be97f156b9a667be1cae389e

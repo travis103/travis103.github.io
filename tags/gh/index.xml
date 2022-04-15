@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>gh on Travis&#39; Blog</title>
+    <link>https://travis103.github.io/tags/gh/</link>
+    <description>Recent content in gh on Travis&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 18 Mar 2022 09:46:52 +0800</lastBuildDate><atom:link href="https://travis103.github.io/tags/gh/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title>gh</title>
+      <link>https://travis103.github.io/gh/</link>
+      <pubDate>Fri, 18 Mar 2022 09:46:52 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/gh/</guid>
+      <description>Docs  https://cli.github.com/manual/
+ Install Configure gh config set editor vim gh config set editor &amp;#34;code --wait&amp;#34; gh config set git_protocol ssh --host github.com gh config set prompt disabled Usage brew install gh gh auth status gh auth login --with-token &amp;lt; token.txt gh auth login -h github.com gh auth logout -h github.com gh repo list </description>
+    </item>
+    
+    
+  </channel>
+</rss>

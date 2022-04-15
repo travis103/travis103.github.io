@@ -1,0 +1,11 @@
+version: '3'
+services:
+  sync:
+    container_name: sync
+    image: resilio/sync
+    ports:
+      - 127.0.0.1:8888:8888
+      - 55555:55555
+    volumes:
+      - /Users/will/sync:/mnt/sync
+    # restart: always

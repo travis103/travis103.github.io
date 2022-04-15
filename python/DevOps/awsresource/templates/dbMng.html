@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>洋葱资源管理系统</title>
+
+<link href="/static/css/bootstrap.min.css" rel="stylesheet">
+<link href="/static/css/datepicker3.css" rel="stylesheet">
+<link href="/static/css/bootstrap-table.css" rel="stylesheet">
+<link href="/static/css/styles.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+<script src="/static/js/html5shiv.js"></script>
+<script src="/static/js/respond.min.js"></script>
+<![endif]-->
+<script src="/static/js/jquery-1.11.1.min.js"></script>
+	<script src="/static/js/bootstrap.min.js"></script>
+	<script src="/static/js/chart.min.js"></script>
+	<!-- <script src="/static/js/chart-data.js"></script> -->
+	<!-- <script src="/static/js/easypiechart.js"></script>
+	<script src="/static/js/easypiechart-data.js"></script> -->
+	<script src="/static/js/bootstrap-datepicker.js"></script>
+	<script src="/static/js/bootstrap-table.js"></script>
+
+</head>
+
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"><span>洋葱资源管理系统</span></a>
+				<ul class="user-menu">
+					<li class="dropdown pull-right">
+					{% if username %}
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> {{ username }} <span class="caret"></span></a>
+					{% else %}
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> User <span class="caret"></span></a>
+					{% endif %}						<ul class="dropdown-menu" role="menu">
+							<li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+							<li><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+							<li><a class="glyphicon glyphicon-log-out" href="/autodeploy/logout/"> Logout</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+							
+		</div><!-- /.container-fluid -->
+	</nav>
+		
+	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+		<form role="search">
+			<div class="form-group">
+				
+			</div>
+		</form>
+		<ul class="nav menu">
+			<li><a href="/autodeploy/index"><span class="glyphicon glyphicon-home"></span> 首页</a></li>
+			<li><a href="javascript:volid(0);"><span class="glyphicon glyphicon-th"></span> 控制面板</a></li>
+			<li><a href="/ec2control/getinfo"><span class="glyphicon glyphicon-th-list"></span> EC2实例管理</a></li>
+			<li><a href="/ec2control/natIndex"><span class="glyphicon glyphicon-book"></span> NAT服务器申请</a></li>
+			{% if rights != 0 %}
+			<li class="active"><a href="/src/getdb"><span class="glyphicon glyphicon-th-list"></span> 数据库管理</a></li>
+			<li><a href="/src/selectsnap"><span class="glyphicon glyphicon-book"></span> 数据库申请</a></li>
+			{% endif %}
+				<ul class="children collapse" id="sub-item-1">
+					<li>
+						<a class="" href="#">
+							<span class="glyphicon glyphicon-share-alt"></span> Sub Item 1
+						</a>
+					</li>
+					<li>
+						<a class="" href="#">
+							<span class="glyphicon glyphicon-share-alt"></span> Sub Item 2
+						</a>
+					</li>
+					<li>
+						<a class="" href="#">
+							<span class="glyphicon glyphicon-share-alt"></span> Sub Item 3
+						</a>
+					</li>
+				</ul>
+			</li>
+			<li role="presentation" class="divider"></li>
+			<li><a href="/autodeploy/userprofile"><span class="glyphicon glyphicon-user"></span> 用户管理</a></li>
+		</ul>
+		<div class="attribution">Template by Medialoot</a></div>
+	</div><!--/.sidebar-->
+
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
+		<div class="row">
+			<ol class="breadcrumb">
+				<li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
+				{%if username%}
+				<li class="active">Hi, {{username}}</li>
+				{%else%}
+				<li class="active">Hi, Anonymous</li>
+				{%endif%}
+			</ol>
+		</div><!--/.row-->
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">洋葱资源管理系统</h1>
+			</div>
+		</div><!--/.row-->
+		
+		<div class="row">
+			<div class="col-lg-12">
+			<form method="POST" action="/src/deletedb/" name="form">
+				<div class="panel panel-default">
+					<div class="panel-body tabs">
+						<ul class="nav nav-pills">
+							<li class="active"><a href="#tab1" data-toggle="tab">正在运行的</a></li>
+							<li><a href="#tab2" data-toggle="tab">已关闭的</a></li>
+						</ul>
+						<div class="tab-content">
+							<div class="tab-pane fade in active" id="tab1">
+								<thead>
+									<table id="test1" data-id-field="database_name" data-search="true"></table>
+									<button type="submit" class="btn btn-primary">关闭数据库</button>
+								</thead>
+							</div>
+							<div class="tab-pane fade" id="tab2">
+								<thead><table id="test2" data-id-field="imageid" data-search="true"></table>							
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+						<script>
+						    $(function () {
+						    	$('#test2').bootstrapTable({
+						    		showRefresh: true,
+						    		showToggle: true,
+						    		showColumns: true,
+						    		pagination: true,
+						    		sortName: 'start_time',
+						    		sortOrder: 'desc',
+						    		maintainSelected: true,
+						    		columns: [
+						    		{
+						    			field: 'id',
+						    	        title: '序号'
+						    	    }, {
+						    	        field: 'database_name',
+						    	        title: '数据库名称'
+						    	    }, {
+						    	        field: 'start_time',
+						    	        title: '创建时间',
+						    	        sortable: true
+						    	    }, {
+						    	        field: 'end_time',
+						    	        title: '关闭时间',
+						    	        sortable: true
+						    	    }
+						    	    , {
+						    	        field: 'during_time',
+						    	        title: '持续时间（小时）',
+						    	        sortable: true
+						    	    }
+						    	    , {
+						    	        field: 'fee',
+						    	        title: '金额（元）',
+						    	        sortable: true
+						    	    }],
+						    	    data: {{getClosedResults|safe}}
+						    	});
+						    	
+						        $('#hover, #striped, #condensed').click(function () {
+						            var classes = 'table';
+						
+						            if ($('#hover').prop('checked')) {
+						                classes += ' table-hover';
+						            }
+						            if ($('#condensed').prop('checked')) {
+						                classes += ' table-condensed';
+						            }
+						            $('#table-style').bootstrapTable('destroy')
+						                .bootstrapTable({
+						                    classes: classes,
+						                    striped: $('#striped').prop('checked')
+						                });
+						        });
+						    });
+						    function rowStyle(row, index) {
+						        var classes = ['active', 'success', 'info', 'warning', 'danger'];
+						
+						        if (index % 2 === 0 && index / 2 < classes.length) {
+						            return {
+						                classes: classes[index / 2]
+						            };
+						        }
+						        return {};
+						    }
+						</script>
+						<script>
+						    $(function () {
+						    	$('#test1').bootstrapTable({
+						    		showRefresh: true,
+						    		showToggle: true,
+						    		showColumns: true,
+						    		pagination: true,
+						    		sortName: 'start_time',
+						    		selectItemName: 'database_name',
+						    		sortOrder: 'desc',
+						    		formatNoMatches: function () {
+						    			return '目前没有运行中的数据库'
+						    		},
+						    		maintainSelected: true,
+						    		columns: [
+						    		{
+										field: 'state',
+									    checkbox: true,
+									    rowspan: 2,
+									    align: 'center',
+									    valign: 'middle'
+									}, {
+						    	        field: 'database_name',
+						    	        title: '数据库名称'
+						    	    }, {
+						    	        field: 'dnsname',
+						    	        title: '数据库地址'
+						    	    }, {
+						    	        field: 'start_time',
+						    	        title: '创建时间',
+						    	        sortable: true
+						    	    },{
+						    	        field: 'during_time',
+						    	        title: '持续时间（小时）',
+						    	        sortable: true
+						    	    }
+						    	    , {
+						    	        field: 'fee',
+						    	        title: '金额（元）',
+						    	        sortable: true
+						    	    }
+						    	    , {
+						    	        field: 'status',
+						    	        title: '状态'
+						    	    }],
+						    	    data: {{getRunResults|safe}}
+						    	});
+						    	
+						        $('#hover, #striped, #condensed').click(function () {
+						            var classes = 'table';
+						
+						            if ($('#hover').prop('checked')) {
+						                classes += ' table-hover';
+						            }
+						            if ($('#condensed').prop('checked')) {
+						                classes += ' table-condensed';
+						            }
+						            $('#table-style').bootstrapTable('destroy')
+						                .bootstrapTable({
+						                    classes: classes,
+						                    striped: $('#striped').prop('checked')
+						                });
+						        });
+						    });
+						
+						    function rowStyle(row, index) {
+						        var classes = ['active', 'success', 'info', 'warning', 'danger'];
+						
+						        if (index % 2 === 0 && index / 2 < classes.length) {
+						            return {
+						                classes: classes[index / 2]
+						            };
+						        }
+						        return {};
+						    }
+						</script>
+					</div>
+				</div>
+			</div>
+		</div><!--/.row-->	
+		
+	</div><!--/.main-->
+
+	
+	<script>
+		!function ($) {
+			$(document).on("click","ul.nav li.parent > a > span.icon", function(){		  
+				$(this).find('em:first').toggleClass("glyphicon-minus");	  
+			}); 
+			$(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+		}(window.jQuery);
+
+		$(window).on('resize', function () {
+		  if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
+		})
+		$(window).on('resize', function () {
+		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
+		})
+	</script>	
+</body>
+
+</html>

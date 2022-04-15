@@ -1,0 +1,21 @@
+---
+# tasks file for roles/emqx
+
+- name: install some prerequires packages
+  yum:
+    name: "{{ pre_requires_packages }}"
+
+- name: copy emqx rpm file to remote
+  copy:
+    src: "{{ emqx_rpm_file_name }}"
+    dest: /tmp
+
+- name: install emqx
+  yum:
+    name: /tmp/{{ emqx_rpm_file_name }}
+
+- name: start emqx service
+  shell: systemctl restart emqx
+
+- name: check emqx service status
+  shell: systemctl restart emqx

@@ -1,0 +1,1897 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Redis</title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600">
+
+
+<link rel="stylesheet" href="/fontawesome/css/all.min.css"/>
+
+
+
+
+  
+
+  
+  
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/hugo-logo.svg" />
+
+<meta property="og:title" content="Redis" />
+<meta property="og:description" content="https://redis.io/commands
+ NoSQL(Not Only SQL） NoSQL指的是非关系型数据库，是对不同于传统关系型数据库的数据库管理系统简称，NoSQL是web2.0时代海量数据催生的产物。
+特点： 不支持SQL语法 NoSQL的世界中没有通用的语言，每种nosql数据库都有自己的语法，以及擅长的业务场景。 读写性能高 NoSQL数据库都具有非常高的读写性能，尤其在海量数据下，它的表现非常优秀。 灵活的数据模型 NoSQL的存储方式十分灵活，存储方式可以是JSON文档、键值对（key-value）或者其他方式。
+redis 基本操作
+ 什么是Redis Redis是由意大利人Salvatore Sanfilippo（网名：antirez）开发的一款内存高速缓存数据库。Redis全称为：Remote Dictionary Server，该软件使用C语言编写，Redis是一个key-value存储系统，它支持丰富的数据类型，如：string、list、set、zset(sorted set)、hash。 redis是一种nosql数据库,他的数据是保存在内存中，同时redis可以定时把内存数据同步到磁盘，即可以将数据持久化，还提供了多个语言的API，操作比较方便 Redis特点: Redis以内存作为数据存储介质，所以读写数据的效率极高，远远超过数据库。 Redis应用场景: 因为Redis交换数据快，所以在服务器中常用来存储一些需要频繁调取的数据，这样可以大大节省系统直接读取磁盘来获得数据的I/O开销，更重要的是可以极大提升速度。 将这种热点数据存到Redis（内存）中，要用的时候，直接从内存取，极大的提高了速度和节约了服务器的开销。  关系型数据库和非关系数据库的区别 关系型数据库 表和表之间存在的关系 非关系型数据库 不存在表的这种概念,redis是键值对数据库，通过key查找value 所以key是唯一的。
+redis五种数据类型、及操作 string 字符串 list 列表 hash 哈希 set 集合 sorted sets 有序集合
+key 有5中数据类型：string、list、set、zset(sorted set)、hash。 value :都是字符串类型的(可加引号也可不加)
+set key value get key ttl key expire key seconds set key value ex seconds setex key seconds value append key value" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://travis103.github.io/redis/" /><meta property="article:section" content="" />
+<meta property="article:published_time" content="2022-03-24T10:34:47+08:00" />
+<meta property="article:modified_time" content="2022-03-24T10:34:47+08:00" />
+
+
+
+    
+    
+<meta name="description" content="Redis" />
+<link
+  rel="stylesheet"
+  href="/css/layouts/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/css/layouts/single.css"/>
+<link rel="stylesheet" href="/css/navigators/sidebar.css">
+
+<link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+
+    
+        
+        
+            
+            
+            
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-122321624-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+        
+
+        
+        
+
+        
+        
+    
+
+
+
+
+</head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+  
+  
+    
+  
+  
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      
+        <img src="/images/site/404_huf404c6818e5475c7870a4722b4efea20_110323_42x0_resize_box_3.png" alt="Logo">
+      Travis&#39; Blog</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+      </ul>
+    </div>
+  </div>
+  
+  
+    <img src="/images/site/404_huf404c6818e5475c7870a4722b4efea20_110323_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
+  
+  
+    <img src="/images/site/404_huf404c6818e5475c7870a4722b4efea20_110323_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+  
+</nav>
+
+
+
+      
+      
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/activemq/" title="ActiveMQ">ActiveMQ</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/ahrefs/" title="Ahrefs">Ahrefs</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/alexa/" title="Alexa">Alexa</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/ansible/" title="Ansible">Ansible</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/apollo/apollo/" title="Apollo">Apollo</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/atom/" title="Atom">Atom</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/backlinko/" title="Backlinko">Backlinko</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/beanstalk/" title="Beanstalk">Beanstalk</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/blockchain/" title="Blockchain">Blockchain</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/chrome/" title="Chrome">Chrome</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/chrome-remote-desktop/" title="Chrome Remote Desktop">Chrome Remote Desktop</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/code-push-server/code-push-server/" title="Code Push Server">Code Push Server</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/curl/" title="Curl">Curl</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/dao/" title="Dao">Dao</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/dapp/" title="Dapp">Dapp</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/date/" title="date">date</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/elasticsearcch/" title="Elasticsearcch">Elasticsearcch</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/emqx/" title="Emqx">Emqx</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/etcd/" title="Etcd">Etcd</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/filebeat/" title="Filebeat">Filebeat</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/firefox/firefox/" title="Firefox">Firefox</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/geth/" title="geth">geth</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/gh/" title="gh">gh</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/git/git/" title="Git">Git</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/github/" title="Github">Github</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/gitlab/" title="Gitlab">Gitlab</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/gitter/" title="Gitter">Gitter</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/golang/" title="Golang">Golang</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/google-search/" title="Google Search">Google Search</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/grafana/" title="Grafana">Grafana</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/haproxy/" title="Haproxy">Haproxy</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/jaeger/" title="Jaeger">Jaeger</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/javascript/" title="JavaScript">JavaScript</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/jenkins/" title="Jenkins">Jenkins</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/jinja/jinja/" title="Jinja">Jinja</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/jq/" title="jq">jq</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/k8s/" title="K8s">K8s</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/kafka/" title="Kafka">Kafka</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/keepalived/" title="Keepalived">Keepalived</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/kibana/" title="Kibana">Kibana</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/kitex/" title="Kitex">Kitex</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/kong/" title="Kong">Kong</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/kooder/" title="Kooder">Kooder</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/lighthouse/" title="Lighthouse">Lighthouse</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/listary/" title="Listary">Listary</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/mac/" title="Mac">Mac</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/markdown/" title="Markdown">Markdown</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/memcached/" title="Memcached">Memcached</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/microsoft-remote-desktop/" title="Microsoft Remote Desktop">Microsoft Remote Desktop</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/minikube/" title="Minikube">Minikube</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/mongo/" title="Mongo">Mongo</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/mq/" title="MQ">MQ</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/mtr/" title="mtr">mtr</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/mysql/" title="Mysql">Mysql</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/netcloud/netcloud/" title="Netcloud">Netcloud</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/nft/" title="NFT">NFT</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/nginx/" title="Nginx">Nginx</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/nitroshare/" title="Nitroshare">Nitroshare</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/nsq/" title="Nsq">Nsq</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/outline/" title="Outline">Outline</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/pm2/" title="pm2">pm2</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/postgresql/" title="Postgresql">Postgresql</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/prometheus/" title="Prometheus">Prometheus</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/python/" title="Python">Python</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/rabbitmq/" title="RabbitMQ">RabbitMQ</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/react/" title="React">React</a></li>
+  
+
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li><a class="active" href="/redis/" title="Redis">Redis</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/redisearch/" title="Redisearch">Redisearch</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/resilio-sync/" title="Resilio Sync">Resilio Sync</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/rsync/" title="Rsync">Rsync</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/rust/" title="Rust">Rust</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/semrush/" title="Semrush">Semrush</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/seo/" title="SEO">SEO</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/shadowsocks/" title="Shadowsocks">Shadowsocks</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/similarweb/" title="Similarweb">Similarweb</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/slack/" title="Slack">Slack</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/snmp/" title="SNMP">SNMP</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/sns/" title="SNS">SNS</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/sqlite/" title="Sqlite">Sqlite</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/sqs/" title="SQS">SQS</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/squid/squid/" title="Squid">Squid</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/stat/" title="stat">stat</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/sublime/" title="Sublime">Sublime</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/supervisor/" title="supervisor">supervisor</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/systemd/" title="systemd">systemd</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/telegram-cli/" title="Telegram Cli">Telegram Cli</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/tmux/" title="tmux">tmux</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/trojan/" title="Trojan">Trojan</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/upslash/upslash/" title="Upslash">Upslash</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/v2ray/" title="V2ray">V2ray</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/varnish/" title="Varnish">Varnish</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/vue/" title="Vue">Vue</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/web3/" title="Web3">Web3</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/wsl/" title="WSL">WSL</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/yaml/" title="Yaml">Yaml</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/zeromq/" title="ZeroMQ">ZeroMQ</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/zeronet/" title="Zeronet">Zeronet</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/zipkin/" title="Zipkin">Zipkin</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/zookeeper/" title="Zookeeper">Zookeeper</a></li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content">
+    <div class="container p-0 read-area">
+      
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(https://travis103.github.io/images/default-hero.jpg);'>
+      </div>
+
+      
+      <div class="page-content">
+        <div class="author-profile ml-auto align-self-lg-center">
+          <img class="rounded-circle" src='/images/site/background2_huc5ebb9144ccc57efd670b667837a82c6_433238_120x120_fit_q75_box.jpg' alt="Author Image">
+          <h5 class="author-name">Travis</h5>
+          <p>Thursday, March 24, 2022</p>
+        </div>
+
+        <div class="title">
+          <h1>Redis</h1>
+        </div>
+        
+        <div class="taxonomy-terms">
+            <ul>
+            
+            
+            <li class="rounded"><a href="/tags/redis" class="btn, btn-sm">redis</a></li>
+            
+          </ul>
+        </div>
+        
+        <div class="post-content" id="post-content">
+          <blockquote>
+<p><a href="https://redis.io/commands">https://redis.io/commands</a></p>
+</blockquote>
+<p>NoSQL(Not Only SQL）
+NoSQL指的是非关系型数据库，是对不同于传统关系型数据库的数据库管理系统简称，NoSQL是web2.0时代海量数据催生的产物。</p>
+<p>特点：
+不支持SQL语法
+NoSQL的世界中没有通用的语言，每种nosql数据库都有自己的语法，以及擅长的业务场景。
+读写性能高
+NoSQL数据库都具有非常高的读写性能，尤其在海量数据下，它的表现非常优秀。
+灵活的数据模型
+NoSQL的存储方式十分灵活，存储方式可以是JSON文档、键值对（key-value）或者其他方式。</p>
+<p>redis 基本操作</p>
+<ol>
+<li>什么是Redis
+Redis是由意大利人Salvatore Sanfilippo（网名：antirez）开发的一款内存高速缓存数据库。Redis全称为：Remote Dictionary Server，该软件使用C语言编写，Redis是一个key-value存储系统，它支持丰富的数据类型，如：string、list、set、zset(sorted set)、hash。
+redis是一种nosql数据库,他的数据是保存在内存中，同时redis可以定时把内存数据同步到磁盘，即可以将数据持久化，还提供了多个语言的API，操作比较方便
+Redis特点:
+Redis以内存作为数据存储介质，所以读写数据的效率极高，远远超过数据库。
+Redis应用场景:
+因为Redis交换数据快，所以在服务器中常用来存储一些需要频繁调取的数据，这样可以大大节省系统直接读取磁盘来获得数据的I/O开销，更重要的是可以极大提升速度。
+将这种热点数据存到Redis（内存）中，要用的时候，直接从内存取，极大的提高了速度和节约了服务器的开销。</li>
+</ol>
+<p>关系型数据库和非关系数据库的区别
+关系型数据库
+表和表之间存在的关系
+非关系型数据库
+不存在表的这种概念,redis是键值对数据库，通过key查找value 所以key是唯一的。</p>
+<p>redis五种数据类型、及操作
+string 字符串
+list 列表
+hash 哈希
+set 集合
+sorted sets 有序集合</p>
+<p>key 有5中数据类型：string、list、set、zset(sorted set)、hash。
+value :都是字符串类型的(可加引号也可不加)</p>
+<p>set key value
+get key
+ttl key
+expire key seconds
+set key value ex seconds
+setex key seconds value
+append key value</p>
+<p>mset key value key value
+mget key key key</p>
+<p>keys *
+keys n*
+del key
+exists key
+type key</p>
+<p>set num 1 # 自动识别，字符串里面的 整数</p>
+<h1 id="1">+1</h1>
+<p>incr key 例 (incr num)</p>
+<h1 id="-1">-1</h1>
+<p>decr key 例 (decr num)</p>
+<h1 id="整数">+整数</h1>
+<p>incrby key increment 例 (incrby num 50)</p>
+<h1 id="-整数">-整数</h1>
+<p>decrby key increment 例 (decrby num 50)</p>
+<h3 id="hash">hash</h3>
+<h1 id="hset-key-field-value">hset key field value</h1>
+<p>#将field-value设置到hash表中，若key不存在会新建hash表再赋值，已存在则会覆盖；
+例 user { name:jianeng}
+hset user name jianeng</p>
+<p>#设置多个
+#hmset key field value [field value]
+例 user{name:jianeng , age:18, sex:male }
+hmset user name jianeng age 18 sex male</p>
+<h1 id="hdel-key-field">hdel key field</h1>
+<p>例
+hdel user name</p>
+<p>hget key field
+hgetall key
+hkeys key
+hvals key
+hlen key</p>
+<h3 id="集群">集群</h3>
+<pre tabindex="0"><code>主从模式
+哨兵模式
+集群模式（enable cluster、meet peer、sharding、replicate）
+port 8000
+daemonize yes
+cluster-enabled yes
+cluster-config-file nodes.conf
+cluster-node-timeout 5000
+
+cluster meet ip port
+cluster addslots
+cluster replicate
+
+yum install ruby
+yum install rubygems
+gem install redis
+./redis-trib.rb create --replicas 1 127.0.0.1:7000 127.0.0.1:7001
+</code></pre><h3 id="rdbtools">RDBTools</h3>
+<h3 id="phpredisadmin">phpRedisAdmin</h3>
+<p><a href="https://www.jianshu.com/p/017c73d9a201">ref1</a></p>
+<h3 id="installation">Installation</h3>
+<ol>
+<li>repo config</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+sudo yum-config-manager --enable remi
+</code></pre></div><ol start="2">
+<li>software install</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo yum --enablerepo<span style="color:#f92672">=</span>remi install redis
+rpm -qi redis
+</code></pre></div><ol start="3">
+<li>server config</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
+sudo firewall-cmd --zone<span style="color:#f92672">=</span>public --add-port<span style="color:#f92672">=</span>6379/tcp --permanent
+sudo firewall-cmd --zone<span style="color:#f92672">=</span>public --add-source<span style="color:#f92672">=</span>10.63.58.0/24 --permanent
+sudo firewall-cmd --reload
+</code></pre></div><ol start="4">
+<li>software config</li>
+</ol>
+<pre tabindex="0"><code class="language-conf" data-lang="conf">/etc/redis.conf
+
+bind 127.0.0.1 10.63.58.30
+requirepass  123456
+appendonly yes
+appendfilename &quot;appendonly.aof&quot;
+
+</code></pre><ol start="5">
+<li>software using</li>
+</ol>
+<pre tabindex="0"><code>sudo systemctl enable redis
+sudo systemctl start redis
+sudo systemctl status redis
+
+ss -anp | grep 6379
+
+redis-cli -h 10.63.58.30 ping
+auth
+info
+</code></pre><ol start="6">
+<li>performance test
+Run the benchmark with <code>15</code> parallel connections, for a total of <code>10k</code> requests, against local redis to test its performance.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">redis-benchmark -h 127.0.0.1 -p <span style="color:#ae81ff">6379</span> -n <span style="color:#ae81ff">10000</span> -c <span style="color:#ae81ff">15</span>
+</code></pre></div><ol start="7">
+<li>redis master-slave</li>
+</ol>
+<p><a href="http://blog.kankanan.com/article/redis-9ad853ef7528602757fa7840ff1a-master-slave.html">ref1</a></p>
+<pre tabindex="0"><code>
+daemonize no
+pidfile ./redis-slave.pid
+port 6380
+bind 127.0.0.1
+save 900 1
+save 300 10
+save 60 10000
+stop-writes-on-bgsave-error yes
+rdbcompression yes
+rdbchecksum yes
+dbfilename dump-slave.rdb
+dir ./
+slaveof 127.0.0.1 6379
+slave-serve-stale-data yes
+slave-read-only yes
+repl-diskless-sync no
+repl-diskless-sync-delay 5
+slave-priority 100
+# min-slaves-to-write 3
+# min-slaves-max-lag 10
+
+</code></pre><ol start="8">
+<li>redis cluster</li>
+</ol>
+<h3 id="rdb--aof">rdb &amp; aof</h3>
+<p><a href="https://www.jianshu.com/p/e04a9e80a998">https://www.jianshu.com/p/e04a9e80a998</a></p>
+<h3 id="redis-dump-npm">redis dump npm</h3>
+<pre tabindex="0"><code>npm install redis-dump -g
+node_modules/redis-dump/bin/cli/redis-dump -p 6000 -a &quot;Uhb2w9sDSas93Dlsa&quot; --json &gt; /data/backup/redis/6000.json
+redis-dump -p 6001 -a &quot;Uhb2w9sDSas93Dlsa&quot; --json &gt; /data/backup/redis/6001.json
+redis-dump -p 6002 -a &quot;Uhb2w9sDSas93Dlsa&quot; --json &gt; /data/backup/redis/6002.json
+redis-dump -p 6003 -a &quot;Uhb2w9sDSas93Dlsa&quot; --json &gt; /data/backup/redis/6003.json
+node_modules/redis-dump/bin/cli/redis-dump -p 6004 -a &quot;Uhb2w9sDSas93Dlsa&quot; --json &gt; /data/backup/redis/6004.json
+redis-dump -p 6005 -a &quot;Uhb2w9sDSas93Dlsa&quot; --json &gt; /data/backup/redis/6005.json
+redis-dump -p 6006 -a &quot;Uhb2w9sDSas93Dlsa&quot; --json &gt; /data/backup/redis/6006.json
+redis-dump -p 6007 -a &quot;Uhb2w9sDSas93Dlsa&quot; --json &gt; /data/backup/redis/6007.json
+redis-dump -p 6008 -a &quot;Uhb2w9sDSas93Dlsa&quot; --json &gt; /data/backup/redis/6008.json
+
+for i in $(seq 0 8);do
+redis-dump -p 600$i -a &quot;Uhb2w9sDSas93Dlsa&quot; --json &gt; /data/bak/redis/600$i-$(date +'%Y%m%d%H%M%S').json
+done
+
+cat mydb.json | redis-dump --convert | redis-cli
+
+
+redis-dump &gt; dump.txt
+cat dump.txt | redis-cli
+</code></pre><h3 id="redis-dump-gem">redis dump gem</h3>
+<p>gem install redis-dump -V</p>
+<pre tabindex="0"><code># 导出命令
+redis-dump –u 127.0.0.1:6379 &gt; data.json
+# 导出指定数据库数据
+redis-dump -u 127.0.0.1:6379 -d 15 &gt; data.json
+# 如果redis设有密码
+redis-dump –u :password@127.0.0.1:6379 &gt; data.json
+
+#导入命令
+cat  data.json | redis-load
+# 如果redis设有密码
+cat  data.json | redis-load -u :password@127.0.0.1:6379
+
+</code></pre><h3 id="adjust-maxmemory">adjust maxmemory</h3>
+<p>config set maxmemory 67108864
+config rewrite</p>
+
+        </div>
+
+        
+        <div class="row pl-3 pr-3">
+        
+        <div class="col-md-6 share-buttons">
+        
+            <strong>Share on:</strong>
+            
+            
+            
+            
+            
+            
+            
+             
+            
+            
+                <a class="btn btn-sm email-btn" href="mailto:?subject=Redis&body=https%3a%2f%2ftravis103.github.io%2fredis%2f" target="_blank">
+                  
+                  <i class="fas fa-envelope"></i>
+                </a>
+            
+          
+          </div>
+
+        
+        
+          
+            
+          
+          <div class="col-md-6 btn-improve-page">
+             
+               <a href="https://github.com/travis103/travis103.github.io.git/edit/source/content/redis/index.md" title="Improve this page" target="_blank" rel="noopener">
+            
+                <i class="fas fa-code-branch"></i>
+                Improve this page
+              </a>
+          </div>
+        
+        </div>
+
+
+
+      
+      <hr />
+        
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+    
+    
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+<div class="row next-prev-navigator">
+  
+    <div class="col-md-6 previous-article">
+      <a href="/react/" title="React" class="btn btn-outline-info">
+        <div><i class="fas fa-chevron-circle-left"></i> Prev</div>
+        <div class="next-prev-text">React</div>
+      </a>
+    </div>
+  
+  
+      
+      
+        
+      
+      <div class="col-md-6 next-article">
+        <a href="/redisearch/" title="Redisearch" class="btn btn-outline-info">
+          <div>Next <i class="fas fa-chevron-circle-right"></i></div>
+          <div class="next-prev-text">Redisearch</div>
+        </a>
+      </div>
+    
+</div>
+
+      <hr />
+
+      
+      
+        
+      
+      
+      
+
+      </div>
+    </div>
+  </div>
+  
+  <a id="scroll-to-top" class="btn"><i class="fas fa-chevron-circle-up"></i></a>
+  
+</section>
+
+
+      
+      
+  <section class="toc-section" id="toc-section">
+    
+    <div class="toc-holder">
+      <h5 class="text-center pl-3">Table of Contents</h5>
+      <hr>
+      <div class="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#hash">hash</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#集群">集群</a></li>
+        <li><a href="#rdbtools">RDBTools</a></li>
+        <li><a href="#phpredisadmin">phpRedisAdmin</a></li>
+        <li><a href="#installation">Installation</a></li>
+        <li><a href="#rdb--aof">rdb &amp; aof</a></li>
+        <li><a href="#redis-dump-npm">redis dump npm</a></li>
+        <li><a href="#redis-dump-gem">redis dump gem</a></li>
+        <li><a href="#adjust-maxmemory">adjust maxmemory</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+    </div>
+    
+  </section>
+
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+    
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer id="footer" class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+              
+                <li><a href=mailto:lee421175@gamil.com target="_blank" rel="noopener">
+                  <span><i class="fas fa-envelope"></i></span> <span>lee421175@gamil.com</span>
+                </a></li>
+              
+            
+              
+                <li><a href=https://github.com/travis103 target="_blank" rel="noopener">
+                  <span><i class="fab fa-github"></i></span> <span>travis103</span>
+                </a></li>
+              
+            
+          </ul>
+        </div>
+        
+        
+        
+      </div>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          
+        </div>
+        <div class="col-md-4 text-center">© 2022 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+    
+    
+<script src="/js/highlight.min.js"></script>
+<script src="/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+
+
+
+
+
+    
+</body>
+</html>

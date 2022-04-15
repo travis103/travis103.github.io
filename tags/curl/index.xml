@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>curl on Travis&#39; Blog</title>
+    <link>https://travis103.github.io/tags/curl/</link>
+    <description>Recent content in curl on Travis&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 29 Mar 2022 16:17:23 +0800</lastBuildDate><atom:link href="https://travis103.github.io/tags/curl/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title>Curl</title>
+      <link>https://travis103.github.io/curl/</link>
+      <pubDate>Tue, 29 Mar 2022 16:17:23 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/curl/</guid>
+      <description>Docs Install Configure Usage curl -X POST -H &amp;#39;Content-Type: application/json&amp;#39; -i &amp;#39;&amp;#39; --data &amp;#39;{ &amp;#34;pageNum&amp;#34;: 0 }&amp;#39; </description>
+    </item>
+    
+    
+  </channel>
+</rss>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>keepalived on Travis&#39; Blog</title>
+    <link>https://travis103.github.io/tags/keepalived/</link>
+    <description>Recent content in keepalived on Travis&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 14 Apr 2022 14:55:39 +0800</lastBuildDate><atom:link href="https://travis103.github.io/tags/keepalived/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title>Keepalived</title>
+      <link>https://travis103.github.io/keepalived/</link>
+      <pubDate>Thu, 14 Apr 2022 14:55:39 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/keepalived/</guid>
+      <description></description>
+    </item>
+    
+    
+  </channel>
+</rss>

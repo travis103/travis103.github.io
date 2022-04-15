@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>github on Travis&#39; Blog</title>
+    <link>https://travis103.github.io/tags/github/</link>
+    <description>Recent content in github on Travis&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Apr 2022 14:20:05 +0800</lastBuildDate><atom:link href="https://travis103.github.io/tags/github/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title>Github</title>
+      <link>https://travis103.github.io/github/</link>
+      <pubDate>Fri, 15 Apr 2022 14:20:05 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/github/</guid>
+      <description>Github Pages  1. Create a repository Head over to GitHub and create a new public repository named username.github.io, where username is your username (or organization name) on GitHub. If the first part of the repository doesn’t exactly match your username, it won’t work, so make sure to get it right. 2. Clone the repository Go to the folder where you want to store your project, and clone the new repository: git clone https://github.</description>
+    </item>
+    
+    <item>
+      <title>gh</title>
+      <link>https://travis103.github.io/gh/</link>
+      <pubDate>Fri, 18 Mar 2022 09:46:52 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/gh/</guid>
+      <description>Docs  https://cli.github.com/manual/
+ Install Configure gh config set editor vim gh config set editor &amp;#34;code --wait&amp;#34; gh config set git_protocol ssh --host github.com gh config set prompt disabled Usage brew install gh gh auth status gh auth login --with-token &amp;lt; token.txt gh auth login -h github.com gh auth logout -h github.com gh repo list </description>
+    </item>
+    
+    
+  </channel>
+</rss>

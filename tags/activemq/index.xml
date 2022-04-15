@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>activemq on Travis&#39; Blog</title>
+    <link>https://travis103.github.io/tags/activemq/</link>
+    <description>Recent content in activemq on Travis&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 25 Mar 2022 16:12:58 +0800</lastBuildDate><atom:link href="https://travis103.github.io/tags/activemq/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title>ActiveMQ</title>
+      <link>https://travis103.github.io/activemq/</link>
+      <pubDate>Fri, 25 Mar 2022 16:12:58 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/activemq/</guid>
+      <description></description>
+    </item>
+    
+    
+  </channel>
+</rss>

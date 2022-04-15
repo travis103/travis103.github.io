@@ -1,0 +1,17 @@
+---
+# tasks file for roles/k8s/kubelet
+
+- name: /etc/yum.repos.d/kubernetes.repo
+  template:
+      src: kubernetes.repo
+      dest: /etc/yum.repos.d/kubernetes.repo
+
+- name: kubelet install
+  shell: yum install -y kubelet --disableexcludes=kubernetes
+
+- name: enable but stop kubelet
+  systemd:
+    name: kubelet
+    enabled: yes
+    state: stopped
+    daemon_reload: yes

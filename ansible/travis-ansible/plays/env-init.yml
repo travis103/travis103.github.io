@@ -1,0 +1,9 @@
+---
+  - hosts:
+      - osds
+    gather_facts: yes
+    become: yes
+    become_user: root
+    become_method: sudo
+    roles:
+      - { role: roles/common/env-init }

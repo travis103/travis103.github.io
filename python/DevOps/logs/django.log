@@ -1,0 +1,833 @@
+2016-10-19 17:00:49,503 Login Successed, User: Brian
+2016-10-19 17:05:35,007 Logout, User: Brian
+2016-10-19 17:05:39,843 Login Successed, User: Brian
+2016-10-19 17:08:41,207 Logout, User: Brian
+2016-10-19 17:08:47,344 Login Successed, User: Brian
+2016-10-19 17:10:10,076 Logout, User: Brian
+2016-10-19 17:10:14,698 Login Successed, User: Zoya
+2016-10-19 17:14:56,403 Logout, User: Zoya
+2016-10-19 17:16:29,360 Login Successed, User: gerry
+2016-10-19 17:20:18,072 Login Failed, User: cindy
+2016-10-19 17:20:28,217 Login Failed, User: cindy
+2016-10-19 17:20:49,872 Login Successed, User: cindy
+2016-10-19 17:28:03,653 Login Successed, User: feynman
+2016-10-19 17:49:57,890 Logout, User: gerry
+2016-10-19 17:50:02,577 Login Successed, User: Brian
+2016-10-19 18:23:46,469 Login Failed, User: vincent
+2016-10-19 18:26:15,163 Login Successed, User: allen
+2016-10-19 18:32:05,936 Login Successed, User: gerry
+2016-10-20 08:58:26,419 Login Successed, User: Brian
+2016-10-20 08:59:58,654 Delete snap-5a6e4d69
+2016-10-20 08:59:58,825 Delete snap-ed2507de
+2016-10-20 08:59:58,925 Delete snap-5f231c6c
+2016-10-20 08:59:58,928 Error AMIs: []
+2016-10-20 09:00:15,229 Error AMIs: []
+2016-10-20 09:54:30,686 Login Successed, User: cindy
+2016-10-20 11:00:01,241 Login Successed, User: Brian
+2016-10-20 20:22:30,985 Login Successed, User: zoya
+2016-10-21 14:07:47,377 Login Successed, User: gerry
+2016-10-22 00:26:47,769 Login Successed, User: allen
+2016-10-24 09:09:53,492 Login Successed, User: Brian
+2016-10-24 09:11:39,748 Login Successed, User: feynman
+2016-10-25 09:44:56,610 Login Successed, User: gerry
+2016-10-25 09:50:52,763 Login Successed, User: Brian
+2016-10-25 10:02:30,122 Login Failed, User: max
+2016-10-25 10:03:03,847 Login Successed, User: max
+2016-10-25 19:08:28,145 Login Successed, User: Brian
+2016-10-26 09:12:12,802 Login Successed, User: Brian
+2016-10-26 14:59:13,913 Login Successed, User: zoya
+2016-10-26 16:40:58,873 Login Successed, User: allen
+2016-10-26 16:42:21,186 Login Successed, User: tommy
+2016-10-26 18:45:13,225 Login Successed, User: max
+2016-10-27 16:11:10,398 Login Successed, User: Brian
+2016-10-27 16:14:39,975 Logout, User: Brian
+2016-10-27 16:15:06,703 Login Successed, User: Max
+2016-10-27 16:15:21,835 Logout, User: Max
+2016-10-27 16:15:26,236 Login Successed, User: Brian
+2016-10-27 16:19:32,333 Login Successed, User: feynman
+2016-10-28 09:10:50,863 Login Successed, User: Brian
+2016-11-01 00:54:45,870 Login Successed, User: Brian
+2016-11-01 04:36:57,983 Login Successed, User: Brian
+2016-11-01 07:35:01,332 Login Successed, User: Brian
+2016-11-01 10:33:58,903 Login Successed, User: gerry
+2016-11-01 12:41:20,734 Login Successed, User: Brian
+2016-11-01 18:34:38,748 Login Successed, User: Brian
+2016-11-02 17:32:22,601 Login Failed, User: cindy
+2016-11-02 17:32:34,190 Login Failed, User: cindy
+2016-11-02 17:33:17,684 Login Successed, User: gerry
+2016-11-03 11:00:04,856 Login Successed, User: max
+2016-11-03 14:12:19,121 Login Successed, User: Brian
+2016-11-04 15:58:57,306 Login Successed, User: Brian
+2016-11-04 18:29:15,344 Login Successed, User: max
+2016-11-07 11:04:14,988 Login Successed, User: gerry
+2016-11-07 13:43:54,437 Login Successed, User: gerry
+2016-11-08 15:57:19,615 Login Successed, User: zoya
+2016-11-08 16:51:06,003 Login Successed, User: Zoya
+2016-11-08 16:51:18,953 Logout, User: Zoya
+2016-11-08 17:52:18,509 Login Successed, User: allen
+2016-11-09 09:31:30,888 Login Successed, User: zoya
+2016-11-09 13:36:07,391 Login Successed, User: allen
+2016-11-09 17:42:48,116 Login Successed, User: Brian
+2016-11-10 09:22:27,287 Login Successed, User: zoya
+2016-11-10 11:49:04,048 Login Successed, User: allen
+2016-11-10 16:31:42,724 Login Successed, User: Fonda
+2016-11-10 17:25:43,168 Login Successed, User: allen
+2016-11-10 17:57:08,098 Login Successed, User: feynman
+2016-11-11 11:59:15,541 Login Successed, User: tommy
+2016-11-11 13:44:07,340 Login Successed, User: Brian
+2016-11-11 15:35:59,314 Login Successed, User: zoya
+2016-11-11 15:57:07,946 Login Successed, User: allen
+2016-11-11 16:42:43,550 Error AMIs: []
+2016-11-11 16:43:38,231 Error AMIs: []
+2016-11-14 10:25:03,582 Login Successed, User: Brian
+2016-11-14 13:48:12,257 Login Successed, User: zoya
+2016-11-15 15:33:27,987 Login Successed, User: zoya
+2016-11-15 16:51:34,612 Login Successed, User: allen
+2016-11-16 09:44:29,230 Login Successed, User: Fonda
+2016-11-16 09:45:42,372 Login Successed, User: Brian
+2016-11-17 11:35:01,254 Login Successed, User: zoya
+2016-11-17 11:35:08,417 Login Successed, User: gerry
+2016-11-17 11:35:56,924 Login Successed, User: Brian
+2016-11-17 11:36:00,402 Login Successed, User: jimmy
+2016-11-18 09:33:06,201 Login Successed, User: zoya
+2016-11-18 09:38:07,356 Login Successed, User: allen
+2016-11-18 10:26:20,043 Login Successed, User: Brian
+2016-11-21 15:40:29,613 Login Successed, User: Brian
+2016-11-21 18:32:26,510 Login Successed, User: allen
+2016-11-22 09:09:30,754 Login Successed, User: Brian
+2016-11-22 09:24:35,247 Delete snap-738a543f
+2016-11-22 09:24:35,388 Delete snap-71fa853e
+2016-11-22 09:24:35,551 Delete snap-6e46a030
+2016-11-22 09:24:35,707 Delete snap-6ee17a38
+2016-11-22 09:24:35,823 Delete snap-d7c7bef5
+2016-11-22 09:24:35,937 Delete snap-f96abbdc
+2016-11-22 09:24:36,042 Delete snap-f885c8de
+2016-11-22 09:24:36,132 Delete snap-acaf2b90
+2016-11-22 09:24:36,246 Delete snap-b2b0058d
+2016-11-22 09:24:36,365 Delete snap-ae9cbb9d
+2016-11-22 09:24:36,487 Delete snap-f36543c0
+2016-11-22 09:24:36,596 Delete snap-fe5771cd
+2016-11-22 09:24:36,721 Delete snap-b4240587
+2016-11-22 09:24:36,843 Delete snap-1fe5c42c
+2016-11-22 09:24:36,990 Delete snap-4a80a179
+2016-11-22 09:24:37,110 Delete snap-e597b6d6
+2016-11-22 09:24:37,250 Delete snap-d12808e2
+2016-11-22 09:24:37,369 Delete snap-13f5d520
+2016-11-22 09:24:37,462 Delete snap-6ce8cb5f
+2016-11-22 09:24:37,576 Delete snap-2682a115
+2016-11-22 09:24:37,660 Delete snap-877456b4
+2016-11-22 09:24:37,793 Delete snap-34446607
+2016-11-22 09:24:37,914 Delete snap-ab6c4098
+2016-11-22 09:24:38,038 Delete snap-633e1250
+2016-11-22 09:24:38,151 Delete snap-8addf1b9
+2016-11-22 09:24:38,256 Delete snap-362a0505
+2016-11-22 09:24:38,554 Delete snap-befed18d
+2016-11-22 09:24:38,676 Delete snap-c185aaf2
+2016-11-22 09:24:38,773 Delete snap-1199b622
+2016-11-22 09:24:38,860 Delete snap-a9507e9a
+2016-11-22 09:24:43,641 Delete snap-4feec07c
+2016-11-22 09:24:43,758 Delete snap-35e9c706
+2016-11-22 09:24:44,887 Delete snap-7c84aa4f
+2016-11-22 09:24:46,364 Delete snap-f42a03c7
+2016-11-22 09:24:46,512 Delete snap-78022b4b
+2016-11-22 09:24:48,760 Delete snap-55bc9566
+2016-11-22 09:24:48,902 Delete snap-a48ba297
+2016-11-22 09:24:49,869 Delete snap-8e99b0bd
+2016-11-22 09:24:50,676 Delete snap-a0426a93
+2016-11-22 09:24:51,618 Delete snap-2f2f071c
+2016-11-22 09:24:53,937 Delete snap-dc0820ef
+2016-11-22 09:24:54,048 Delete snap-e3cce4d0
+2016-11-22 09:24:54,845 Delete snap-dad9f1e9
+2016-11-22 09:24:55,446 Delete snap-c7bc94f4
+2016-11-22 09:24:57,292 Delete snap-c17b50f2
+2016-11-22 09:24:57,422 Delete snap-0e5f743d
+2016-11-22 09:24:57,670 Delete snap-063c1735
+2016-11-22 09:24:57,801 Delete snap-52321961
+2016-11-22 09:25:01,196 Delete snap-dfe2c9ec
+2016-11-22 09:25:01,834 Delete snap-91d5ffa2
+2016-11-22 09:25:02,865 Delete snap-798aa04a
+2016-11-22 09:25:03,406 Delete snap-a855609b
+2016-11-22 09:25:05,479 Delete snap-c75c69f4
+2016-11-22 09:25:05,623 Delete snap-0190a532
+2016-11-22 09:25:10,249 Delete snap-b1417582
+2016-11-22 09:25:10,370 Delete snap-4c3e0a7f
+2016-11-22 09:25:10,512 Delete snap-c2fcc8f1
+2016-11-22 09:25:10,640 Delete snap-245d6a17
+2016-11-22 09:25:10,787 Delete snap-2caf981f
+2016-11-22 09:25:11,355 Delete snap-324e7801
+2016-11-22 09:25:12,958 Delete snap-bd11278e
+2016-11-22 09:25:13,661 Delete snap-1085b423
+2016-11-22 09:25:13,927 Delete snap-5b8ebf68
+2016-11-22 09:25:15,436 Delete snap-82eadab1
+2016-11-22 09:25:15,772 Delete snap-1ccafa2f
+2016-11-22 09:25:18,061 Delete snap-163a0925
+2016-11-22 09:25:19,157 Delete snap-f1487ac2
+2016-11-22 09:25:20,124 Delete snap-2d07351e
+2016-11-22 09:25:21,015 Delete snap-46d1e375
+2016-11-22 09:25:22,126 Delete snap-f4a092c7
+2016-11-22 09:25:23,989 Delete snap-67201d54
+2016-11-22 09:25:24,088 Delete snap-3ab08d09
+2016-11-22 09:25:25,578 Delete snap-9186bba2
+2016-11-22 09:25:25,711 Delete snap-3f7d410c
+2016-11-22 09:25:27,551 Delete snap-8d5a66be
+2016-11-22 09:25:27,677 Delete snap-862a16b5
+2016-11-22 09:25:27,801 Delete snap-afeed29c
+2016-11-22 09:25:27,884 Delete snap-70a59943
+2016-11-22 09:25:28,003 Delete snap-db9ca0e8
+2016-11-22 09:25:28,083 Delete snap-bc7a458f
+2016-11-22 09:25:28,196 Delete snap-b2122d81
+2016-11-22 09:25:28,297 Delete snap-41635d72
+2016-11-22 09:25:28,416 Delete snap-32033d01
+2016-11-22 09:25:28,554 Delete snap-eae9d7d9
+2016-11-22 09:25:28,652 Delete snap-5c82bc6f
+2016-11-22 09:25:28,737 Delete snap-267ee412
+2016-11-22 09:25:28,802 Delete snap-01e6bd36
+2016-11-22 09:25:28,900 Delete snap-da937bec
+2016-11-22 09:25:28,984 Delete snap-d4d95adc
+2016-11-22 09:25:29,048 Delete snap-50871758
+2016-11-22 09:25:29,114 Delete snap-62443d6a
+2016-11-22 09:25:29,240 Delete snap-a0d2dda8
+2016-11-22 09:25:29,368 Delete snap-58c13655
+2016-11-22 09:25:29,446 Delete snap-d795f8d8
+2016-11-22 09:25:29,538 Delete snap-3efde730
+2016-11-22 09:25:29,632 Delete snap-530de4a2
+2016-11-22 09:25:29,732 Delete snap-87a34876
+2016-11-22 09:25:29,861 Delete snap-536b80a2
+2016-11-22 09:25:29,989 Delete snap-200ef2d1
+2016-11-22 09:25:30,099 Delete snap-3bd62eca
+2016-11-22 09:25:30,101 Error AMIs: []
+2016-11-22 14:36:34,901 Login Successed, User: cindy
+2016-11-23 10:35:44,017 Login Successed, User: cindy
+2016-11-23 13:41:19,927 Login Successed, User: Brian
+2016-11-24 17:42:37,359 Login Successed, User: allen
+2016-11-25 11:38:27,059 Login Successed, User: allen
+2016-11-25 14:37:05,167 Login Successed, User: Fonda
+2016-11-25 16:03:39,331 Login Successed, User: Brian
+2016-11-28 09:26:55,091 Login Successed, User: allen
+2016-11-28 13:59:00,874 Login Successed, User: gerry
+2016-11-28 19:50:24,266 Login Successed, User: Brian
+2016-11-30 16:31:15,196 Login Successed, User: max
+2016-12-01 09:58:33,935 Login Successed, User: Brian
+2016-12-01 10:07:27,488 Login Successed, User: allen
+2016-12-01 14:02:37,547 Login Successed, User: allen
+2016-12-01 16:11:18,561 Login Failed, User: vincent
+2016-12-01 16:11:26,686 Login Failed, User: vincent
+2016-12-01 16:11:30,500 Login Failed, User: vincent
+2016-12-01 16:22:15,784 Login Failed, User: vincent
+2016-12-01 16:22:24,856 Login Failed, User: vincent
+2016-12-01 16:27:32,951 Logout, User: Brian
+2016-12-01 16:27:38,693 Login Successed, User: Brian
+2016-12-01 16:27:41,521 Logout, User: Brian
+2016-12-01 16:27:46,448 Login Successed, User: vincent
+2016-12-01 16:28:06,235 Logout, User: vincent
+2016-12-01 16:28:07,297 Login Successed, User: vincent
+2016-12-01 16:46:01,301 Login Successed, User: Brian
+2016-12-01 18:44:39,090 Login Successed, User: Fonda
+2016-12-02 11:58:18,681 Login Successed, User: Brian
+2016-12-05 11:00:14,544 Login Successed, User: cindy
+2016-12-05 11:26:38,058 Login Successed, User: Brian
+2016-12-06 10:11:08,218 Login Successed, User: cindy
+2016-12-06 14:33:31,774 Login Successed, User: Fonda
+2016-12-07 14:42:51,405 Login Successed, User: Brian
+2016-12-08 10:04:04,506 Login Successed, User: Brian
+2016-12-09 19:27:19,604 Login Successed, User: Brian
+2016-12-09 19:43:03,817 Login Successed, User: Brian
+2016-12-12 09:03:35,096 Login Successed, User: Brian
+2016-12-12 11:41:15,357 Login Successed, User: cindy
+2016-12-12 19:46:25,557 Login Successed, User: gerry
+2016-12-13 18:05:08,748 Login Successed, User: Brian
+2016-12-14 00:37:37,335 Login Successed, User: Brian
+2016-12-14 01:28:00,034 Delete snap-2d41ae5e
+2016-12-14 01:28:00,192 Delete snap-ca8ccb84
+2016-12-14 01:28:00,341 Delete snap-a06221e3
+2016-12-14 01:28:00,484 Delete snap-06c1f345
+2016-12-14 01:28:00,626 Delete snap-78140b3b
+2016-12-14 01:28:00,731 Delete snap-5bf0147b
+2016-12-14 01:28:00,855 Delete snap-5960ef69
+2016-12-14 01:28:00,981 Delete snap-32eec901
+2016-12-14 01:28:01,094 Delete snap-4864427b
+2016-12-14 01:28:01,234 Delete snap-61614752
+2016-12-14 01:28:01,350 Delete snap-d67553e5
+2016-12-14 01:28:01,514 Delete snap-914264a2
+2016-12-14 01:28:01,767 Delete snap-27517714
+2016-12-14 01:28:01,922 Delete snap-facfe9c9
+2016-12-14 01:28:02,112 Delete snap-ca1534f9
+2016-12-14 01:28:02,231 Delete snap-8c5878bf
+2016-12-14 01:28:02,322 Delete snap-5900206a
+2016-12-14 01:28:02,474 Delete snap-52e8c861
+2016-12-14 01:28:02,596 Delete snap-2fa1811c
+2016-12-14 01:28:02,715 Delete snap-1d9cbc2e
+2016-12-14 01:28:02,850 Delete snap-6827045b
+2016-12-14 01:28:02,963 Delete snap-5f0e2d6c
+2016-12-14 01:28:03,071 Delete snap-e80220db
+2016-12-14 01:28:03,194 Delete snap-df0725ec
+2016-12-14 01:28:03,320 Delete snap-b686a485
+2016-12-14 01:28:04,403 Delete snap-8e5e73bd
+2016-12-14 01:28:05,558 Delete snap-730b2640
+2016-12-14 01:28:07,200 Delete snap-141c3127
+2016-12-14 01:28:07,307 Delete snap-1182af22
+2016-12-14 01:28:07,535 Delete snap-1a97ba29
+2016-12-14 01:28:07,646 Delete snap-0975593a
+2016-12-14 01:28:10,373 Delete snap-26c8e415
+2016-12-14 01:28:11,389 Delete snap-bfdaf68c
+2016-12-14 01:28:12,717 Delete snap-93a38fa0
+2016-12-14 01:28:13,223 Delete snap-8b7f51b8
+2016-12-14 01:28:13,397 Delete snap-26b79915
+2016-12-14 01:28:16,133 Delete snap-60466f53
+2016-12-14 01:28:16,376 Delete snap-ac2c059f
+2016-12-14 01:28:17,439 Delete snap-23042d10
+2016-12-14 01:28:18,451 Delete snap-22f3da11
+2016-12-14 01:28:18,927 Delete snap-6983aa5a
+2016-12-14 01:28:23,487 Delete snap-5b4e6668
+2016-12-14 01:28:23,601 Delete snap-873810b4
+2016-12-14 01:28:23,735 Delete snap-62d0f851
+2016-12-14 01:28:23,855 Delete snap-267f5415
+2016-12-14 01:28:24,903 Delete snap-817c57b2
+2016-12-14 01:28:25,472 Delete snap-fae4cfc9
+2016-12-14 01:28:25,671 Delete snap-3cc4ef0f
+2016-12-14 01:28:27,819 Delete snap-d7d2f9e4
+2016-12-14 01:28:28,946 Delete snap-6abe9559
+2016-12-14 01:28:29,684 Delete snap-55321866
+2016-12-14 01:28:29,975 Delete snap-e2113bd1
+2016-12-14 01:28:32,359 Delete snap-efddf7dc
+2016-12-14 01:28:32,488 Delete snap-76586f45
+2016-12-14 01:28:33,159 Delete snap-e4f0c7d7
+2016-12-14 01:28:35,150 Delete snap-7fa0974c
+2016-12-14 01:28:35,278 Delete snap-bb8dba88
+2016-12-14 01:28:36,317 Delete snap-6ba49258
+2016-12-14 01:28:36,596 Delete snap-229ea811
+2016-12-14 01:28:39,222 Delete snap-d36150e0
+2016-12-14 01:28:39,344 Delete snap-da5969e9
+2016-12-14 01:28:41,401 Delete snap-5ffece6c
+2016-12-14 01:28:41,510 Delete snap-9cd1e2af
+2016-12-14 01:28:41,674 Delete snap-9bb182a8
+2016-12-14 01:28:41,794 Delete snap-fd5765ce
+2016-12-14 01:28:42,392 Delete snap-f53406c6
+2016-12-14 01:28:42,475 Delete snap-30c8fa03
+2016-12-14 01:28:42,562 Delete snap-e63e03d5
+2016-12-14 01:28:42,668 Delete snap-1a380529
+2016-12-14 01:28:42,756 Delete snap-22ffc211
+2016-12-14 01:28:42,846 Delete snap-672f1354
+2016-12-14 01:28:42,928 Delete snap-a00c3093
+2016-12-14 01:28:43,076 Delete snap-460e3275
+2016-12-14 01:28:43,161 Delete snap-df5b64ec
+2016-12-14 01:28:43,258 Delete snap-5d3b046e
+2016-12-14 01:28:43,379 Delete snap-68d3ec5b
+2016-12-14 01:28:43,489 Delete snap-cc9aa5ff
+2016-12-14 01:28:43,608 Delete snap-03231d30
+2016-12-14 01:28:43,699 Delete snap-82477eb1
+2016-12-14 01:28:43,776 Delete snap-5317b067
+2016-12-14 01:28:43,893 Delete snap-89d4fcbe
+2016-12-14 01:28:43,971 Delete snap-b9c3608f
+2016-12-14 01:28:44,059 Delete snap-d447c4dc
+2016-12-14 01:28:44,149 Delete snap-c20e9cca
+2016-12-14 01:28:44,232 Delete snap-8995e081
+2016-12-14 01:28:44,318 Delete snap-13394e1b
+2016-12-14 01:28:44,399 Delete snap-1b87ad13
+2016-12-14 01:28:44,460 Delete snap-ab98a2a3
+2016-12-14 01:28:44,549 Delete snap-f54745fd
+2016-12-14 01:28:44,625 Delete snap-0c090704
+2016-12-14 01:28:44,728 Delete snap-daaab7d2
+2016-12-14 01:28:44,849 Delete snap-1da0ad12
+2016-12-14 01:28:44,958 Delete snap-b6db4eb8
+2016-12-14 01:28:45,067 Delete snap-bbafa0b5
+2016-12-14 01:28:45,157 Delete snap-8cca3f8d
+2016-12-14 01:28:45,250 Delete snap-4826c8b9
+2016-12-14 01:28:45,370 Delete snap-0359b7f2
+2016-12-14 01:28:45,496 Delete snap-216f98d0
+2016-12-14 01:28:45,579 Delete snap-306d91c1
+2016-12-14 01:28:45,674 Delete snap-5fab52ae
+2016-12-14 01:28:45,676 Error AMIs: []
+2016-12-14 03:22:04,764 Login Successed, User: tommy
+2016-12-14 05:34:09,612 Login Successed, User: Brian
+2016-12-14 09:55:30,758 Login Successed, User: zoya
+2016-12-14 18:14:53,101 Login Successed, User: cindy
+2016-12-14 18:26:38,468 Login Successed, User: feynman
+2016-12-14 19:11:22,903 Login Successed, User: tommy
+2016-12-15 11:44:52,955 Login Successed, User: max
+2016-12-15 16:58:27,939 Login Successed, User: gerry
+2016-12-15 17:33:05,994 Login Successed, User: Brian
+2016-12-15 20:02:32,343 Login Successed, User: Brian
+2016-12-16 11:01:52,346 Login Successed, User: Brian
+2016-12-16 17:52:48,862 Login Successed, User: cindy
+2016-12-16 18:39:15,748 Login Successed, User: feynman
+2016-12-17 17:02:11,671 Login Successed, User: feynman
+2016-12-19 09:18:50,734 Login Failed, User: Fonda
+2016-12-19 09:18:56,432 Login Successed, User: Fonda
+2016-12-19 18:25:42,206 Login Successed, User: max
+2016-12-19 21:13:59,064 Login Successed, User: allen
+2016-12-20 11:01:44,569 Login Successed, User: allen
+2016-12-20 18:25:31,762 Login Successed, User: cindy
+2016-12-20 18:35:45,237 Login Successed, User: jimmy
+2016-12-20 18:38:14,487 Login Successed, User: gerry
+2016-12-21 08:44:30,996 Login Successed, User: Brian
+2016-12-21 16:04:06,778 Login Successed, User: Fonda
+2016-12-21 17:11:10,177 Login Successed, User: Brian
+2016-12-21 20:49:39,452 Login Successed, User: max
+2016-12-22 10:32:27,014 Login Successed, User: max
+2016-12-22 19:38:11,885 Login Successed, User: tommy
+2016-12-22 21:25:27,649 Login Successed, User: Brian
+2016-12-23 13:57:08,947 Login Successed, User: Brian
+2016-12-23 14:37:55,635 Login Successed, User: tommy
+2016-12-23 17:41:14,196 Login Successed, User: cindy
+2016-12-23 23:14:01,843 Login Successed, User: Brian
+2016-12-26 15:38:15,458 Login Successed, User: gerry
+2016-12-26 16:07:23,381 Login Successed, User: Brian
+2016-12-26 18:30:47,604 Login Successed, User: tommy
+2016-12-28 14:59:27,504 Login Successed, User: Brian
+2016-12-29 12:35:05,859 Login Successed, User: Fonda
+2016-12-29 16:52:31,815 Login Successed, User: feynman
+2016-12-31 10:44:29,209 Login Successed, User: Brian
+2017-01-03 14:26:51,037 Login Successed, User: cindy
+2017-01-03 15:12:11,017 Login Successed, User: Brian
+2017-01-03 16:48:22,841 Login Successed, User: tommy
+2017-01-05 17:17:31,461 Login Successed, User: allen
+2017-01-06 17:10:15,041 Login Successed, User: vincent
+2017-01-10 19:16:11,192 Login Successed, User: gerry
+2017-01-11 11:39:55,618 Login Successed, User: Brian
+2017-01-11 15:36:42,542 Delete snap-905adcf5
+2017-01-11 15:36:42,655 Delete snap-4a05846c
+2017-01-11 15:36:42,807 Delete snap-de7fb0e6
+2017-01-11 15:36:42,945 Delete snap-33af8800
+2017-01-11 15:36:43,086 Delete snap-08ae893b
+2017-01-11 15:36:43,254 Delete snap-8790b6b4
+2017-01-11 15:36:43,384 Delete snap-a978599a
+2017-01-11 15:36:43,684 Delete snap-a1220392
+2017-01-11 15:36:43,824 Delete snap-ff5d7dcc
+2017-01-11 15:36:44,056 Delete snap-37b29204
+2017-01-11 15:36:44,250 Delete snap-43705270
+2017-01-11 15:36:44,591 Delete snap-c0ceecf3
+2017-01-11 15:36:44,686 Delete snap-9091b3a3
+2017-01-11 15:36:44,825 Delete snap-e9577ada
+2017-01-11 15:36:45,395 Delete snap-512c0162
+2017-01-11 15:36:45,573 Delete snap-dce4c9ef
+2017-01-11 15:36:45,739 Delete snap-81f1dcb2
+2017-01-11 15:36:45,860 Delete snap-83b895b0
+2017-01-11 15:36:46,005 Delete snap-8a87aab9
+2017-01-11 15:36:46,124 Delete snap-7bcfe348
+2017-01-11 15:36:46,221 Delete snap-46cfe375
+2017-01-11 15:36:46,341 Delete snap-7389a540
+2017-01-11 15:36:46,494 Delete snap-7d80ac4e
+2017-01-11 15:36:46,825 Delete snap-0b3b1438
+2017-01-11 15:36:47,068 Delete snap-ebd8f7d8
+2017-01-11 15:36:47,210 Delete snap-740c2247
+2017-01-11 15:36:47,312 Delete snap-a3dcf290
+2017-01-11 15:36:47,556 Delete snap-7480ae47
+2017-01-11 15:36:47,895 Delete snap-0d9cb23e
+2017-01-11 15:36:49,034 Delete snap-2febc31c
+2017-01-11 15:36:49,254 Delete snap-2681a915
+2017-01-11 15:36:49,731 Delete snap-f5f1dbc6
+2017-01-11 15:36:52,365 Delete snap-ddd3f9ee
+2017-01-11 15:36:52,967 Delete snap-e9ac86da
+2017-01-11 15:36:53,072 Delete snap-d2ac86e1
+2017-01-11 15:36:56,718 Delete snap-3dbf950e
+2017-01-11 15:36:56,841 Delete snap-eeb298dd
+2017-01-11 15:36:56,967 Delete snap-8ef5c0bd
+2017-01-11 15:36:59,086 Delete snap-e6ae9bd5
+2017-01-11 15:36:59,194 Delete snap-559aaf66
+2017-01-11 15:37:00,202 Delete snap-870430b4
+2017-01-11 15:37:00,442 Delete snap-3905310a
+2017-01-11 15:37:04,803 Delete snap-d3e5d1e0
+2017-01-11 15:37:04,916 Delete snap-06152235
+2017-01-11 15:37:05,212 Delete snap-6cba8d5f
+2017-01-11 15:37:05,331 Delete snap-5892a56b
+2017-01-11 15:37:07,465 Delete snap-5091a663
+2017-01-11 15:37:07,611 Delete snap-bc2c1a8f
+2017-01-11 15:37:07,715 Delete snap-25b88e16
+2017-01-11 15:37:09,667 Delete snap-9fc7f6ac
+2017-01-11 15:37:09,936 Delete snap-0697a635
+2017-01-11 15:37:10,330 Delete snap-0585b436
+2017-01-11 15:37:13,184 Delete snap-26774715
+2017-01-11 15:37:13,318 Delete snap-63477750
+2017-01-11 15:37:14,440 Delete snap-7dc3f34e
+2017-01-11 15:37:16,430 Delete snap-df2714ec
+2017-01-11 15:37:16,814 Delete snap-942c1fa7
+2017-01-11 15:37:16,953 Delete snap-e80a38db
+2017-01-11 15:37:17,498 Delete snap-46aa9875
+2017-01-11 15:37:18,090 Delete snap-c87e43fb
+2017-01-11 15:37:20,149 Delete snap-a10b3792
+2017-01-11 15:37:20,399 Delete snap-6febd75c
+2017-01-11 15:37:21,447 Delete snap-62340b51
+2017-01-11 15:37:23,909 Delete snap-b0320d83
+2017-01-11 15:37:24,024 Delete snap-30a09f03
+2017-01-11 15:37:24,149 Delete snap-fbc0fec8
+2017-01-11 15:37:24,483 Delete snap-b931088a
+2017-01-11 15:37:24,607 Delete snap-c22770f4
+2017-01-11 15:37:24,706 Delete snap-ca3458c2
+2017-01-11 15:37:24,806 Delete snap-5baf8a53
+2017-01-11 15:37:24,878 Delete snap-0c018403
+2017-01-11 15:37:24,960 Delete snap-5248a4a3
+2017-01-11 15:37:25,887 Delete snap-3656b9c7
+2017-01-11 15:37:25,993 Delete snap-0ff306fe
+2017-01-11 15:37:26,946 Delete snap-1ab94deb
+2017-01-11 15:37:27,034 Delete snap-6f28df9e
+2017-01-11 15:37:27,143 Delete snap-77b84886
+2017-01-11 15:37:27,268 Delete snap-555caca4
+2017-01-11 15:37:27,388 Delete snap-4af406bb
+2017-01-11 15:37:27,503 Delete snap-053bc9f4
+2017-01-11 15:37:27,586 Delete snap-be2cd44f
+2017-01-11 15:37:27,678 Delete snap-0d3b18cb8004c50ff
+2017-01-11 15:37:28,264 Delete snap-0b29e87b3fdc2a9b2
+2017-01-11 15:37:28,352 Delete snap-0d70bc14b3317ee88
+2017-01-11 15:37:33,047 Delete snap-0217213c6aef3c1a5
+2017-01-11 15:37:33,177 Delete snap-07d3eab185ae23753
+2017-01-11 15:37:33,299 Delete snap-0ab696c14ec965e76
+2017-01-11 15:37:33,412 Delete snap-0b60d69b90b558bef
+2017-01-11 15:37:33,535 Delete snap-08af0c83db1610be3
+2017-01-11 15:37:33,686 Delete snap-0880d2ac8a7f677b8
+2017-01-11 15:37:33,780 Delete snap-068f115517f298126
+2017-01-11 15:37:33,896 Delete snap-03957665cfea49319
+2017-01-11 15:37:33,995 Delete snap-016bebe18fda18ebe
+2017-01-11 15:37:37,139 Delete snap-011c647f055858276
+2017-01-11 15:37:37,261 Delete snap-01b2949df4f7687de
+2017-01-11 15:37:37,394 Delete snap-0e8083366ca2a8526
+2017-01-11 15:37:37,496 Delete snap-021abda467d0d6333
+2017-01-11 15:37:37,587 Delete snap-0c120f66ab57014b9
+2017-01-11 15:37:37,704 Delete snap-0ca44461c5b6ac106
+2017-01-11 15:37:37,792 Delete snap-0ba5913244eafa6ac
+2017-01-11 15:37:37,794 Error AMIs: []
+2017-01-12 18:15:40,240 Login Successed, User: Brian
+2017-01-13 11:37:34,557 Login Successed, User: allen
+2017-01-13 11:46:19,660 Login Successed, User: max
+2017-01-13 14:50:37,655 Login Successed, User: Brian
+2017-01-13 14:53:27,734 Login Successed, User: William
+2017-01-14 10:16:57,627 Login Successed, User: Brian
+2017-01-16 10:12:00,507 Login Successed, User: allen
+2017-01-16 10:13:23,651 Login Successed, User: zoya
+2017-01-16 11:21:51,447 Login Successed, User: jimmy
+2017-01-16 11:31:25,087 Login Successed, User: Brian
+2017-01-16 15:18:57,507 Login Successed, User: Fonda
+2017-01-17 09:10:56,269 Login Successed, User: Brian
+2017-01-17 17:16:43,317 Login Successed, User: Brian
+2017-01-18 09:53:34,391 Login Successed, User: allen
+2017-01-18 11:15:45,942 Login Successed, User: Fonda
+2017-01-18 14:26:54,410 Login Successed, User: Brian
+2017-01-19 10:42:22,085 Login Successed, User: gerry
+2017-01-19 11:02:31,587 Login Successed, User: Brian
+2017-01-19 11:47:53,209 Login Successed, User: cindy
+2017-01-20 16:57:11,531 Login Successed, User: cindy
+2017-01-20 17:46:25,766 Login Successed, User: feynman
+2017-01-22 10:54:14,599 Login Successed, User: Brian
+2017-01-23 11:50:04,719 Login Successed, User: cindy
+2017-01-23 14:08:07,662 Login Successed, User: feynman
+2017-01-23 16:22:01,058 Login Successed, User: max
+2017-01-24 09:43:39,645 Login Successed, User: Brian
+2017-01-24 13:45:47,590 Login Successed, User: gerry
+2017-01-24 14:00:03,675 Logout, User: Brian
+2017-01-24 14:00:26,674 Login Successed, User: max
+2017-01-24 14:25:22,853 Logout, User: max
+2017-01-24 14:25:27,318 Login Successed, User: Brian
+2017-01-24 14:46:45,458 Delete snap-89efc9ba
+2017-01-24 14:46:45,572 Delete snap-390e2f0a
+2017-01-24 14:46:45,663 Delete snap-be7a568d
+2017-01-24 14:46:45,759 Delete snap-c7cee1f4
+2017-01-24 14:46:45,888 Delete snap-f6163ec5
+2017-01-24 14:46:46,018 Delete snap-208aa113
+2017-01-24 14:46:46,118 Delete snap-7c6b5d4f
+2017-01-24 14:46:46,275 Delete snap-f72111c4
+2017-01-24 14:46:46,374 Delete snap-35ccf106
+2017-01-24 14:46:46,461 Delete snap-234d7110
+2017-01-24 14:46:46,543 Delete snap-ce91adfd
+2017-01-24 14:46:46,637 Delete snap-97a19ea4
+2017-01-24 14:46:46,696 Delete snap-c66d53f5
+2017-01-24 14:46:46,770 Delete snap-3cfc8634
+2017-01-24 14:46:46,864 Delete snap-491ec146
+2017-01-24 14:46:46,932 Delete snap-b3fd0242
+2017-01-24 14:46:47,004 Delete snap-04a15af5
+2017-01-24 14:46:47,088 Delete snap-0bf7a755c85a5a002
+2017-01-24 14:46:47,226 Delete snap-0a23dd417fc3b6f8e
+2017-01-24 14:46:47,339 Delete snap-0d8d2f75bb2deff3f
+2017-01-24 14:46:47,415 Delete snap-032757ba018617e05
+2017-01-24 14:46:47,513 Delete snap-0393f95f45306e4a5
+2017-01-24 14:46:47,596 Delete snap-012d48e08783836fe
+2017-01-24 14:46:47,682 Delete snap-0a258618b026603c3
+2017-01-24 14:46:47,767 Delete snap-0f3349b8ab27ca0a2
+2017-01-24 14:46:47,898 Delete snap-00778ff85236cfdbb
+2017-01-24 14:46:47,973 Delete snap-04bdcad45fd11a85d
+2017-01-24 14:46:48,051 Delete snap-0b22b1629971de801
+2017-01-24 14:46:48,167 Delete snap-0667acfd92c324a4d
+2017-01-24 14:46:48,282 Delete snap-0028e3c5960b8dcf8
+2017-01-24 14:46:48,377 Delete snap-0567a710bea793681
+2017-01-24 14:46:48,473 Delete snap-04cb5a8943617de1f
+2017-01-24 14:46:48,560 Delete snap-00576bfc227944088
+2017-01-24 14:46:48,632 Delete snap-04c9d88019db54ed8
+2017-01-24 14:46:48,699 Delete snap-0d45d8006427da6b1
+2017-01-24 14:46:48,781 Delete snap-06e8123a58fbdec2a
+2017-01-24 14:46:48,874 Delete snap-073772db4fafc6b1e
+2017-01-24 14:46:48,973 Delete snap-0c78fcc868c0d7eef
+2017-01-24 14:46:49,064 Delete snap-0a6b611b44f457e13
+2017-01-24 14:46:49,173 Delete snap-0e87017929ab54ad2
+2017-01-24 14:46:49,243 Delete snap-06745c0b1f432676c
+2017-01-24 14:46:49,333 Delete snap-03f33b708a38e1a20
+2017-01-24 14:46:49,436 Delete snap-0ca6cbe8888df8350
+2017-01-24 14:46:49,557 Delete snap-004ce2537473ce386
+2017-01-24 14:46:49,663 Delete snap-08cc0156aa5f4ae76
+2017-01-24 14:46:49,763 Delete snap-00c6a0640b837617d
+2017-01-24 14:46:49,821 Delete snap-01bf069ec51b333bb
+2017-01-24 14:46:49,903 Delete snap-03f714b2b06907072
+2017-01-24 14:46:50,025 Delete snap-0f658d1e60dd1f47f
+2017-01-24 14:46:50,118 Delete snap-095d1841095c8699b
+2017-01-24 14:46:50,194 Delete snap-08090823a018f2fe5
+2017-01-24 14:46:50,284 Delete snap-0ab7847aace117555
+2017-01-24 14:46:50,377 Delete snap-02811748f49815b01
+2017-01-24 14:46:50,472 Delete snap-058f5ff6ae41ca2b0
+2017-01-24 14:46:50,534 Delete snap-0deea52857d07b265
+2017-01-24 14:46:50,614 Delete snap-097f11169476b5c3e
+2017-01-24 14:46:50,698 Delete snap-071b91dffa4fefa00
+2017-01-24 14:46:50,768 Delete snap-0fd1a66d1372a1387
+2017-01-24 14:46:50,839 Delete snap-03549a0111c90ccbf
+2017-01-24 14:46:50,907 Delete snap-086e993f723aac117
+2017-01-24 14:46:50,966 Delete snap-0f93c5f20e1cd466d
+2017-01-24 14:46:51,044 Delete snap-0763f60f71bcd445c
+2017-01-24 14:46:51,101 Delete snap-06b9ef440c45b97a8
+2017-01-24 14:46:51,178 Delete snap-0e57b4d73eb593bef
+2017-01-24 14:46:51,272 Delete snap-08f7ce61fb6ed63c3
+2017-01-24 14:46:51,368 Delete snap-0362e77fdcef56e93
+2017-01-24 14:46:51,478 Delete snap-0b8810b9cc1607a30
+2017-01-24 14:46:51,557 Delete snap-028bd69c790bada81
+2017-01-24 14:46:51,642 Delete snap-03b1e3cc675bb8962
+2017-01-24 14:46:51,734 Delete snap-03738c6d77b115908
+2017-01-24 14:46:51,828 Delete snap-0e5400123e846c512
+2017-01-24 14:46:51,906 Delete snap-01a1293b1d9b69447
+2017-01-24 14:46:52,003 Delete snap-0dd9b97d86a3b5cf6
+2017-01-24 14:46:52,077 Delete snap-08016af290570a2ce
+2017-01-24 14:46:52,151 Delete snap-01eb468779fb72df3
+2017-01-24 14:46:52,221 Delete snap-0f31eba8a6aef17ff
+2017-01-24 14:46:52,300 Delete snap-0a3431d7a1d53ad68
+2017-01-24 14:46:52,363 Delete snap-048fb341581a944b2
+2017-01-24 14:46:52,432 Delete snap-05717e33df6a4be70
+2017-01-24 14:46:52,494 Delete snap-0a841ecfe00e3003f
+2017-01-24 14:46:52,574 Delete snap-02ce2147a5ae3c6b4
+2017-01-24 14:46:52,576 Error AMIs: []
+2017-01-25 11:23:34,786 Login Successed, User: max
+2017-02-03 08:59:50,242 Login Successed, User: Brian
+2017-02-03 09:00:14,367 Delete snap-06a9ba01abe9babe0
+2017-02-03 09:00:14,484 Delete snap-08a15ea1c60882699
+2017-02-03 09:00:14,617 Delete snap-0cd780c699d6e2706
+2017-02-03 09:00:14,727 Delete snap-07e4dc340482ee34f
+2017-02-03 09:00:14,822 Delete snap-04ab7a9721d584c1c
+2017-02-03 09:00:14,918 Delete snap-095c9a488ae1871e2
+2017-02-03 09:00:15,024 Delete snap-0e3ca77763401f7c5
+2017-02-03 09:00:15,162 Delete snap-0469844f5d23ced8a
+2017-02-03 09:00:15,281 Delete snap-0e1a5b7a9e5b11ddf
+2017-02-03 09:00:15,397 Delete snap-0181da69b6864291d
+2017-02-03 09:00:15,513 Delete snap-0cd1c3dd726ed485b
+2017-02-03 09:00:15,637 Delete snap-071463e9e5fbc886a
+2017-02-03 09:00:15,735 Delete snap-058066e547c4cd28b
+2017-02-03 09:00:15,861 Delete snap-07483532af979d9a0
+2017-02-03 09:00:15,948 Delete snap-0474e6c7a3f53fa4c
+2017-02-03 09:00:16,070 Delete snap-096991f06cc38eec4
+2017-02-03 09:00:16,192 Delete snap-0f6c58ba03578d5af
+2017-02-03 09:00:16,279 Delete snap-00337e00e0a80e9af
+2017-02-03 09:00:16,399 Delete snap-0774c44a623d9667b
+2017-02-03 09:00:16,488 Delete snap-05f30b8bf87d91556
+2017-02-03 09:00:16,831 Delete snap-01258315cd9fee1f6
+2017-02-03 09:00:16,973 Delete snap-05c409268d4464ad1
+2017-02-03 09:00:17,106 Delete snap-039601322729f648c
+2017-02-03 09:00:17,198 Delete snap-05e3a414c11cb5384
+2017-02-03 09:00:17,290 Delete snap-0a0cfdd4e73485007
+2017-02-03 09:00:17,379 Delete snap-0adbceb81da4bb3fc
+2017-02-03 09:00:17,472 Delete snap-0be3e6083fd7bb4dd
+2017-02-03 09:00:17,562 Delete snap-0b19e3fd7e107a288
+2017-02-03 09:00:17,661 Delete snap-0d9585442066fead1
+2017-02-03 09:00:17,663 Error AMIs: []
+2017-02-03 10:23:13,724 Login Successed, User: allen
+2017-02-04 17:45:39,083 Login Successed, User: Brian
+2017-02-04 17:46:30,703 Login Successed, User: feynman
+2017-02-04 18:15:17,439 Login Successed, User: gerry
+2017-02-06 17:31:46,842 Login Successed, User: max
+2017-02-06 18:04:40,046 Login Successed, User: Brian
+2017-02-06 18:05:04,671 Login Successed, User: feynman
+2017-02-08 15:59:21,400 Login Successed, User: cindy
+2017-02-09 10:03:31,180 Login Successed, User: gerry
+2017-02-09 15:12:05,041 Login Successed, User: max
+2017-02-09 15:14:21,946 Logout, User: max
+2017-02-09 15:14:27,711 Login Successed, User: Max
+2017-02-09 16:22:07,143 Login Successed, User: feynman
+2017-02-10 10:22:56,888 Login Successed, User: feynman
+2017-02-13 15:47:34,454 Login Successed, User: Brian
+2017-02-13 17:37:01,611 Login Successed, User: feynman
+2017-02-14 11:29:25,591 Login Successed, User: feynman
+2017-02-14 15:11:16,363 Login Successed, User: max
+2017-02-14 15:25:45,224 Logout, User: feynman
+2017-02-14 15:25:59,786 Logout, User: None
+2017-02-14 15:26:24,849 Login Failed, User: feynman
+2017-02-14 15:28:00,326 Login Successed, User: feynman
+2017-02-15 09:51:55,428 Login Successed, User: feynman
+2017-02-15 11:42:11,647 Login Successed, User: Brian
+2017-02-20 14:44:27,537 Login Successed, User: tommy
+2017-02-20 16:48:43,562 Login Successed, User: feynman
+2017-02-21 15:00:12,126 Login Failed, User: Max
+2017-02-21 15:00:19,509 Login Successed, User: max
+2017-02-21 16:54:55,334 Login Successed, User: Brian
+2017-02-21 16:56:35,301 Login Successed, User: feynman
+2017-02-22 09:03:48,031 Login Successed, User: feynman
+2017-02-22 09:04:29,305 Delete snap-00d22f3402e3381b7
+2017-02-22 09:04:29,442 Delete snap-0d6639f431f8b6605
+2017-02-22 09:04:29,559 Delete snap-0f440f33093b021d9
+2017-02-22 09:04:29,694 Delete snap-08651f21d4946ee44
+2017-02-22 09:04:29,852 Delete snap-0abf0144dfb2cfb8b
+2017-02-22 09:04:29,973 Delete snap-0775dcf37e27ead1d
+2017-02-22 09:04:30,074 Delete snap-0d361dfff9a813538
+2017-02-22 09:04:30,200 Delete snap-09e8709a1d9539130
+2017-02-22 09:04:30,378 Delete snap-0e9c3855aac169512
+2017-02-22 09:04:30,495 Delete snap-054908f6d6331e468
+2017-02-22 09:04:30,645 Delete snap-059abb4398fb1cee4
+2017-02-22 09:04:30,781 Delete snap-0b3cc440d87f38cb2
+2017-02-22 09:04:30,920 Delete snap-024d7dc4eb9d204fb
+2017-02-22 09:04:31,075 Delete snap-04c96d4b3a482cd7c
+2017-02-22 09:04:31,218 Delete snap-0297eb9d3a2c40313
+2017-02-22 09:04:31,361 Delete snap-0ee15ff7c193549d4
+2017-02-22 09:04:31,463 Delete snap-042e9211bfdd1eb44
+2017-02-22 09:04:31,613 Delete snap-0e577f8e039f0a3b1
+2017-02-22 09:04:31,758 Delete snap-0fbeb24e0f74747cd
+2017-02-22 09:04:31,760 Error AMIs: []
+2017-02-22 09:06:15,296 Error AMIs: []
+2017-02-22 09:06:49,704 Error AMIs: []
+2017-02-23 09:48:51,175 Login Successed, User: max
+2017-02-23 16:54:41,090 Login Successed, User: gerry
+2017-02-27 09:54:44,778 Login Successed, User: zoya
+2017-02-27 09:59:00,863 Login Successed, User: cindy
+2017-02-27 14:57:13,751 Login Successed, User: feynman
+2017-02-27 16:52:49,522 Login Failed, User: max
+2017-02-27 16:52:59,596 Login Successed, User: max
+2017-02-28 10:08:21,064 Login Successed, User: zoya
+2017-03-01 18:40:33,280 Login Successed, User: feynman
+2017-03-02 09:55:30,868 Login Successed, User: max
+2017-03-02 14:35:17,867 Login Successed, User: feynman
+2017-03-03 13:57:15,330 Login Successed, User: gerry
+2017-03-04 21:32:29,734 Login Successed, User: max
+2017-03-05 08:41:43,642 Login Failed, User: feynman
+2017-03-05 08:41:55,321 Login Successed, User: feynman
+2017-03-05 16:49:12,670 Login Successed, User: feynman
+2017-03-07 18:30:10,322 Login Successed, User: zoya
+2017-03-07 19:38:12,408 Login Successed, User: feynman
+2017-03-09 09:52:10,291 Login Successed, User: zoya
+2017-03-09 10:55:17,914 Login Successed, User: max
+2017-03-09 12:59:46,388 Login Successed, User: feynman
+2017-03-10 10:51:55,159 Login Successed, User: gerry
+2017-03-10 11:15:01,652 Login Successed, User: feynman
+2017-03-10 14:14:39,906 Login Successed, User: max
+2017-03-13 14:08:47,274 Login Successed, User: zoya
+2017-03-13 15:58:54,233 Login Successed, User: feynman
+2017-03-13 16:05:15,918 Login Successed, User: gerry
+2017-03-14 14:59:05,644 Login Successed, User: gerry
+2017-03-14 15:00:16,731 Login Successed, User: feynman
+2017-03-15 11:11:18,093 Login Successed, User: feynman
+2017-03-15 16:30:59,463 Login Successed, User: gerry
+2017-03-16 16:04:50,483 Login Successed, User: cindy
+2017-03-16 20:38:25,333 Login Successed, User: feynman
+2017-03-17 11:29:50,029 Login Successed, User: max
+2017-03-19 10:56:49,828 Login Successed, User: feynman
+2017-03-20 14:11:33,946 Login Successed, User: cindy
+2017-03-20 16:45:54,853 Login Successed, User: feynman
+2017-03-23 18:39:46,898 Login Successed, User: feynman
+2017-03-25 14:54:38,958 Login Successed, User: max
+2017-03-27 08:09:59,452 Login Successed, User: feynman
+2017-03-28 19:27:55,240 Login Successed, User: feynman
+2017-03-30 10:16:33,362 Login Failed, User: Max
+2017-03-30 10:16:37,478 Login Successed, User: max
+2017-03-30 10:40:42,563 Login Successed, User: feynman
+2017-03-30 14:20:36,972 Login Successed, User: tommy
+2017-03-30 15:55:12,765 Login Successed, User: feynman
+2017-03-31 20:12:21,953 Login Successed, User: feynman
+2017-04-01 09:49:30,112 Login Successed, User: feynman
+2017-04-01 10:50:56,817 Login Successed, User: Tommy
+2017-04-01 11:11:21,684 Logout, User: Tommy
+2017-04-02 08:35:17,170 Login Successed, User: feynman
+2017-04-05 12:08:51,934 Login Failed, User: tommy
+2017-04-05 12:09:06,940 Login Successed, User: tommy
+2017-04-05 17:47:37,749 Login Successed, User: feynman
+2017-04-05 17:49:58,065 Login Successed, User: tommy
+2017-04-05 17:50:20,635 Logout, User: tommy
+2017-04-06 10:36:25,768 Login Successed, User: feynman
+2017-04-06 16:51:17,066 Delete snap-09d85d1e514ad540f
+2017-04-06 16:51:17,169 Delete snap-08693b3af69b7d990
+2017-04-06 16:51:17,292 Delete snap-0eaaea07dad5eadf2
+2017-04-06 16:51:17,381 Delete snap-08f5a1ca0cbe811dd
+2017-04-06 16:51:17,468 Delete snap-06ec105ae8446fd11
+2017-04-06 16:51:17,590 Delete snap-01ceaa1bd3e74e25a
+2017-04-06 16:51:17,692 Delete snap-0785d3fbbb8831761
+2017-04-06 16:51:17,797 Delete snap-0957466b301c908b1
+2017-04-06 16:51:17,905 Delete snap-094f7842534d36ba6
+2017-04-06 16:51:18,028 Delete snap-0d430187df114d7a7
+2017-04-06 16:51:18,172 Delete snap-0b2de82231bf99c63
+2017-04-06 16:51:18,257 Delete snap-0836601b112e85067
+2017-04-06 16:51:18,454 Delete snap-019a4c8b37868302f
+2017-04-06 16:51:18,548 Delete snap-050fdca515caf2902
+2017-04-06 16:51:18,617 Delete snap-067dd729fd8286423
+2017-04-06 16:51:18,733 Delete snap-0d570f0f7919d3f86
+2017-04-06 16:51:18,851 Delete snap-06691eb7f099fc8a2
+2017-04-06 16:51:18,926 Delete snap-0c8d4a13c5fd68d1e
+2017-04-06 16:51:19,010 Delete snap-01e831364b9b7376e
+2017-04-06 16:51:19,109 Delete snap-0c27f776c5b8da753
+2017-04-06 16:51:19,173 Delete snap-06043bb409fe223c0
+2017-04-06 16:51:19,176 Error AMIs: []
+2017-04-06 17:00:32,204 Delete snap-04dd32610286c0dd9
+2017-04-06 17:00:32,206 Error AMIs: [u"ami-8506d1e8, Reason: An error occurred (InvalidAMIID.Unavailable) when calling the DeregisterImage operation: The image ID 'ami-8506d1e8' is no longer available"]
+2017-04-06 17:02:59,000 Delete snap-c36747f0
+2017-04-06 17:02:59,118 Delete snap-0f892c653fca490b6
+2017-04-06 17:02:59,230 Delete snap-05d8b827d50300bd5
+2017-04-06 17:02:59,343 Delete snap-0d94cd5ddce1d6c4f
+2017-04-06 17:02:59,425 Delete snap-0b1ffc4ef8a0b0cc9
+2017-04-06 17:02:59,491 Delete snap-07ab444a05f29b9c3
+2017-04-06 17:02:59,570 Delete snap-0022b8a04de5c4ceb
+2017-04-06 17:02:59,572 Error AMIs: [u"ami-1ced2771, Reason: An error occurred (InvalidAMIID.NotFound) when calling the DeregisterImage operation: The image id '[ami-1ced2771]' does not exist", u"ami-e714c18a, Reason: An error occurred (InvalidAMIID.NotFound) when calling the DeregisterImage operation: The image id '[ami-e714c18a]' does not exist"]
+2017-04-06 17:03:44,604 Error AMIs: []
+2017-04-06 17:04:18,114 Error AMIs: []
+2017-04-06 17:06:37,638 Delete snap-0d1eed2608ed29de0
+2017-04-06 17:06:37,736 Delete snap-0da73bbe9070bf584
+2017-04-06 17:06:37,827 Delete snap-0b53a58056656a30e
+2017-04-06 17:06:37,921 Delete snap-0a4abf0e5ffd0f86a
+2017-04-06 17:06:37,993 Delete snap-04382cc7d21998bdf
+2017-04-06 17:06:38,096 Delete snap-0a51b46ea1875f8a1
+2017-04-06 17:06:38,189 Delete snap-0599ae06732698229
+2017-04-06 17:06:38,279 Delete snap-0399be444823d7285
+2017-04-06 17:06:38,377 Delete snap-0665cbe9edab3df17
+2017-04-06 17:06:38,485 Delete snap-0b324f31f0b913ad6
+2017-04-06 17:06:38,575 Delete snap-0f2c0165728cf9101
+2017-04-06 17:06:38,634 Delete snap-02124f5540b70a50e
+2017-04-06 17:06:38,725 Delete snap-030e03eab94f79e76
+2017-04-06 17:06:38,820 Delete snap-002f7264196f05d70
+2017-04-06 17:06:38,883 Delete snap-02e6e07ce9ce9b509
+2017-04-06 17:06:38,984 Delete snap-09f2b60fd9ad0cd79
+2017-04-06 17:06:39,059 Delete snap-0f2758b6a8e28f5cc
+2017-04-06 17:06:39,128 Delete snap-0c9d4f402892edf22
+2017-04-06 17:06:39,217 Delete snap-0c248a44407f9bc6b
+2017-04-06 17:06:39,291 Delete snap-0916e4aef88fda3e4
+2017-04-06 17:06:39,356 Delete snap-06f7124dd59bc6004
+2017-04-06 17:06:39,428 Delete snap-0616e3fe91bf63b87
+2017-04-06 17:06:39,495 Delete snap-0b5d4782fb6f29eeb
+2017-04-06 17:06:39,571 Delete snap-0930661c20de53adb
+2017-04-06 17:06:39,643 Delete snap-0f9c3bb7bf419e345
+2017-04-06 17:06:39,746 Delete snap-0c423bb736093474a
+2017-04-06 17:06:39,808 Delete snap-07ee58ae9d3055a42
+2017-04-06 17:06:39,868 Delete snap-02fc50637617fcda1
+2017-04-06 17:06:39,967 Delete snap-0d8b6a997937193c3
+2017-04-06 17:06:40,040 Delete snap-0d91b4d46aa4a01c4
+2017-04-06 17:06:40,143 Delete snap-070759acdb856755f
+2017-04-06 17:06:40,224 Delete snap-07ef0611ea2fdc5ab
+2017-04-06 17:06:40,302 Delete snap-0016732a4b4a81bb9
+2017-04-06 17:06:40,410 Delete snap-08a8d291762868402
+2017-04-06 17:06:40,494 Delete snap-0bb5bf02ff7459ce6
+2017-04-06 17:06:40,589 Delete snap-091c1eadfa32a6d5c
+2017-04-06 17:06:40,657 Delete snap-082183ab6bfb8e37e
+2017-04-06 17:06:40,744 Delete snap-08c4917132c78fbe7
+2017-04-06 17:06:40,874 Delete snap-01b0699e10996a304
+2017-04-06 17:06:40,966 Delete snap-07d5f2c6c7a2b8458
+2017-04-06 17:06:41,047 Delete snap-04f24078d9a1c5fbd
+2017-04-06 17:06:41,159 Delete snap-0bcfd386fa2f3b706
+2017-04-06 17:06:41,161 Error AMIs: []
+2017-04-06 23:07:49,375 Login Successed, User: max
+2017-04-07 10:11:36,075 Login Successed, User: feynman
+2017-04-09 14:52:54,602 Login Successed, User: max
+2017-04-10 16:06:40,982 Login Successed, User: gerry
+2017-04-10 16:22:23,723 Login Successed, User: feynman
+2017-04-11 18:49:41,252 Login Successed, User: feynman
+2017-04-11 18:55:51,390 Login Successed, User: gerry
+2017-04-12 10:54:57,779 Login Successed, User: feynman
+2017-04-13 10:58:20,483 Login Successed, User: eric
+2017-04-13 10:58:37,589 Logout, User: eric
+2017-04-13 10:58:43,022 Login Successed, User: eric
+2017-04-13 11:02:45,618 Login Successed, User: eric
+2017-04-14 16:18:09,314 Login Successed, User: eric

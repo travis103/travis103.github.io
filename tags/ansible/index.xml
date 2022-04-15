@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ansible on Travis&#39; Blog</title>
+    <link>https://travis103.github.io/tags/ansible/</link>
+    <description>Recent content in ansible on Travis&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 24 Mar 2022 10:27:13 +0800</lastBuildDate><atom:link href="https://travis103.github.io/tags/ansible/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title>Ansible</title>
+      <link>https://travis103.github.io/ansible/</link>
+      <pubDate>Thu, 24 Mar 2022 10:27:13 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/ansible/</guid>
+      <description>Docs  https://docs.ansible.com/ansible/latest/index.html
+ Install Configure Cheatsheet Examples Projects </description>
+    </item>
+    
+    
+  </channel>
+</rss>

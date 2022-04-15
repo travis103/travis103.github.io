@@ -1,0 +1,12 @@
+---
+# tasks file for roles/wtalking/chat-cpt-api
+
+- name: server conf synchronize
+  synchronize:
+    src: api
+    dest: /etc/nginx/conf.d/
+
+- name: nginx reload
+  systemd:
+    name: nginx
+    state: restarted

@@ -1,0 +1,5 @@
+---
+# defaults file for roles/emqx
+
+pre_requires_packages: ['openssl-devel']
+emqx_rpm_file_name: emqx-centos7-v3.0.1.x86_64.rpm

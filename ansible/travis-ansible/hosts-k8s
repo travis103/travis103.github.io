@@ -1,0 +1,37 @@
+[all]
+chat-prod-server1.wtalking.chat ansible_ssh_host=18.140.187.145 ansible_user='centos'
+chat-prod-server2.wtalking.chat ansible_ssh_host=52.220.244.221 ansible_user='centos'
+chat-prod-server3.wtalking.chat ansible_ssh_host=52.220.156.221 ansible_user='centos'
+chat-prod-server4.wtalking.chat ansible_ssh_host=18.139.25.234 ansible_user='centos'
+
+[lb]
+chat-prod-server1.wtalking.chat
+
+[controls]
+chat-prod-server2.wtalking.chat
+chat-prod-server3.wtalking.chat
+chat-prod-server4.wtalking.chat
+
+[workers]
+chat-prod-server2.wtalking.chat
+chat-prod-server3.wtalking.chat
+chat-prod-server4.wtalking.chat
+
+
+[all:vars]
+ansible_ssh_port=22
+ansible_user='root'
+ansible_ssh_pass='W?Sx$z+RYW7tZZbD'
+
+ansible_sudo_pass='W?Sx$z+RYW7tZZbD'
+#ansible_python_interpreter=/usr/bin/python3
+
+
+ansible_ssh_private_key_file='/Users/admin/chris/credentials/cptprod.pem'
+
+
+
+cluster_endpoint="172.17.1.128"
+KUBE_APISERVER="https://cluster.wtalking.chat:8443"
+
+DOCKER_VERSION="19.03.4"

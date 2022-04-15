@@ -1,0 +1,17 @@
+---
+  - hosts:
+    - chat-prod-server7.wtalking.chat
+    become: yes
+    become_user: root
+    become_method: sudo
+    tasks:
+      - name: ws log
+        shell: "grep -ir err *"
+        args:
+          chdir: "/opt/ws/Applications/lts/log"
+        register: grep_output
+        ignore_errors: true
+
+      - debug:
+          var: grep_output.stdout_lines
+        when: grep_output.stdout != ""

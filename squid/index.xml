@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Squids on Travis&#39; Blog</title>
+    <link>https://travis103.github.io/squid/</link>
+    <description>Recent content in Squids on Travis&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 14 Apr 2022 14:58:56 +0800</lastBuildDate><atom:link href="https://travis103.github.io/squid/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title>Squid</title>
+      <link>https://travis103.github.io/squid/squid/</link>
+      <pubDate>Thu, 14 Apr 2022 14:58:56 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/squid/squid/</guid>
+      <description></description>
+    </item>
+    
+    
+  </channel>
+</rss>

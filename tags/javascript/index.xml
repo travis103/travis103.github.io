@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>javascript on Travis&#39; Blog</title>
+    <link>https://travis103.github.io/tags/javascript/</link>
+    <description>Recent content in javascript on Travis&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 01 Apr 2022 10:24:11 +0800</lastBuildDate><atom:link href="https://travis103.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title>JavaScript</title>
+      <link>https://travis103.github.io/javascript/</link>
+      <pubDate>Fri, 01 Apr 2022 10:24:11 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/javascript/</guid>
+      <description>Docs https://quickref.me/javascript https://www.typescriptlang.org/play https://learnxinyminutes.com/docs/typescript/
+Install https://nodejs.org/en/download/ curl -fsSL https://deno.land/install.sh | sh brew install deno cargo install deno &amp;ndash;locked
+Promise https://www.runoob.com/js/js-promise.html
+new Promise(function (resolve, reject) { var a = 0; var b = 1; if (b == 0) reject(&amp;#34;Divide zero&amp;#34;); else resolve(a / b); }).then(function (value) { console.log(&amp;#34;a / b = &amp;#34; + value); }).catch(function (err) { console.log(err); }).finally(function () { console.log(&amp;#34;End&amp;#34;); }); Promise 类有 .then() .catch() 和 .finally() 三个方法，这三个方法的参数都是一个函数，.then() 可以将参数中的函数添加到当前 Promise 的正常执行序列，.</description>
+    </item>
+    
+    
+  </channel>
+</rss>

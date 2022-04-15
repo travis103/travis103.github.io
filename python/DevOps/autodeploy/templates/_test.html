@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>测试</title>
+    <style>
+        .container {
+            width: 400px;
+            height: 500px;
+            border: solid 1px #000000;
+            overflow: auto;
+        }
+    </style>
+    <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script>
+        $(function () {
+            setInterval(function () {
+                //$('.container > p').html(Math.random());
+                $.ajax({
+                    url: '/autodeploy/HtmlResponse',
+                    type: 'GET',
+                    dataType: 'html',
+                    success: function (data) {
+                        $('.container > p').html(data);
+                        $('.container').scrollTop( $('.container')[0].scrollHeight);
+                    },
+                    error: function (e) {
+                        $('.container > p').html(JSON.stringify(e));
+                        $('.container').scrollTop( $('.container')[0].scrollHeight);
+                    }
+                });
+            }, 10000)
+        })
+    </script>
+</head>
+<body>
+<div class="container" style="width:1800px;">
+    <p>Start Deploy!!</p>
+</div>
+</body>
+</html>

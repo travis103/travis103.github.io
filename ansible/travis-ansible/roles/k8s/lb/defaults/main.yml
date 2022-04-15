@@ -1,0 +1,11 @@
+---
+# defaults file for roles/lb
+#
+
+
+BALANCE_ALG: 'source'
+INGRESS_NODEPORT_LB: "no"
+INGRESS_TLS_NODEPORT_LB: "no"
+
+
+ROUTER_ID: 111

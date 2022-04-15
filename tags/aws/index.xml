@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>aws on Travis&#39; Blog</title>
+    <link>https://travis103.github.io/tags/aws/</link>
+    <description>Recent content in aws on Travis&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 14 Apr 2022 14:20:52 +0800</lastBuildDate><atom:link href="https://travis103.github.io/tags/aws/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title>SNS</title>
+      <link>https://travis103.github.io/sns/</link>
+      <pubDate>Thu, 14 Apr 2022 14:20:52 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/sns/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SQS</title>
+      <link>https://travis103.github.io/sqs/</link>
+      <pubDate>Fri, 25 Mar 2022 16:12:34 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/sqs/</guid>
+      <description></description>
+    </item>
+    
+    
+  </channel>
+</rss>

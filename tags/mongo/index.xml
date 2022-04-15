@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mongo on Travis&#39; Blog</title>
+    <link>https://travis103.github.io/tags/mongo/</link>
+    <description>Recent content in mongo on Travis&#39; Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 24 Mar 2022 10:34:39 +0800</lastBuildDate><atom:link href="https://travis103.github.io/tags/mongo/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title>Mongo</title>
+      <link>https://travis103.github.io/mongo/</link>
+      <pubDate>Thu, 24 Mar 2022 10:34:39 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/mongo/</guid>
+      <description>BSON BSON是一种类json的一种二进制形式的存储格式，简称Binary JSON。MongoDB使用了BSON这种结构来存储数据和网络数据交换。 BSON对应Document这个概念，因为BSON是schema-free的，所以在MongoDB中所对应的Document也有这个特征，这里的一个Document也可以理解成关系数据库中的一条Record，只是Document的变化更丰富一些，Document可以嵌套。 MongoDB以BSON做为其存储结构的一个重要原因是它的可遍历性。 BSON编码扩展了JSON表示，使其包含额外的类型，如int、long、date、浮点数和decimal128。 BSON数据的主要类型有：A，D，E，M和Raw。其中，A是数组，D是切片，M是映射，D和M是Go原生类型。   A类型表示有序的BSON数组。 bson.A{&amp;ldquo;bar&amp;rdquo;, &amp;ldquo;world&amp;rdquo;, 3.14159, bson.D{{&amp;ldquo;qux&amp;rdquo;, 12345}}}
+  D类型表示包含有序元素的BSON文档。这种类型应该在顺序重要的情况下使用。如果元素的顺序无关紧要，则应使用M代替。 bson.D{{&amp;ldquo;foo&amp;rdquo;, &amp;ldquo;bar&amp;rdquo;}, {&amp;ldquo;hello&amp;rdquo;, &amp;ldquo;world&amp;rdquo;}, {&amp;ldquo;pi&amp;rdquo;, 3.14159}}
+  M类型表示无序的映射。 bson.M{&amp;ldquo;foo&amp;rdquo;: &amp;ldquo;bar&amp;rdquo;, &amp;ldquo;hello&amp;rdquo;: &amp;ldquo;world&amp;rdquo;, &amp;ldquo;pi&amp;rdquo;: 3.14159}
+  E类型表示D里面的一个BSON元素。
+  Raw类型代表未处理的原始BSON文档和元素，Raw系列类型用于验证和检索字节切片中的元素。当要查找BSON字节而不将其解编为另一种类型时，此类型最有用。
+  mongo 10.1.50.84/pacific -u root -p Root_123 --authenticationDatabase admin rs.status() rs.slaveOk() rs=replica set db.getCollection(&amp;#39;demo&amp;#39;).find({&amp;#34;keyIdentifiers&amp;#34;:{&amp;#34;$regex&amp;#34;:&amp;#34;@#@&amp;#34;}}).forEach(function(item){ var keyIdentifiers = item.keyIdentifiers; var arr = keyIdentifiers[0].split(&amp;#34;@#@&amp;#34;); if(arr.length&amp;gt;1){ var item1 = arr[0] var item2 = arr[1] var tem = &amp;#34;&amp;#34; if(item1.</description>
+    </item>
+    
+    
+  </channel>
+</rss>

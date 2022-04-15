@@ -1,0 +1,11 @@
+version: '3'
+services:
+  zero:
+    container_name: zero
+    image: nofish/zeronet
+    ports:
+      - 127.0.0.1:1239:43110
+      - 15441:15441
+    volumes:
+      - /Users/will/sync/folders/zero:/root/data
+    restart: always

@@ -1,0 +1,16 @@
+---
+
+- name: Check all port numbers are accessible from current host
+  wait_for:
+    host: 10.1.101.253
+    port: "{{ item }}"
+    state: started         # Port should be open
+    delay: 0               # No wait before first check (sec)
+    timeout: 3             # Stop checking after timeout (sec)
+  ignore_errors: yes
+  with_items:
+    - 2202
+  connection: local
+
+- name: test
+  shell: "cd /drives/d/cristian/projects && cat commit_number.sh"

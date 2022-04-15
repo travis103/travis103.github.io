@@ -1,0 +1,153 @@
+---
+# tasks file for roles/common/php
+
+- name: remi repo install
+  yum:
+    name: http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+    state: present
+
+- name: php72 and php72-php-fpm install
+  yum:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+      - php72
+      - php72-php-fpm
+
+- name: add user nginx
+  user:
+    name: nginx
+    state: present
+
+- name: www.conf config 1
+  lineinfile:
+    path: /etc/opt/remi/php72/php-fpm.d/www.conf
+    regexp: '^user = .*'
+    line: "user = nginx"
+
+- name: www.conf config 2
+  lineinfile:
+    path: /etc/opt/remi/php72/php-fpm.d/www.conf
+    regexp: '^group = .*'
+    line: "group = nginx"
+
+- name: www.conf config 3
+  lineinfile:
+    path: /etc/opt/remi/php72/php-fpm.d/www.conf
+    regexp: '^listen = .*'
+    line: "listen = /run/php-fpm/www.sock"
+
+- name: www.conf config 4
+  lineinfile:
+    path: /etc/opt/remi/php72/php-fpm.d/www.conf
+    regexp: '^listen.acl_users'
+    line: "listen.acl_users = nginx"
+
+- name: www.conf config 5
+  lineinfile:
+    path: /etc/opt/remi/php72/php-fpm.d/www.conf
+    regexp: '^listen.acl_groups'
+    line: "listen.acl_groups = nginx"
+
+- name: directory /run/php-fpm created
+  file:
+    path: /run/php-fpm
+    state: directory
+
+- name: service php72-php-fpm restart
+  systemd:
+    name: php72-php-fpm
+    state: restarted
+
+- name: custom path
+  copy:
+    dest: /etc/profile.d/custom-path.sh
+    content: 'PATH=/opt/remi/php72/root/usr/bin/:$PATH'
+
+- name: php-pear and php-devel install
+  yum:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+      - php72-php-pear
+      - php72-php-devel
+
+- name: /etc/profile config
+  lineinfile:
+    path: /etc/profile
+    state: present
+    line: "export PATH=/opt/remi/php72/root/usr/bin:$PATH"
+
+- name: /etc/bashrc config
+  lineinfile:
+    path: /etc/bashrc
+    state: present
+    line: "export PATH=/opt/remi/php72/root/usr/bin:$PATH"
+
+- name: pecl.php.net channel update
+  shell: source /etc/bashrc; pecl channel-update pecl.php.net
+
+- name: libevent-devel install
+  yum:
+    name: libevent-devel
+    state: present
+
+- name: module install using pear/pecl
+  pear:
+    name: "{{ item }}"
+    state: present
+    executable: /opt/remi/php72/root/usr/bin/pear
+  loop:
+    - pecl/igbinary
+    - pecl/redis
+    - pecl/mongodb
+    - pecl/event
+
+# - name: centos-release-scl install
+#   yum:
+#     name: "{{ packages }}"
+#     state: present
+#   vars:
+#     packages:
+#       - centos-release-scl
+
+# - name: postgresql-devel devtoolset-7 install
+#   yum:
+#     name: "{{ packages }}"
+#     state: present
+#   vars:
+#     packages:
+#       - devtoolset-7
+#       - postgresql-devel
+
+- name: module install from rpm packages
+  yum:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+      - php72-php-mysqlnd
+      - php72-php-mbstring
+      # - php72-php-phalcon
+
+# - name: check swoole module status
+#   shell: pecl list | grep swoole
+#   register: swoole_status
+#   ignore_errors: yes
+#
+# - debug:
+#    var: swoole_status
+#
+# - name: swoole module install
+#   shell: source /etc/profile; scl enable devtoolset-7 "printf \"\n\" | pecl install swoole"
+#   when: swoole_status.rc != 0
+
+- name: php ini config
+  template:
+    src: add.ini
+    dest: /etc/opt/remi/php72/php.d/add.ini
+
+- name: pecl list
+  shell: source /etc/bashrc; pecl list

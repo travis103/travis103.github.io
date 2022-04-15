@@ -1,0 +1,28 @@
+---
+# tasks file for roles/common/haproxy
+
+- name: install haproxy
+  yum: name=haproxy state=latest
+
+- name: haproxy.service
+  template: src=haproxy.service.j2 dest=/usr/lib/systemd/system/haproxy.service
+  tags: restart_lb
+
+- name: /etc/haproxy
+  file: name=/etc/haproxy state=directory
+
+- name: haproxy.cfg
+  template: src=haproxy.cfg.j2 dest=/etc/haproxy/haproxy.cfg
+  tags: restart_lb
+
+- name: daemon-reload for haproxy.service
+  shell: systemctl daemon-reload
+  tags: restart_lb
+
+- name: systemctl enable haproxy
+  shell: systemctl enable haproxy
+  ignore_errors: true
+
+- name: systemctl restart haproxy
+  shell: systemctl restart haproxy
+  tags: restart_lb

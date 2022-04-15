@@ -1,0 +1,16 @@
+---
+  - hosts:
+      # - chat-test-server3.wtalking.chat
+      - chat-test-server4.wtalking.chat
+      - chat-test-server5.wtalking.chat
+      - chat-test-server6.wtalking.chat
+      - chat-test-server7.wtalking.chat
+      - chat-test-server8.wtalking.chat
+    gather_facts: yes
+    become: yes
+    become_user: root
+    become_method: sudo
+    tasks:
+      - debug: var=ansible_default_ipv4 verbosity=0
+    roles:
+      - { role: roles/common/php }

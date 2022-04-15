@@ -1,0 +1,25 @@
+---
+# tasks file for roles/chrony
+
+- name: 删除 ntp
+  package: name=ntp state=absent
+
+- name: 安装 chrony
+  package: name=chrony state=latest
+
+
+- block:
+  - name: 配置 chrony server 
+    template: src=server-centos.conf.j2 dest=/etc/chrony.conf
+  - name: 启动 chrony server
+    service: name=chronyd state=restarted enabled=yes
+  
+  when: 'inventory_hostname == groups.deploy[0]'
+
+- block:
+  - name: 配置 chrony client
+    template: src=client-centos.conf.j2 dest=/etc/chrony.conf
+  - name: 启动 chrony client 
+    service: name=chronyd state=restarted enabled=yes
+
+  when: 'inventory_hostname != groups.deploy[0]'

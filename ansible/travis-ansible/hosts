@@ -1,0 +1,174 @@
+[all]
+chat-test-server1.wtalking.chat ansible_ssh_host=13.251.134.149 ansible_ssh_pass='kgbet556677@#'
+chat-test-server2.wtalking.chat ansible_ssh_host=13.229.212.105 ansible_ssh_pass='kgbet556677@#'
+chat-test-server3.wtalking.chat ansible_ssh_host=54.254.202.223 ansible_ssh_pass='kgbet556677@#'
+
+
+chat-prod-server01.wtalking.chat ansible_ssh_host=18.140.187.145 ansible_user='centos'
+chat-prod-server02.wtalking.chat ansible_ssh_host=52.220.244.221 ansible_user='centos'
+chat-prod-server03.wtalking.chat ansible_ssh_host=52.220.156.221 ansible_user='centos'
+chat-prod-server04.wtalking.chat ansible_ssh_host=18.139.25.234 ansible_user='centos'
+
+chat-prod-server05.wtalking.chat ansible_ssh_host=18.139.214.97 ansible_user='centos'
+chat-prod-server06.wtalking.chat ansible_ssh_host=18.140.108.40 ansible_user='centos'
+chat-prod-server07.wtalking.chat ansible_ssh_host=13.229.18.144 ansible_user='centos'
+chat-prod-server08.wtalking.chat ansible_ssh_host=13.251.137.225 ansible_user='centos'
+
+chat-prod-server09.wtalking.chat ansible_ssh_host=18.138.147.182 ansible_user='centos'
+chat-prod-server10.wtalking.chat ansible_ssh_host=13.251.23.80 ansible_user='centos'
+chat-prod-server11.wtalking.chat ansible_ssh_host=18.139.106.42 ansible_user='centos'
+chat-prod-server12.wtalking.chat ansible_ssh_host=52.77.59.169 ansible_user='centos'
+
+chat-prod-server13.wtalking.chat ansible_ssh_host=18.138.95.153 ansible_user='centos'
+chat-prod-server14.wtalking.chat ansible_ssh_host=52.221.37.51 ansible_user='centos'
+
+chat-prod-server15.wtalking.chat ansible_ssh_host=52.74.174.161 ansible_user='centos'
+chat-prod-server16.wtalking.chat ansible_ssh_host=13.251.174.197 ansible_user='centos'
+chat-prod-server17.wtalking.chat ansible_ssh_host=18.138.189.245 ansible_user='centos'
+
+chat-prod-server18.wtalking.chat ansible_ssh_host=3.1.56.31 ansible_user='cephuser' ansible_ssh_private_key_file='/Users/will/tech/credentials/idx_rsa'
+chat-prod-server19.wtalking.chat ansible_ssh_host=13.251.146.148 ansible_user='cephuser' ansible_ssh_private_key_file='/Users/will/tech/credentials/idx_rsa'
+chat-prod-server20.wtalking.chat ansible_ssh_host=18.141.64.149 ansible_user='cephuser' ansible_ssh_private_key_file='/Users/will/tech/credentials/idx_rsa'
+
+# test1 ansible_ssh_host=150.109.68.177 ansible_ssh_pass='7EzuFsCk9FkN'
+
+chandao ansible_ssh_host=18.138.29.187 ansible_user='centos' ansible_ssh_private_key_file='/Users/will/sync/folders/job/wtalking/credentials/plugin.pem'
+
+[test]
+chat-test-server1.wtalking.chat
+chat-test-server2.wtalking.chat
+chat-test-server3.wtalking.chat
+
+
+[prod]
+chat-prod-server01.wtalking.chat
+chat-prod-server02.wtalking.chat
+chat-prod-server03.wtalking.chat
+chat-prod-server04.wtalking.chat
+
+[push]
+chat-prod-server06.wtalking.chat
+chat-prod-server10.wtalking.chat
+chat-prod-server03.wtalking.chat
+chat-test-server2.wtalking.chat
+
+[cptprodws]
+chat-prod-server07.wtalking.chat
+chat-prod-server08.wtalking.chat
+chat-prod-server13.wtalking.chat
+chat-prod-server14.wtalking.chat
+chat-prod-server15.wtalking.chat
+chat-prod-server16.wtalking.chat
+chat-prod-server17.wtalking.chat
+chat-prod-server18.wtalking.chat
+chat-prod-server19.wtalking.chat
+chat-prod-server20.wtalking.chat
+
+
+[hkprod]
+chat-prod-server09.wtalking.chat
+chat-prod-server10.wtalking.chat
+chat-prod-server11.wtalking.chat
+chat-prod-server12.wtalking.chat
+
+[k8s]
+chat-prod-server01.wtalking.chat
+chat-prod-server02.wtalking.chat
+chat-prod-server03.wtalking.chat
+chat-prod-server04.wtalking.chat
+chat-prod-server05.wtalking.chat
+chat-prod-server06.wtalking.chat
+chat-prod-server07.wtalking.chat
+chat-prod-server08.wtalking.chat
+chat-prod-server09.wtalking.chat
+chat-prod-server10.wtalking.chat
+chat-prod-server11.wtalking.chat
+chat-prod-server12.wtalking.chat
+chat-prod-server13.wtalking.chat
+chat-prod-server14.wtalking.chat
+
+
+[lb]
+chat-prod-server01.wtalking.chat
+
+[controls]
+chat-prod-server02.wtalking.chat
+chat-prod-server03.wtalking.chat
+chat-prod-server04.wtalking.chat
+
+[workers]
+chat-prod-server05.wtalking.chat
+chat-prod-server06.wtalking.chat
+chat-prod-server07.wtalking.chat
+chat-prod-server08.wtalking.chat
+chat-prod-server09.wtalking.chat
+chat-prod-server10.wtalking.chat
+chat-prod-server11.wtalking.chat
+chat-prod-server12.wtalking.chat
+chat-prod-server13.wtalking.chat
+chat-prod-server14.wtalking.chat
+
+[workers1]
+chat-prod-server05.wtalking.chat
+chat-prod-server06.wtalking.chat
+chat-prod-server07.wtalking.chat
+chat-prod-server08.wtalking.chat
+chat-prod-server09.wtalking.chat
+
+[workers2]
+chat-prod-server10.wtalking.chat
+chat-prod-server11.wtalking.chat
+chat-prod-server12.wtalking.chat
+chat-prod-server13.wtalking.chat
+chat-prod-server14.wtalking.chat
+
+[ceph]
+chat-prod-server15.wtalking.chat
+chat-prod-server16.wtalking.chat
+chat-prod-server17.wtalking.chat
+chat-prod-server18.wtalking.chat
+chat-prod-server19.wtalking.chat
+chat-prod-server20.wtalking.chat
+
+[cephadmin]
+chat-prod-server01.wtalking.chat
+
+[mons]
+chat-prod-server15.wtalking.chat
+chat-prod-server16.wtalking.chat
+chat-prod-server17.wtalking.chat
+
+[osds]
+chat-prod-server18.wtalking.chat
+chat-prod-server19.wtalking.chat
+chat-prod-server20.wtalking.chat
+
+[monsandosds]
+chat-prod-server15.wtalking.chat
+chat-prod-server16.wtalking.chat
+chat-prod-server17.wtalking.chat
+chat-prod-server18.wtalking.chat
+chat-prod-server19.wtalking.chat
+chat-prod-server20.wtalking.chat
+
+
+
+[all:vars]
+ansible_ssh_port=22
+ansible_user='root'
+ansible_ssh_pass='W?Sx$z+RYW7tZZbD'
+
+ansible_sudo_pass='W?Sx$z+RYW7tZZbD'
+#ansible_python_interpreter=/usr/bin/python3
+
+cluster_endpoint="172.17.1.128"
+
+KUBE_APISERVER="https://cluster.wtalking.chat:8443"
+
+ansible_ssh_private_key_file='/Users/will/sync/folders/job/wtalking/credentials/cptprod.pem'
+
+DOCKER_VERSION="19.03.4"
+
+jump_pass="ECL6KEjUPBkOssIX | ssh -p 80 admin@18.138.147.182"
+
+jump2_pass="1kzTyvx1ZKltPRbZ"

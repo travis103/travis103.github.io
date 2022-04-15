@@ -1,0 +1,10 @@
+---
+# tasks file for roles/k8s/kubectl
+
+- name: /etc/yum.repos.d/kubernetes.repo
+  template:
+      src: kubernetes.repo
+      dest: /etc/yum.repos.d/kubernetes.repo
+
+- name: kubectl install
+  shell: yum install -y kubectl --disableexcludes=kubernetes

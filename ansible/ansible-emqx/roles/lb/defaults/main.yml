@@ -1,0 +1,10 @@
+---
+# defaults file for roles/lb
+#
+
+
+BALANCE_ALG: 'source'
+
+ROUTER_ID: "111"
+
+VIP: "172.20.22.30"
