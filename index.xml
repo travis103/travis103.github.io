@@ -6,7 +6,7 @@
     <description>Recent content on Travis&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 15 Apr 2022 16:44:25 +0800</lastBuildDate><atom:link href="https://travis103.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+    <lastBuildDate>Tue, 19 Apr 2022 16:50:34 +0800</lastBuildDate><atom:link href="https://travis103.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
       <title>Introduction</title>
       <link>https://travis103.github.io/notes/go/basic/introduction/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -82,6 +82,25 @@ var u uint = 7 // uint (unsigned) var p float32 = 22.7 // 32-bit float     Array
     
     
     
+    
+    <item>
+      <title>Http2</title>
+      <link>https://travis103.github.io/http2/</link>
+      <pubDate>Tue, 19 Apr 2022 16:50:34 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/http2/</guid>
+      <description> https://skyao.io/learning-http2/introduction/information.html
+  GOAWAY  GOAWAY帧（类型= 0x7）用于启动连接关闭或发出严重错误状态信号。 GOAWAY允许端点正常停止接受新的流，同时仍然完成对先前建立的流的处理。这可以实现管理操作，例如服务器维护。 在端点开始新流和端点远程发送GOAWAY帧之间存在固有的竞争条件。为了处理这种情况，GOAWAY包含在此连接中的发送端点上已处理或可能处理的最后一个peer-initiated流的流标识符。例如，如果服务器发送GOAWAY帧，则标识的流是由客户端发起的编号最大的流。 一旦发送，如果流的标识符高于包含的最后流标识符，则发送方将忽略由接收方发起的流上发送的帧。 GOAWAY帧的接收者不能在连接上打开额外的流，尽管可以为新的流建立新的连接。 如果GOAWAY的接收者已经发送了具有比GOAWAY帧更高的流标识符的流的数据，那么这些流不被处理或将不被处理。 GOAWAY帧的接收者可以将这些流视为从未被创建，从而允许这些流稍后在新连接上重试。 端点应该总是在关闭连接之前发送一个GOAWAY帧，以便远程节点可以知道流是否已被部分处理。例如，如果HTTP客户端在服务器关闭连接的同时发送POST，则客户端无法知道服务器是否开始处理该POST请求，如果服务器未发送GOAWAY帧来指示它可能具有哪些流采取行动。 对于行为不当的对端，端点可以选择关闭连接而不发送GOAWAY。 GOAWAY帧可能不会立即关闭连接之前; GOAWAY的接收器不再用于连接应该在终止连接之前仍然发送GOAWAY帧。 </description>
+    </item>
+    
+    <item>
+      <title>Ceph</title>
+      <link>https://travis103.github.io/ceph/</link>
+      <pubDate>Mon, 18 Apr 2022 16:32:04 +0800</pubDate>
+      
+      <guid>https://travis103.github.io/ceph/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Nsq</title>
@@ -932,7 +951,7 @@ set key value get key ttl key expire key seconds set key value ex seconds setex 
       <pubDate>Fri, 18 Mar 2022 15:29:16 +0800</pubDate>
       
       <guid>https://travis103.github.io/golang/</guid>
-      <description>Tutorial - https://go.dev/doc/tutorial/ - https://youtu.be/YS4e4q9oBaU Install wget https://dl.google.com/go/go1.15.2.linux-amd64.tar.gz tar xf go1.12.2.linux-amd64.tar.gz mv go /usr/local Config go env -w GOPROXY=https://goproxy.io,https://goproxy.cn,direct Build CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build Comments  // /* */  Basic Types  strings numbers booleans arrays slices maps  m := make(map[string]int) m[&amp;#34;k1&amp;#34;] = 7 m[&amp;#34;k2&amp;#34;] = 13 fmt.Println(m) // =&amp;gt; map[k1:7 k2:13]  v1 := m[&amp;#34;k1&amp;#34;] fmt.Println(v1) // =&amp;gt; 7 fmt.</description>
+      <description>Tutorial - https://golang.google.cn/doc/tutorial/getting-started.html - https://golang.google.cn/doc/tutorial/create-module.html - https://golang.google.cn/doc/tutorial/workspaces.html - https://golang.google.cn/doc/tutorial/web-service-gin.html - https://golang.google.cn/doc/tutorial/generics.html - https://golang.google.cn/doc/tutorial/fuzz.html - https://golang.google.cn/doc/articles/wiki/ - https://golang.google.cn/doc/code.html - https://golang.google.cn/tour/ - https://golang.google.cn/cmd/go/ - https://golang.google.cn/solutions/#use-cases - https://youtu.be/YS4e4q9oBaU Install rm -rf /usr/local/go &amp;amp;&amp;amp; tar -C /usr/local -xzf go1.18.1.linux-amd64.tar.gz Import local module go mod edit -replace example.com/greetings=../greetings go mod tidy go list go list -f &amp;#39;{{.Target}}&amp;#39; go workspace go work init go work use -r go work edit go work sync Config go env -w GOPROXY=https://goproxy.</description>
     </item>
     
     <item>

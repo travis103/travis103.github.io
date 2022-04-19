@@ -251,6 +251,15 @@ if (!doNotTrack) {
   
   
     
+    <li><a class="" href="/ceph/" title="Ceph">Ceph</a></li>
+  
+
+  
+  
+  
+  
+  
+    
     <li><a class="" href="/chrome/" title="Chrome">Chrome</a></li>
   
 
@@ -444,6 +453,15 @@ if (!doNotTrack) {
   
     
     <li><a class="" href="/haproxy/" title="Haproxy">Haproxy</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/http2/" title="Http2">Http2</a></li>
   
 
   
@@ -1099,14 +1117,51 @@ if (!doNotTrack) {
         
         <div class="post-content" id="post-content">
           <h3 id="tutorial">Tutorial</h3>
-<pre tabindex="0"><code>- https://go.dev/doc/tutorial/
+<pre tabindex="0"><code>- https://golang.google.cn/doc/tutorial/getting-started.html
+- https://golang.google.cn/doc/tutorial/create-module.html
+- https://golang.google.cn/doc/tutorial/workspaces.html
+
+- https://golang.google.cn/doc/tutorial/web-service-gin.html
+
+- https://golang.google.cn/doc/tutorial/generics.html
+
+- https://golang.google.cn/doc/tutorial/fuzz.html
+
+- https://golang.google.cn/doc/articles/wiki/
+- https://golang.google.cn/doc/code.html
+
+
+- https://golang.google.cn/tour/
+- https://golang.google.cn/cmd/go/
+- https://golang.google.cn/solutions/#use-cases
+
 - https://youtu.be/YS4e4q9oBaU
 </code></pre><h3 id="install">Install</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">wget https://dl.google.com/go/go1.15.2.linux-amd64.tar.gz
-tar xf go1.12.2.linux-amd64.tar.gz
-mv go /usr/local
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
+rm -rf /usr/local/go <span style="color:#f92672">&amp;&amp;</span> tar -C /usr/local -xzf go1.18.1.linux-amd64.tar.gz
+
+</code></pre></div><h3 id="import-local-module">Import local module</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">
+go mod edit -replace example.com/greetings<span style="color:#f92672">=</span>../greetings
+go mod tidy
+
+</code></pre></div><h3 id="go-list">go list</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">go list -f <span style="color:#e6db74">&#39;{{.Target}}&#39;</span>
+
+
+</code></pre></div><h3 id="go-workspace">go workspace</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">go work init
+go work use -r
+
+go work edit
+go work sync
+
 </code></pre></div><h3 id="config">Config</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">go env -w GOPROXY<span style="color:#f92672">=</span>https://goproxy.io,https://goproxy.cn,direct
+
+go env -w GOBIN<span style="color:#f92672">=</span>/path/to/your/bin
+
+go env -w GOMODCACHE<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/Users/will/golib/pkg/mod&#34;</span>
 
 </code></pre></div><h3 id="build">Build</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">
@@ -1195,6 +1250,11 @@ delete(<span style="color:#a6e22e">m</span>, <span style="color:#e6db74">&#34;k2
 <span style="color:#a6e22e">sum</span>(<span style="color:#a6e22e">nums</span><span style="color:#f92672">...</span>)  <span style="color:#75715e">// =&gt; [1 2 3 4] 10
 </span></code></pre></div><ul>
 <li>init function</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// import --&gt; const --&gt; var --&gt; init()
+</span><span style="color:#75715e"></span>
+
+</code></pre></div><ul>
 <li>functions as values</li>
 <li>closures</li>
 </ul>
@@ -1370,8 +1430,14 @@ delete(<span style="color:#a6e22e">m</span>, <span style="color:#e6db74">&#34;k2
   
 
   
+  
+
+  
     
     
+  
+  
+
   
   
 
@@ -1644,6 +1710,9 @@ delete(<span style="color:#a6e22e">m</span>, <span style="color:#e6db74">&#34;k2
       <ul>
         <li><a href="#tutorial">Tutorial</a></li>
         <li><a href="#install">Install</a></li>
+        <li><a href="#import-local-module">Import local module</a></li>
+        <li><a href="#go-list">go list</a></li>
+        <li><a href="#go-workspace">go workspace</a></li>
         <li><a href="#config">Config</a></li>
         <li><a href="#build">Build</a></li>
         <li><a href="#comments">Comments</a></li>
